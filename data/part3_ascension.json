@@ -2016,7 +2016,8 @@
      0.2
     ]
    ],
-   "image_prompt": "A soot-covered post-apocalyptic gang fighter in welded scrap armor and a gas mask, swinging rebar, standing in a ruined ash-grey cyberpunk street with dead neon and burning barrels, gritty, cinematic"
+   "image_prompt": "A soot-covered post-apocalyptic gang fighter in welded scrap armor and a gas mask, swinging rebar, standing in a ruined ash-grey cyberpunk street with dead neon and burning barrels, gritty, cinematic",
+   "portrait": "enemy_ash_ganger.jpg"
   },
   "ash_brute": {
    "name": "Ash King Brute",
@@ -2042,7 +2043,8 @@
      0.2
     ]
    ],
-   "image_prompt": "A hulking scavenger brute with mismatched cybernetic limbs and a welded steel mask, hefting a huge shock hammer, ruined cyberpunk ash-grey cityscape behind, menacing, dramatic low angle, cinematic"
+   "image_prompt": "A hulking scavenger brute with mismatched cybernetic limbs and a welded steel mask, hefting a huge shock hammer, ruined cyberpunk ash-grey cityscape behind, menacing, dramatic low angle, cinematic",
+   "portrait": "enemy_ash_brute.jpg"
   },
   "ash_warlord": {
    "name": "Vol, the Ash King",
@@ -2068,7 +2070,8 @@
      0.3
     ]
    ],
-   "image_prompt": "A scarred warlord king on a throne of scrap and skulls in a ruined cyberpunk underpass, draped in cabling and trophies, cradling a massive gauss rifle, firelight and gang banners, epic anti-hero key art, cinematic"
+   "image_prompt": "A scarred warlord king on a throne of scrap and skulls in a ruined cyberpunk underpass, draped in cabling and trophies, cradling a massive gauss rifle, firelight and gang banners, epic anti-hero key art, cinematic",
+   "portrait": "enemy_ash_warlord.jpg"
   },
   "meridian_trooper": {
    "name": "Meridian Trooper",
@@ -2094,7 +2097,8 @@
      0.25
     ]
    ],
-   "image_prompt": "A faceless corporate soldier in seamless matte-grey powered armor with a glowing white visor slit, leveling a smartrifle, sterile pale corridor, cold and anonymous, AAA sci-fi render, cinematic"
+   "image_prompt": "A faceless corporate soldier in seamless matte-grey powered armor with a glowing white visor slit, leveling a smartrifle, sterile pale corridor, cold and anonymous, AAA sci-fi render, cinematic",
+   "portrait": "enemy_meridian_trooper.jpg"
   },
   "meridian_drone": {
    "name": "Meridian Sentry Drone",
@@ -2116,7 +2120,8 @@
      0.25
     ]
    ],
-   "image_prompt": "A sleek levitating corporate sentry drone, a smooth grey disc with a single glowing white sensor eye and folding gun pods, hovering in a sterile white facility, minimalist menace, cinematic"
+   "image_prompt": "A sleek levitating corporate sentry drone, a smooth grey disc with a single glowing white sensor eye and folding gun pods, hovering in a sterile white facility, minimalist menace, cinematic",
+   "portrait": "enemy_meridian_drone.jpg"
   },
   "meridian_elite": {
    "name": "Meridian Praetorian",
@@ -2142,7 +2147,8 @@
      0.2
     ]
    ],
-   "image_prompt": "An elite corporate praetorian in flawless mirror-black powered armor with glowing white eye-lines, dual weapons, moving with inhuman speed through a pristine high-tech hall, motion blur, cold light, cinematic key art"
+   "image_prompt": "An elite corporate praetorian in flawless mirror-black powered armor with glowing white eye-lines, dual weapons, moving with inhuman speed through a pristine high-tech hall, motion blur, cold light, cinematic key art",
+   "portrait": "enemy_meridian_elite.jpg"
   },
   "meridian_juggernaut": {
    "name": "Meridian Juggernaut",
@@ -2164,7 +2170,8 @@
      0.35
     ]
    ],
-   "image_prompt": "A towering bipedal siege exoframe in matte-grey corporate armor bristling with autocannons, glowing white visor, stomping through a sterile facility amid debris and alarm light, AAA mech render, cinematic"
+   "image_prompt": "A towering bipedal siege exoframe in matte-grey corporate armor bristling with autocannons, glowing white visor, stomping through a sterile facility amid debris and alarm light, AAA mech render, cinematic",
+   "portrait": "enemy_meridian_juggernaut.jpg"
   },
   "choir_wisp": {
    "name": "Choir Wisp",
@@ -2181,7 +2188,8 @@
     0
    ],
    "loot": [],
-   "image_prompt": "A fragile ghostly figure of flickering pale-gold code drifting in an abstract cyberspace void, half-formed and confused, trailing data, ethereal digital sublime, cinematic"
+   "image_prompt": "A fragile ghostly figure of flickering pale-gold code drifting in an abstract cyberspace void, half-formed and confused, trailing data, ethereal digital sublime, cinematic",
+   "portrait": "enemy_choir_wisp.jpg"
   },
   "ice_seraph2": {
    "name": "White ICE: Seraph",
@@ -2198,7 +2206,8 @@
     0
    ],
    "loot": [],
-   "image_prompt": "A radiant angelic guardian program of white and gold geometric light, many-winged, hovering in a luminous cyberspace cathedral of data, divine and hostile, electric white-gold, cinematic abstract"
+   "image_prompt": "A radiant angelic guardian program of white and gold geometric light, many-winged, hovering in a luminous cyberspace cathedral of data, divine and hostile, electric white-gold, cinematic abstract",
+   "portrait": "enemy_ice_seraph2.jpg"
   },
   "warden_prime": {
    "name": "Black ICE: Warden Prime",
@@ -2215,7 +2224,8 @@
     0
    ],
    "loot": [],
-   "image_prompt": "A colossal Black ICE guardian shaped like a crystalline armored leviathan of red and violet code, vast and geometric, looming in an infinite dark cyberspace grid laced with lightning, epic abstract digital boss, cinematic"
+   "image_prompt": "A colossal Black ICE guardian shaped like a crystalline armored leviathan of red and violet code, vast and geometric, looming in an infinite dark cyberspace grid laced with lightning, epic abstract digital boss, cinematic",
+   "portrait": "enemy_warden_prime.jpg"
   },
   "data_titan": {
    "name": "Data Titan",
@@ -2232,7 +2242,8 @@
     0
    ],
    "loot": [],
-   "image_prompt": "A vast titan made of churning shattered data and broken neon glyphs rising from a sea of code in cyberspace, glowing fractures, awe-inspiring scale, electric blue and violet, epic digital monster, cinematic"
+   "image_prompt": "A vast titan made of churning shattered data and broken neon glyphs rising from a sea of code in cyberspace, glowing fractures, awe-inspiring scale, electric blue and violet, epic digital monster, cinematic",
+   "portrait": "enemy_data_titan.jpg"
   },
   "skyport_sentinel": {
    "name": "Skyport Sentinel",
@@ -2254,7 +2265,8 @@
      0.3
     ]
    ],
-   "image_prompt": "An automated bipedal turret-walker guarding a colossal orbital tether base at night, floodlights and venting steam, the impossibly tall tether cable rising into the clouds behind, glowing red sensors, industrial sci-fi, cinematic"
+   "image_prompt": "An automated bipedal turret-walker guarding a colossal orbital tether base at night, floodlights and venting steam, the impossibly tall tether cable rising into the clouds behind, glowing red sensors, industrial sci-fi, cinematic",
+   "portrait": "enemy_skyport_sentinel.jpg"
   },
   "climber_drone": {
    "name": "Climber Maintenance Drone",
@@ -2276,7 +2288,8 @@
      0.2
     ]
    ],
-   "image_prompt": "A spider-shaped maintenance drone of grippers and cutting tools clinging to the inside of a vast orbital elevator shaft, sparks, the cable stretching to infinity above and below, vertigo-inducing sci-fi, cinematic"
+   "image_prompt": "A spider-shaped maintenance drone of grippers and cutting tools clinging to the inside of a vast orbital elevator shaft, sparks, the cable stretching to infinity above and below, vertigo-inducing sci-fi, cinematic",
+   "portrait": "enemy_climber_drone.jpg"
   },
   "zero_g_trooper": {
    "name": "Vac-Trooper",
@@ -2302,7 +2315,8 @@
      0.25
     ]
    ],
-   "image_prompt": "A corporate soldier in sealed white vacuum combat armor with maneuvering jets, floating weightless in a station corridor with Earth glowing through a viewport, zero-gravity firefight, cinematic sci-fi"
+   "image_prompt": "A corporate soldier in sealed white vacuum combat armor with maneuvering jets, floating weightless in a station corridor with Earth glowing through a viewport, zero-gravity firefight, cinematic sci-fi",
+   "portrait": "enemy_zero_g_trooper.jpg"
   },
   "halo_marine": {
    "name": "Halo Station Marine",
@@ -2328,7 +2342,8 @@
      0.3
     ]
    ],
-   "image_prompt": "Elite orbital station marines in sleek white-and-chrome hardsuits with glowing visors, holding the line in a pristine curved space-station corridor, Earth visible through panoramic glass, AAA sci-fi, cinematic"
+   "image_prompt": "Elite orbital station marines in sleek white-and-chrome hardsuits with glowing visors, holding the line in a pristine curved space-station corridor, Earth visible through panoramic glass, AAA sci-fi, cinematic",
+   "portrait": "enemy_halo_marine.jpg"
   },
   "security_mech_x": {
    "name": "Aegis-X Guardian",
@@ -2354,7 +2369,8 @@
      0.3
     ]
    ],
-   "image_prompt": "A massive four-legged white guardian mech filling a sterile orbital station hangar, rotating cannon turrets and a glowing red targeting array, Earth through the bay doors, smoke and muzzle flash, epic AAA sci-fi boss, cinematic"
+   "image_prompt": "A massive four-legged white guardian mech filling a sterile orbital station hangar, rotating cannon turrets and a glowing red targeting array, Earth through the bay doors, smoke and muzzle flash, epic AAA sci-fi boss, cinematic",
+   "portrait": "enemy_security_mech_x.jpg"
   },
   "overseer_calder": {
    "name": "Overseer Calder",
@@ -2380,7 +2396,8 @@
      0.4
     ]
    ],
-   "image_prompt": "A serene corporate overseer in an immaculate pale suit with subtle glowing neural implants, standing calm before a vast glowing upload core in an orbital station, Earth through the glass behind, cold authority, cinematic villain key art"
+   "image_prompt": "A serene corporate overseer in an immaculate pale suit with subtle glowing neural implants, standing calm before a vast glowing upload core in an orbital station, Earth through the glass behind, cold authority, cinematic villain key art",
+   "portrait": "enemy_overseer_calder.jpg"
   },
   "the_ascendant": {
    "name": "THE ASCENDANT",
@@ -2397,7 +2414,8 @@
     0
    ],
    "loot": [],
-   "image_prompt": "A vast luminous deity-figure made of countless merging human faces and rivers of golden light, half-formed and radiant, suspended above a colossal glowing ascension core in an orbital chamber, Earth and stars beyond, divine and terrifying, epic finale key art, cinematic"
+   "image_prompt": "A vast luminous deity-figure made of countless merging human faces and rivers of golden light, half-formed and radiant, suspended above a colossal glowing ascension core in an orbital chamber, Earth and stars beyond, divine and terrifying, epic finale key art, cinematic",
+   "portrait": "enemy_the_ascendant.jpg"
   }
  },
  "npcs": {
