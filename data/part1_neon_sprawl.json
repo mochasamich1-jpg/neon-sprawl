@@ -6,10 +6,10 @@
   "subtitle": "Part 1 of 2  -  the Redline runner's tale",
   "tagline": "A nobody runner in the Redline slums takes one bad job and ends up holding a secret the whole city will kill for. Start here.",
   "start_room": "redline_alley",
-  "start_nuyen": 250,
+  "start_creds": 250,
   "start_karma": 0,
   "start_items": [],
-  "prologue": "Neo-Kowloon, 2087. The rain hasn't stopped in nine years and neither have the megacorps. You're a runner -- deniable muscle for hire in a city owned by Arasaka, where a body is cheap and a secret is worth more than a life.\n\nYou're {name}, a {archetype}, three months behind on rent and one bad job from the morgue. Your fixer Jojo left a message: he's got work. It's always work.\n\nType 'help' at any time. Type 'look' to see where you are. Now get moving, chummer -- the sprawl doesn't wait."
+  "prologue": "Neo-Kowloon, 2087. The rain hasn't stopped in nine years and neither have the megacorps. You're a runner -- deniable muscle for hire in a city owned by Kuroda, where a body is cheap and a secret is worth more than a life.\n\nYou're {name}, a {archetype}, three months behind on rent and one bad job from the morgue. Your fixer Jojo left a message: he's got work. It's always work.\n\nType 'help' at any time. Type 'look' to see where you are. Now get moving, chummer -- the sprawl doesn't wait."
  },
  "rooms": {
   "redline_alley": {
@@ -204,7 +204,7 @@
    "district": "Redline",
    "image": "doc_clinic.jpg",
    "image_prompt": "A cramped back-alley ripperdoc clinic, a reclined surgical chair under a cluster of robotic surgical arms, shelves of cyberware implants in jars and glowing vials, blood-stained tools, a wiry female street doc with surgical loupes, cold clinical light against neon spilling through a window, gritty medical cyberpunk",
-   "desc": "Bleach over old blood. A surgical chair waits under a nest of robotic arms. Doc Riddle sells chrome and patches, and she'll bolt cyberware into you if you've got the nuyen and the nerve. The alley is east.",
+   "desc": "Bleach over old blood. A surgical chair waits under a nest of robotic arms. Doc Riddle sells chrome and patches, and she'll bolt cyberware into you if you've got the creds and the nerve. The alley is east.",
    "npcs": [
     "doc_riddle"
    ],
@@ -271,7 +271,7 @@
    "district": "Undercity",
    "image": "undercity_sump.jpg",
    "image_prompt": "A flooded cavernous sump beneath a cyberpunk city, black water and floating debris, bioluminescent fungus glowing blue on crumbling concrete pillars, a rusted catwalk over the water, feral ghoul shapes lurking in the dark, dripping, claustrophobic horror, eerie blue-green glow, cinematic",
-   "desc": "A drowned cathedral of concrete. Black water laps at rusted catwalks and blue fungus glows on the pillars. Something with too many joints clicks in the dark. A maintenance hatch leads onward toward Arasaka territory.",
+   "desc": "A drowned cathedral of concrete. Black water laps at rusted catwalks and blue fungus glows on the pillars. Something with too many joints clicks in the dark. A maintenance hatch leads onward toward Kuroda territory.",
    "encounter": {
     "enemies": [
      "ghoul",
@@ -330,7 +330,7 @@
         },
         {
          "type": "text",
-         "msg": "The green flame gutters out. Among the offerings you find a stim patch and a fat handful of certified nuyen."
+         "msg": "The green flame gutters out. Among the offerings you find a stim patch and a fat handful of certified creds."
         }
        ]
       }
@@ -355,11 +355,11 @@
    }
   },
   "undercity_maintenance": {
-   "name": "Arasaka Service Sublevel",
+   "name": "Kuroda Service Sublevel",
    "district": "Undercity",
    "image": "undercity_maintenance.jpg",
-   "image_prompt": "A clean corporate maintenance sublevel meeting a grimy undercity tunnel, transition from rusted concrete to sterile white-and-red Arasaka panels, a sealed security door with a glowing red keycard reader, a uniformed corporate security officer on patrol, fluorescent light, tension, sci-fi corporate cyberpunk, cinematic",
-   "desc": "The rot stops at a line of clean white panels stamped with the Arasaka logo. This is the corp's basement, and they don't like visitors. A sealed security door waits behind a keycard reader. A guard is already keying his radio.",
+   "image_prompt": "A clean corporate maintenance sublevel meeting a grimy undercity tunnel, transition from rusted concrete to sterile white-and-red Kuroda panels, a sealed security door with a glowing red keycard reader, a uniformed corporate security officer on patrol, fluorescent light, tension, sci-fi corporate cyberpunk, cinematic",
+   "desc": "The rot stops at a line of clean white panels stamped with the Kuroda logo. This is the corp's basement, and they don't like visitors. A sealed security door waits behind a keycard reader. A guard is already keying his radio.",
    "first_enter": "A security officer rounds the corner and freezes. 'Unauthorized \u2014 hold it right there!'",
    "actions": [
     {
@@ -375,7 +375,7 @@
        "on_win": [
         {
          "type": "give_item",
-         "id": "keycard_arasaka"
+         "id": "keycard_kuroda"
         },
         {
          "type": "flag",
@@ -394,7 +394,7 @@
     "south": "undercity_sump",
     "north": {
      "room": "arco_corridor",
-     "require_item": "keycard_arasaka",
+     "require_item": "keycard_kuroda",
      "locked_msg": "The security door is sealed. The reader glows red \u2014 you'll need a keycard."
     }
    }
@@ -403,9 +403,9 @@
    "name": "Arcology Service Corridor",
    "district": "Arcology",
    "image": "arco_corridor.jpg",
-   "image_prompt": "A sleek sterile corporate corridor inside a megacorp arcology, polished white and red Arasaka panels, recessed lighting and glowing wayfinding strips, a hovering sentry drone with a red scanner eye, security cameras, clean hard-surface sci-fi, faint red alert glow, cinematic depth",
+   "image_prompt": "A sleek sterile corporate corridor inside a megacorp arcology, polished white and red Kuroda panels, recessed lighting and glowing wayfinding strips, a hovering sentry drone with a red scanner eye, security cameras, clean hard-surface sci-fi, faint red alert glow, cinematic depth",
    "desc": "Spotless. Silent. The air smells of ozone and money. Wayfinding strips pulse along the floor toward the building's heart. A sentry drone drifts on patrol, and cameras track your every step. The service door is south; the atrium lies north.",
-   "first_enter": "You're inside Arasaka now. Every surface is watching. Move fast and don't trip an alarm.",
+   "first_enter": "You're inside Kuroda now. Every surface is watching. Move fast and don't trip an alarm.",
    "encounter": {
     "enemies": [
      "corp_drone"
@@ -421,7 +421,7 @@
    "name": "Arcology Atrium",
    "district": "Arcology",
    "image": "arco_atrium.jpg",
-   "image_prompt": "A breathtaking vast corporate atrium inside a megacorp arcology, soaring glass walls overlooking a neon cyberpunk megacity skyline at night, a giant glowing holographic Arasaka logo rotating in the air, sterile white architecture with red accents, indoor trees in chrome planters, security guards patrolling, awe and menace, cinematic wide establishing shot",
+   "image_prompt": "A breathtaking vast corporate atrium inside a megacorp arcology, soaring glass walls overlooking a neon cyberpunk megacity skyline at night, a giant glowing holographic Kuroda logo rotating in the air, sterile white architecture with red accents, indoor trees in chrome planters, security guards patrolling, awe and menace, cinematic wide establishing shot",
    "desc": "The corridor opens into a cathedral of glass and light. A holographic logo turns slowly above a lobby that overlooks the whole glittering sprawl. Guards patrol the polished floor. A secured lift leads up to the vault levels; the corridor is back south.",
    "encounter": {
     "enemies": [
@@ -434,7 +434,7 @@
      "id": "hack_terminal",
      "label": "Hack a lobby terminal for credits",
      "once": true,
-     "text": "You spoof a maintenance login and skim a slush account before the session times out. Clean nuyen, dirty source.",
+     "text": "You spoof a maintenance login and skim a slush account before the session times out. Clean creds, dirty source.",
      "effects": [
       {
        "type": "credits",
@@ -556,7 +556,7 @@
      "label": "Skim loose data fragments",
      "if_flag": "crack_ice_done",
      "once": true,
-     "text": "With the guardian gone you sweep the ruins for stragglers \u2014 a last few hundred nuyen of orphaned credit.",
+     "text": "With the guardian gone you sweep the ruins for stragglers \u2014 a last few hundred creds of orphaned credit.",
      "effects": [
       {
        "type": "credits",
@@ -692,7 +692,7 @@
       {
        "type": "ending",
        "id": "corp",
-       "msg": "You hand Kane the Idol. He weighs it, nods once, and a fortune lands on your stick \u2014 more nuyen than the Redline sees in a decade. Behind you, you hear Mirror's quiet, disappointed laugh as she melts away. You'll be looking over your shoulder for the rest of your life. But you'll be doing it from a penthouse. Kane's VTOL lifts off without you, and you've never felt so rich and so alone.\n\n=== ENDING: THE SELLOUT ===\nYou're a made runner now. The corps own a piece of you, and you own a piece of them."
+       "msg": "You hand Kane the Idol. He weighs it, nods once, and a fortune lands on your stick \u2014 more creds than the Redline sees in a decade. Behind you, you hear Mirror's quiet, disappointed laugh as she melts away. You'll be looking over your shoulder for the rest of your life. But you'll be doing it from a penthouse. Kane's VTOL lifts off without you, and you've never felt so rich and so alone.\n\n=== ENDING: THE SELLOUT ===\nYou're a made runner now. The corps own a piece of you, and you own a piece of them."
       }
      ]
     },
@@ -1132,7 +1132,7 @@
         },
         {
          "type": "text",
-         "msg": "The Matriarch folds in on herself and is finally, mercifully still. The warren goes silent. Among her hoard you find a Pain Editor and a fistful of nuyen. The deep belongs to no one again."
+         "msg": "The Matriarch folds in on herself and is finally, mercifully still. The warren goes silent. Among her hoard you find a Pain Editor and a fistful of creds. The deep belongs to no one again."
         }
        ]
       }
@@ -1148,7 +1148,7 @@
    "district": "Matrix",
    "image": "matrix_host.jpg",
    "image_prompt": "A derelict corporate data-host in cyberspace, crumbling neon architecture of broken firewalls and dark data-towers floating in a black void, a shifting figure of soft light wearing many faces hovering among the ruins, ghostly data-wraiths drifting, melancholy digital sublime, electric blue and gold, cinematic",
-   "desc": "An Arasaka host long since abandoned, its architecture crumbling into the void. Dead-user wraiths drift between broken firewalls -- and at the center hovers something awake and afraid, wearing a dozen unfinished faces. It calls itself ECHO. The onramp is back; ECHO's caged core lies deeper.",
+   "desc": "An Kuroda host long since abandoned, its architecture crumbling into the void. Dead-user wraiths drift between broken firewalls -- and at the center hovers something awake and afraid, wearing a dozen unfinished faces. It calls itself ECHO. The onramp is back; ECHO's caged core lies deeper.",
    "encounter": {
     "enemies": [
      "data_wraith"
@@ -1253,7 +1253,7 @@
    "actions": [
     {
      "id": "gamble",
-     "label": "Play the tables (gamble nuyen)",
+     "label": "Play the tables (gamble creds)",
      "effects": [
       {
        "type": "gamble",
@@ -1331,7 +1331,7 @@
    "name": "Arcology Security Floor",
    "district": "Arcology",
    "image": "arco_security.jpg",
-   "image_prompt": "A high-tech corporate security operations floor inside a megacorp arcology, banks of surveillance monitors and weapon lockers, armored Arasaka troopers on patrol, red alert lighting and holographic floor plans, sterile and militarized, hard-surface sci-fi, cinematic",
+   "image_prompt": "A high-tech corporate security operations floor inside a megacorp arcology, banks of surveillance monitors and weapon lockers, armored Kuroda troopers on patrol, red alert lighting and holographic floor plans, sterile and militarized, hard-surface sci-fi, cinematic",
    "desc": "The arcology's nervous system: a wall of monitors watching every floor, weapon lockers, and heavy troopers who shoot first. A security console controls the alarm grid. The atrium is below; the lab levels are above.",
    "encounter": {
     "enemies": [
@@ -1369,7 +1369,7 @@
    "image": "arco_labs.jpg",
    "image_prompt": "A nightmarish high-tech corporate cybernetics laboratory, rows of glowing stasis tanks holding half-converted human subjects, surgical gantries and robotic arms, a monstrous prototype cyborg breaking free in the center, sterile white surfaces bathed in red emergency light, body-horror sci-fi, cinematic",
    "desc": "This is where the Docks cargo ends up. Stasis tanks line the walls, each holding someone being unmade into something else. A half-built horror -- Project NEMESIS -- twitches in a gantry at the room's heart. A terrified captive watches from a cracked tube. Security is below; the vault is above, behind a high-clearance door.",
-   "first_enter": "The smell of antiseptic and burned hair. Whatever Arasaka is building here, it used to be people.",
+   "first_enter": "The smell of antiseptic and burned hair. Whatever Kuroda is building here, it used to be people.",
    "npcs": [
     "lab_captive"
    ],
@@ -1424,7 +1424,7 @@
    "desc": "Your knuckles. Free, always loaded, never jams."
   },
   "heavy_pistol": {
-   "name": "Ares Predator VI",
+   "name": "Vantage VI",
    "type": "weapon",
    "dv": 7,
    "reach": "ranged",
@@ -1434,7 +1434,7 @@
    "desc": "The runner's old friend. Smartgun-linked, heavy, and reassuringly loud."
   },
   "holdout_pistol": {
-   "name": "Fichetti Holdout",
+   "name": "Slip Holdout",
    "type": "weapon",
    "dv": 5,
    "reach": "ranged",
@@ -1464,7 +1464,7 @@
    "desc": "Sharpened ceramic that won't trip a metal detector. Favored by the quiet professionals."
   },
   "smg": {
-   "name": "Ingram Smartgun SMG",
+   "name": "Hornet Smartgun SMG",
    "type": "weapon",
    "dv": 8,
    "reach": "ranged",
@@ -1518,7 +1518,7 @@
    "desc": "A heavier stick. Somebody's bad week is your good one."
   },
   "matrix_deck": {
-   "name": "Renraku Cyberdeck",
+   "name": "Kestrel Cyberdeck",
    "type": "gear",
    "value": 2500,
    "desc": "A folding slab of illegal processing power. A decker's whole life."
@@ -1564,14 +1564,14 @@
    "desc": "An edge one molecule wide. It does not so much cut as politely ask matter to part."
   },
   "assault_rifle": {
-   "name": "AK-97 Assault Rifle",
+   "name": "Volk-97 Assault Rifle",
    "type": "weapon",
    "dv": 10,
    "reach": "ranged",
    "attr": "agility",
    "skill": "firearms",
    "value": 1600,
-   "desc": "Cheap, ubiquitous, and utterly reliable. The sound of the Sixth World."
+   "desc": "Cheap, ubiquitous, and utterly reliable. The sound of the Neon Age."
   },
   "shock_glove": {
    "name": "Shock Gloves",
@@ -1633,8 +1633,8 @@
    "value": 0,
    "desc": "An anonymous certified stick. Cash, basically."
   },
-  "keycard_arasaka": {
-   "name": "Arasaka Maintenance Keycard",
+  "keycard_kuroda": {
+   "name": "Kuroda Maintenance Keycard",
    "type": "quest",
    "value": 0,
    "desc": "A grimy maintenance badge. Opens doors that shouldn't be open to you."
@@ -1658,7 +1658,7 @@
    "desc": "A filter mask for the Undercity's chem-fog. Equip before you go down."
   },
   "machine_pistol": {
-   "name": "Steyr Machine Pistol",
+   "name": "Vipera Machine Pistol",
    "type": "weapon",
    "dv": 6,
    "reach": "ranged",
@@ -1668,7 +1668,7 @@
    "desc": "Spits a burst with every twitch of the trigger. Loud, mean, concealable."
   },
   "shotgun": {
-   "name": "Defiance Shotgun",
+   "name": "Breaker Shotgun",
    "type": "weapon",
    "dv": 9,
    "reach": "ranged",
@@ -1678,7 +1678,7 @@
    "desc": "Eight gauge of close-range democracy. It does not leave survivors at the door."
   },
   "sniper_rifle": {
-   "name": "Ranger Arms Sniper",
+   "name": "Longshadow Sniper",
    "type": "weapon",
    "dv": 11,
    "reach": "ranged",
@@ -1688,7 +1688,7 @@
    "desc": "One breath, one round, one corpse. The longest reach in the sprawl."
   },
   "taser": {
-   "name": "Defiance Shockgun",
+   "name": "Breaker Shockgun",
    "type": "weapon",
    "dv": 3,
    "reach": "ranged",
@@ -1828,7 +1828,7 @@
    "type": "credits",
    "amount": 800,
    "value": 0,
-   "desc": "A serious chunk of anonymous nuyen. Somebody will miss this."
+   "desc": "A serious chunk of anonymous creds. Somebody will miss this."
   },
   "smuggler_manifest": {
    "name": "Smuggler's Manifest",
@@ -1866,7 +1866,7 @@
    "dv": 4,
    "init": 7,
    "karma": 2,
-   "nuyen": [
+   "creds": [
     20,
     60
    ],
@@ -1893,7 +1893,7 @@
    "dv": 6,
    "init": 8,
    "karma": 6,
-   "nuyen": [
+   "creds": [
     120,
     220
    ],
@@ -1920,7 +1920,7 @@
    "dv": 4,
    "init": 6,
    "karma": 2,
-   "nuyen": [
+   "creds": [
     10,
     40
    ],
@@ -1947,7 +1947,7 @@
    "dv": 5,
    "init": 9,
    "karma": 4,
-   "nuyen": [
+   "creds": [
     0,
     15
    ],
@@ -1965,7 +1965,7 @@
    "portrait": "enemy_ghoul.jpg"
   },
   "corp_sec": {
-   "name": "Arasaka Security Officer",
+   "name": "Kuroda Security Officer",
    "desc": "Clean armor, smartgun up, calm voice on the comms. A professional.",
    "hp": 26,
    "attack": 8,
@@ -1974,7 +1974,7 @@
    "dv": 7,
    "init": 9,
    "karma": 5,
-   "nuyen": [
+   "creds": [
     80,
     160
    ],
@@ -1984,7 +1984,7 @@
      0.4
     ],
     [
-     "keycard_arasaka",
+     "keycard_kuroda",
      0.25
     ],
     [
@@ -1992,7 +1992,7 @@
      0.2
     ]
    ],
-   "image_prompt": "A corporate security officer in sleek black-and-red Arasaka tactical armor, mirrored visor helmet, raising a smartlinked SMG, sterile chrome corridor with red alert lighting, lens flare, AAA game cinematic, sharp detail",
+   "image_prompt": "A corporate security officer in sleek black-and-red Kuroda tactical armor, mirrored visor helmet, raising a smartlinked SMG, sterile chrome corridor with red alert lighting, lens flare, AAA game cinematic, sharp detail",
    "portrait": "enemy_corp_sec.jpg"
   },
   "corp_drone": {
@@ -2005,7 +2005,7 @@
    "dv": 6,
    "init": 11,
    "karma": 3,
-   "nuyen": [
+   "creds": [
     0,
     0
    ],
@@ -2028,7 +2028,7 @@
    "dv": 7,
    "init": 12,
    "karma": 5,
-   "nuyen": [
+   "creds": [
     0,
     0
    ],
@@ -2046,7 +2046,7 @@
    "dv": 5,
    "init": 12,
    "karma": 3,
-   "nuyen": [
+   "creds": [
     0,
     20
    ],
@@ -2069,7 +2069,7 @@
    "dv": 6,
    "init": 8,
    "karma": 6,
-   "nuyen": [
+   "creds": [
     60,
     140
    ],
@@ -2096,7 +2096,7 @@
    "dv": 8,
    "init": 13,
    "karma": 12,
-   "nuyen": [
+   "creds": [
     400,
     700
    ],
@@ -2123,7 +2123,7 @@
    "dv": 9,
    "init": 12,
    "karma": 25,
-   "nuyen": [
+   "creds": [
     1000,
     1500
    ],
@@ -2150,7 +2150,7 @@
    "dv": 4,
    "init": 6,
    "karma": 2,
-   "nuyen": [
+   "creds": [
     40,
     80
    ],
@@ -2173,7 +2173,7 @@
    "dv": 5,
    "init": 9,
    "karma": 3,
-   "nuyen": [
+   "creds": [
     70,
     120
    ],
@@ -2196,7 +2196,7 @@
    "dv": 6,
    "init": 10,
    "karma": 4,
-   "nuyen": [
+   "creds": [
     120,
     200
    ],
@@ -2219,7 +2219,7 @@
    "dv": 7,
    "init": 9,
    "karma": 10,
-   "nuyen": [
+   "creds": [
     300,
     450
    ],
@@ -2246,7 +2246,7 @@
    "dv": 5,
    "init": 7,
    "karma": 3,
-   "nuyen": [
+   "creds": [
     30,
     70
    ],
@@ -2273,7 +2273,7 @@
    "dv": 6,
    "init": 7,
    "karma": 4,
-   "nuyen": [
+   "creds": [
     60,
     110
    ],
@@ -2300,7 +2300,7 @@
    "dv": 7,
    "init": 10,
    "karma": 8,
-   "nuyen": [
+   "creds": [
     200,
     350
    ],
@@ -2327,7 +2327,7 @@
    "dv": 6,
    "init": 7,
    "karma": 4,
-   "nuyen": [
+   "creds": [
     0,
     20
    ],
@@ -2350,7 +2350,7 @@
    "dv": 7,
    "init": 8,
    "karma": 12,
-   "nuyen": [
+   "creds": [
     40,
     90
    ],
@@ -2377,7 +2377,7 @@
    "dv": 6,
    "init": 11,
    "karma": 4,
-   "nuyen": [
+   "creds": [
     0,
     30
    ],
@@ -2400,7 +2400,7 @@
    "dv": 6,
    "init": 11,
    "karma": 4,
-   "nuyen": [
+   "creds": [
     0,
     0
    ],
@@ -2418,7 +2418,7 @@
    "dv": 8,
    "init": 12,
    "karma": 14,
-   "nuyen": [
+   "creds": [
     0,
     0
    ],
@@ -2427,7 +2427,7 @@
    "portrait": "enemy_ice_warden.jpg"
   },
   "corp_scientist": {
-   "name": "Arasaka Researcher",
+   "name": "Kuroda Researcher",
    "desc": "A lab coat with panic in its eyes and a security sidearm it can't aim.",
    "hp": 16,
    "attack": 5,
@@ -2436,7 +2436,7 @@
    "dv": 5,
    "init": 6,
    "karma": 3,
-   "nuyen": [
+   "creds": [
     40,
     90
    ],
@@ -2446,11 +2446,11 @@
      0.3
     ]
    ],
-   "image_prompt": "A frightened corporate researcher in a white-and-red Arasaka lab coat fumbling a pistol, sterile high-tech laboratory with glowing specimen tanks behind, cold clinical lighting, cyberpunk, cinematic",
+   "image_prompt": "A frightened corporate researcher in a white-and-red Kuroda lab coat fumbling a pistol, sterile high-tech laboratory with glowing specimen tanks behind, cold clinical lighting, cyberpunk, cinematic",
    "portrait": "enemy_corp_scientist.jpg"
   },
   "corp_heavy": {
-   "name": "Arasaka Heavy Trooper",
+   "name": "Kuroda Heavy Trooper",
    "desc": "Full milspec plate, a heavy weapon, and zero interest in your story.",
    "hp": 36,
    "attack": 9,
@@ -2459,7 +2459,7 @@
    "dv": 7,
    "init": 8,
    "karma": 6,
-   "nuyen": [
+   "creds": [
     100,
     180
    ],
@@ -2473,7 +2473,7 @@
      0.3
     ]
    ],
-   "image_prompt": "A heavily armored Arasaka trooper in bulky black-and-red powered combat armor shouldering a heavy machine gun, red visor glow, sterile arcology corridor with alarm lighting, imposing, AAA game render, cinematic",
+   "image_prompt": "A heavily armored Kuroda trooper in bulky black-and-red powered combat armor shouldering a heavy machine gun, red visor glow, sterile arcology corridor with alarm lighting, imposing, AAA game render, cinematic",
    "portrait": "enemy_corp_heavy.jpg"
   },
   "prototype_borg": {
@@ -2486,7 +2486,7 @@
    "dv": 8,
    "init": 10,
    "karma": 16,
-   "nuyen": [
+   "creds": [
     0,
     0
    ],
@@ -2513,7 +2513,7 @@
    "dv": 5,
    "init": 8,
    "karma": 3,
-   "nuyen": [
+   "creds": [
     50,
     100
    ],
@@ -2534,7 +2534,7 @@
    "stages": [
     {
      "if_not_flag": "mq_started",
-     "text": "Jojo waves you to the booth. 'You're the new blood. Good. I got work. Some go-gang trash calling themselves the Redline Razors muscled into my territory and stole a package off one of my couriers \u2014 an encrypted data chip. Get it back, bring it here. Five hundred nuyen and my goodwill, which is worth more.'",
+     "text": "Jojo waves you to the booth. 'You're the new blood. Good. I got work. Some go-gang trash calling themselves the Redline Razors muscled into my territory and stole a package off one of my couriers \u2014 an encrypted data chip. Get it back, bring it here. Five hundred creds and my goodwill, which is worth more.'",
      "effects": [
       {
        "type": "quest",
@@ -2604,7 +2604,7 @@
     {
      "if_flag": "downtown_unlocked",
      "if_not_flag": "mq02_started",
-     "text": "Mirror studies you in the club's strobing dark. 'Jojo's stray. That chip you pulled belonged to Arasaka \u2014 specifically a Director named Kane. He's running something filthy out of the arcology: a stolen artifact called the Neon Idol, and people are dying to keep it quiet. I want it. Get into the arcology, find the Idol, and I'll make you rich enough to leave the sprawl forever. You'll need a way in \u2014 try the maintenance levels in the Undercity.'",
+     "text": "Mirror studies you in the club's strobing dark. 'Jojo's stray. That chip you pulled belonged to Kuroda \u2014 specifically a Director named Kane. He's running something filthy out of the arcology: a stolen artifact called the Neon Idol, and people are dying to keep it quiet. I want it. Get into the arcology, find the Idol, and I'll make you rich enough to leave the sprawl forever. You'll need a way in \u2014 try the maintenance levels in the Undercity.'",
      "effects": [
       {
        "type": "quest",
@@ -2749,7 +2749,7 @@
    "desc": "A nervous man behind bulletproof glass, surrounded by other people's lives in hock.",
    "stages": [
     {
-     "text": "'Buy, sell, no questions, no refunds.' Marlo taps the glass. 'You got loot, I got nuyen. Use the sell menu in the shop. And hey -- word on the street says the Docks are hot. Syndicate moving 'product' through the wharf. Smells like easy money or an early grave.'"
+     "text": "'Buy, sell, no questions, no refunds.' Marlo taps the glass. 'You got loot, I got creds. Use the sell menu in the shop. And hey -- word on the street says the Docks are hot. Syndicate moving 'product' through the wharf. Smells like easy money or an early grave.'"
     }
    ]
   },
@@ -2780,7 +2780,7 @@
     {
      "if_item": "echo_fragment",
      "if_not_flag": "echo_sold",
-     "text": "The Oracle's head turns sharply. 'You're carrying a piece of a mind. A rogue AI's core shard -- I can hear it singing.' She extends a trembling hand. 'I will pay a fortune for that, and you will sleep easier without it.' You hand it over. The nuyen lands heavy.",
+     "text": "The Oracle's head turns sharply. 'You're carrying a piece of a mind. A rogue AI's core shard -- I can hear it singing.' She extends a trembling hand. 'I will pay a fortune for that, and you will sleep easier without it.' You hand it over. The creds lands heavy.",
      "effects": [
       {
        "type": "take_item",
@@ -2809,7 +2809,7 @@
     },
     {
      "if_not_flag": "oracle_intro",
-     "text": "'Information is the only real currency, runner. I sell secrets.' Her dead eyes find you anyway. 'A rumor, on the house: there's a rogue AI loose in the old Arasaka host on the grid. It calls itself ECHO. Bring me a piece of it and I'll make you rich.'",
+     "text": "'Information is the only real currency, runner. I sell secrets.' Her dead eyes find you anyway. 'A rumor, on the house: there's a rogue AI loose in the old Kuroda host on the grid. It calls itself ECHO. Bring me a piece of it and I'll make you rich.'",
      "effects": [
       {
        "type": "flag",
@@ -2939,7 +2939,7 @@
   },
   "mq02": {
    "name": "Main: The Neon Idol",
-   "desc": "Mirror at the Glasshouse club wants a stolen artifact \u2014 the Neon Idol \u2014 out of the Arasaka arcology. Find a way in through the Undercity maintenance levels, retrieve the Idol, and bring it back."
+   "desc": "Mirror at the Glasshouse club wants a stolen artifact \u2014 the Neon Idol \u2014 out of the Kuroda arcology. Find a way in through the Undercity maintenance levels, retrieve the Idol, and bring it back."
   },
   "mq03": {
    "name": "Main: No Honor Among Thieves",
@@ -2967,7 +2967,7 @@
   },
   "sq_echo": {
    "name": "Side: Ghost in the Grid",
-   "desc": "A rogue AI called ECHO is hiding in the dead Arasaka host deep in the Matrix. Reach it, break the Warden guarding its core, and carry a fragment of it back to the Oracle downtown."
+   "desc": "A rogue AI called ECHO is hiding in the dead Kuroda host deep in the Matrix. Reach it, break the Warden guarding its core, and carry a fragment of it back to the Oracle downtown."
   },
   "sq_aurora": {
    "name": "Side: Neon Debts",

@@ -35,7 +35,7 @@
   },
   "decker": {
    "key": "decker",
-   "blurb": "A ghost in the machine. Hacks the Matrix for nuyen and fights with data-spikes.",
+   "blurb": "A ghost in the machine. Hacks the Matrix for creds and fights with data-spikes.",
    "attrs": {
     "body": 3,
     "agility": 3,
@@ -195,7 +195,7 @@
    "desc": "Cripple the target's defenses (-3 defense dice)."
   },
   "manabolt": {
-   "name": "Manabolt",
+   "name": "Mana Lance",
    "cost": 1,
    "kind": "attack",
    "dice": 0,
@@ -212,7 +212,7 @@
    "desc": "Mend wounds (Magic x3 HP)."
   },
   "stunbolt": {
-   "name": "Stunbolt",
+   "name": "Stun Pulse",
    "cost": 2,
    "kind": "attack",
    "dice": 0,

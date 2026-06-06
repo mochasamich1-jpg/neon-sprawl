@@ -194,7 +194,7 @@ function applyEffect(e) {
     case "give_item": addItem(e.id); break;
     case "give_items": e.ids.forEach(addItem); break;
     case "take_item": removeItem(e.id); p("   - " + itemName(e.id), "ye"); break;
-    case "credits": G.p.nuyen += e.amount; p("   + ¥" + e.amount + " nuyen", "gn"); break;
+    case "credits": G.p.creds += e.amount; p("   + ¥" + e.amount + " creds", "gn"); break;
     case "gamble": gamble(e.amount || 100); break;
     case "karma": G.p.karma += e.amount; p("   + " + e.amount + " karma", "mg"); break;
     case "heal": heal(e.amount === "full" ? maxHp(G.p) : e.amount); break;
@@ -213,7 +213,7 @@ function questEffect(e) {
   } else if (e.action === "complete") {
     G.p.quests[e.id] = "done";
     blank(); p("   * OBJECTIVE COMPLETE: " + (q.name || e.id), "gn b");
-    if (e.credits) { G.p.nuyen += e.credits; p("   + ¥" + e.credits + " nuyen", "gn"); }
+    if (e.credits) { G.p.creds += e.credits; p("   + ¥" + e.credits + " creds", "gn"); }
     if (e.karma) { G.p.karma += e.karma; p("   + " + e.karma + " karma", "mg"); }
   }
 }
@@ -224,13 +224,13 @@ function heal(amt) {
 }
 function gamble(stake) {
   var pl = G.p;
-  if (pl.nuyen < stake) { p("   You can't cover the ¥" + stake + " table minimum.", "rd"); return; }
-  pl.nuyen -= stake;
+  if (pl.creds < stake) { p("   You can't cover the ¥" + stake + " table minimum.", "rd"); return; }
+  pl.creds -= stake;
   var r = Math.random();
-  if (r < 0.375) { pl.nuyen += stake * 2; p("   The wheel loves you! You take ¥" + (stake * 2) + " (net +¥" + stake + ").", "gn"); }
-  else if (r < 0.405) { pl.nuyen += stake * 5; p("   JACKPOT! The table pays ¥" + (stake * 5) + "!", "ye b"); }
+  if (r < 0.375) { pl.creds += stake * 2; p("   The wheel loves you! You take ¥" + (stake * 2) + " (net +¥" + stake + ").", "gn"); }
+  else if (r < 0.405) { pl.creds += stake * 5; p("   JACKPOT! The table pays ¥" + (stake * 5) + "!", "ye b"); }
   else p("   The house takes your ¥" + stake + ". Of course it does.", "rd");
-  p("   Nuyen: ¥" + pl.nuyen, "grey");
+  p("   Creds: ¥" + pl.creds, "grey");
 }
 function doEnding(e) {
   blank(); rule("=", "mg"); p(e.msg, "wh"); rule("=", "mg");
@@ -281,7 +281,7 @@ function openShop(shop) {
 function showShop() {
   var shop = G.shop, disc = discount();
   blank(); banner(shop.name, "ye"); p(shop.greeting, "dim wh");
-  p("\n  Your nuyen: ¥" + G.p.nuyen + (disc < 1 ? "   (Face discount applied)" : ""), "gn"); blank();
+  p("\n  Your creds: ¥" + G.p.creds + (disc < 1 ? "   (Face discount applied)" : ""), "gn"); blank();
   shop.sells.forEach(function (iid, i) {
     var it = ITEMS()[iid], price = Math.floor(it.value * disc);
     p("   [" + (i + 1) + "] " + pad(it.name, 28) + " ¥" + pad(String(price), 6) + " " + itemTag(it), "wh");
@@ -296,8 +296,8 @@ function handleShop(c) {
   var n = parseInt(c, 10);
   if (!isNaN(n) && n >= 1 && n <= shop.sells.length) {
     var iid = shop.sells[n - 1], price = Math.floor(ITEMS()[iid].value * disc);
-    if (G.p.nuyen < price) { p("Not enough nuyen, chummer.", "rd"); return; }
-    G.p.nuyen -= price; G.p.inventory.push(iid);
+    if (G.p.creds < price) { p("Not enough creds, chummer.", "rd"); return; }
+    G.p.creds -= price; G.p.inventory.push(iid);
     p("Bought " + ITEMS()[iid].name + " for ¥" + price + ".", "gn");
   } else p("?", "rd");
 }
@@ -317,7 +317,7 @@ function handleSell(c) {
     var iid = list[n - 1], gain = Math.floor(ITEMS()[iid].value / 2);
     var idx = G.p.inventory.indexOf(iid);
     if (idx >= 0) G.p.inventory.splice(idx, 1);
-    G.p.nuyen += gain; p("Sold " + ITEMS()[iid].name + " for ¥" + gain + ".", "gn");
+    G.p.creds += gain; p("Sold " + ITEMS()[iid].name + " for ¥" + gain + ".", "gn");
     showSell();
   } else p("?", "rd");
 }
@@ -484,7 +484,7 @@ function tryFlee() {
 function combatRewards() {
   var en = G.combat.e;
   blank(); rule("~", "gn"); p("  " + en.name + " is down!", "gn b");
-  if (en.nuyen && (en.nuyen[0] || en.nuyen[1])) { var ny = rint(en.nuyen[0], en.nuyen[1]); G.p.nuyen += ny; p("   + ¥" + ny + " nuyen", "gn"); }
+  if (en.creds && (en.creds[0] || en.creds[1])) { var ny = rint(en.creds[0], en.creds[1]); G.p.creds += ny; p("   + ¥" + ny + " creds", "gn"); }
   if (en.karma) { G.p.karma += en.karma; p("   + " + en.karma + " karma", "mg"); }
   (en.loot || []).forEach(function (l) { if (Math.random() < l[1]) { G.p.inventory.push(l[0]); p("   + " + itemName(l[0]) + " (looted)", "gn"); } });
   rule("~", "gn");
@@ -515,7 +515,7 @@ var ATTRS = function () { return RULES.attr_names; };
 function showStats() {
   var pl = G.p;
   blank(); banner(pl.name + "  --  " + title(pl.archetype), "mg");
-  p("  HP " + pl.hp + "/" + maxHp(pl) + "   Edge " + pl.edge + "/" + pl.max_edge + (pl.magic ? "   Magic " + pl.magic : "") + "   Nuyen ¥" + pl.nuyen + "   Karma " + pl.karma, "gn");
+  p("  HP " + pl.hp + "/" + maxHp(pl) + "   Edge " + pl.edge + "/" + pl.max_edge + (pl.magic ? "   Magic " + pl.magic : "") + "   Creds ¥" + pl.creds + "   Karma " + pl.karma, "gn");
   blank();
   p("  " + ATTRS().map(function (a) { return a.slice(0, 3).toUpperCase() + " " + attr(pl, a); }).join("  "), "cy");
   p("  Skills: " + Object.keys(pl.skills).map(function (k) { return k + " " + pl.skills[k]; }).join("  "), "ye");
@@ -537,7 +537,7 @@ function showInv() {
     p("   " + it.name + (counts[iid] > 1 ? " x" + counts[iid] : "") + "  " + itemTag(it), "wh");
     p("      " + (it.desc || ""), "grey");
   });
-  p("\n  Nuyen: ¥" + pl.nuyen, "gn");
+  p("\n  Creds: ¥" + pl.creds, "gn");
 }
 function showQuests() {
   blank(); banner("QUEST LOG", "ye"); var any = false;
@@ -678,7 +678,7 @@ function newPlayer(name, archName) {
     attrs: Object.assign({}, a.attrs), skills: Object.assign({}, a.skills),
     weapon: a.weapon, armor: a.armor,
     inventory: a.items.slice(), cyberware: a.cyberware.slice(), abilities: a.abilities.slice(),
-    nuyen: man.start_nuyen != null ? man.start_nuyen : 250,
+    creds: man.start_creds != null ? man.start_creds : 250,
     karma: man.start_karma != null ? man.start_karma : 0,
     edge: a.edge, max_edge: a.edge, magic: a.key === "mage" ? 5 : 0,
     location: man.start_room, campaign: man.id,

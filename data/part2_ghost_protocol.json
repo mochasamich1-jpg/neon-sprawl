@@ -6,7 +6,7 @@
   "subtitle": "Part 2 of 2  -  the war for the wire",
   "tagline": "Six months after the Idol job, a corp called Helix is building a killswitch for every body in the city, and a choir of awakened AIs wants it for themselves. You're a legend now. Time to earn it. (A separate, harder campaign - start a fresh runner here.)",
   "start_room": "spire_plaza",
-  "start_nuyen": 1500,
+  "start_creds": 1500,
   "start_karma": 8,
   "start_items": [
    "trauma_patch",
@@ -14,9 +14,9 @@
    "stim_patch",
    "stim_patch"
   ],
-  "start_weapon": "ares_alpha",
+  "start_weapon": "vantage_alpha",
   "start_armor": "combat_armor2",
-  "prologue": "Neo-Kowloon, late 2087. Arasaka is a wounded animal and the wolves are circling. The biggest of them is Helix Dynamics, and rumor says Helix is finishing a thing called the GENESIS UPLINK -- a single broadcast that can brick, hijack, or kill every piece of cyberware in the sprawl. Everyone with chrome in their skull is about to become someone else's property.\n\nYou're {name}, a {archetype} with a name that means something now. You retired rich after the Idol. It didn't take. A fixer who calls herself Saint left a message at the Griffin: the biggest job in the history of the sprawl, and the shortest list of runners who could pull it off. You're the whole list.\n\nThis is the harder road, veteran. Type 'help' if you've forgotten anything. Now go see Saint."
+  "prologue": "Neo-Kowloon, late 2087. Kuroda is a wounded animal and the wolves are circling. The biggest of them is Helix Dynamics, and rumor says Helix is finishing a thing called the GENESIS UPLINK -- a single broadcast that can brick, hijack, or kill every piece of cyberware in the sprawl. Everyone with chrome in their skull is about to become someone else's property.\n\nYou're {name}, a {archetype} with a name that means something now. You retired rich after the Idol. It didn't take. A fixer who calls herself Saint left a message at the Griffin: the biggest job in the history of the sprawl, and the shortest list of runners who could pull it off. You're the whole list.\n\nThis is the harder road, veteran. Type 'help' if you've forgotten anything. Now go see Saint."
  },
  "rooms": {
   "spire_plaza": {
@@ -91,7 +91,7 @@
     "name": "Gilded Chrome",
     "greeting": "Doc Sable's waldo-arms unfold in welcome. 'The finest grade, installed without a scar. What will you become today?'",
     "sells": [
-     "ares_alpha",
+     "vantage_alpha",
      "combat_shotgun2",
      "anti_materiel",
      "monowhip",
@@ -511,7 +511,7 @@
    "image": "helix_gate.jpg",
    "image_prompt": "A monumental corporate tower lobby of white marble and electric-blue light, a colossal glowing Helix logo above a security arch, mirror-polished floors reflecting armed troopers, soaring ceilings vanishing upward, intimidating wealth and power, cold sci-fi grandeur, cinematic",
    "desc": "The Access Spike opens the tower like a held breath. Inside: a lobby built to make you feel small, all white marble and blue fire, soaring up into the building that wants to own your spine. The concourse is back south; the lift climbs north and up.",
-   "first_enter": "You're inside Helix. Somewhere far above, Saburo Vane already knows you're here.",
+   "first_enter": "You're inside Helix. Somewhere far above, Ezar Vane already knows you're here.",
    "encounter": {
     "enemies": [
      "helix_trooper"
@@ -612,12 +612,12 @@
    "district": "Helix Tower",
    "image": "uplink_chamber.jpg",
    "image_prompt": "A vast cathedral-like chamber at the summit of a megatower housing a colossal glowing uplink core of white-blue energy, a flawless chrome-eyed corporate overlord standing before it, the entire neon city spread out through panoramic windows far below, divine corporate menace, epic finale lighting, cinematic key art",
-   "desc": "The top of the world, and the bottom of a decision. The Genesis Uplink fills the chamber -- a core of caged lightning that can reach into every wired skull in the city. Director Saburo Vane stands before it, serene, certain, waiting for you like an appointment he scheduled. This is where it ends. The approach is back down.",
+   "desc": "The top of the world, and the bottom of a decision. The Genesis Uplink fills the chamber -- a core of caged lightning that can reach into every wired skull in the city. Director Ezar Vane stands before it, serene, certain, waiting for you like an appointment he scheduled. This is where it ends. The approach is back down.",
    "first_enter": "Vane doesn't turn. 'I've read your file, runner. Twice. You're the only variable I couldn't price.' He finally faces you. 'So. Shall we find out what you're worth?'",
    "actions": [
     {
      "id": "fight_vane",
-     "label": "Fight Director Saburo Vane",
+     "label": "Fight Director Ezar Vane",
      "once": true,
      "if_not_flag": "vane_down",
      "effects": [
@@ -707,7 +707,7 @@
    "desc": "Your knuckles. Free, always loaded, never jams."
   },
   "heavy_pistol": {
-   "name": "Ares Predator VI",
+   "name": "Vantage VI",
    "type": "weapon",
    "dv": 7,
    "reach": "ranged",
@@ -717,7 +717,7 @@
    "desc": "The runner's old friend. Heavy and reassuringly loud."
   },
   "holdout_pistol": {
-   "name": "Fichetti Holdout",
+   "name": "Slip Holdout",
    "type": "weapon",
    "dv": 5,
    "reach": "ranged",
@@ -747,7 +747,7 @@
    "desc": "Sharpened ceramic that won't trip a metal detector."
   },
   "smg": {
-   "name": "Ingram Smartgun SMG",
+   "name": "Hornet Smartgun SMG",
    "type": "weapon",
    "dv": 8,
    "reach": "ranged",
@@ -798,10 +798,10 @@
    "type": "credits",
    "amount": 450,
    "value": 0,
-   "desc": "A heavier stick of anonymous nuyen."
+   "desc": "A heavier stick of anonymous creds."
   },
   "matrix_deck": {
-   "name": "Renraku Cyberdeck",
+   "name": "Kestrel Cyberdeck",
    "type": "gear",
    "value": 2500,
    "desc": "A folding slab of illegal processing power. A decker's whole life."
@@ -837,7 +837,7 @@
    "desc": "Targeting reticles painted onto your vision."
   },
   "hold_pistol2": {
-   "name": "Fichetti Tiburi",
+   "name": "Slip Tiburi",
    "type": "weapon",
    "dv": 6,
    "reach": "ranged",
@@ -846,8 +846,8 @@
    "value": 600,
    "desc": "A sleek holdout that punches above its size. Backup gun of choice."
   },
-  "ares_alpha": {
-   "name": "Ares Alpha Smartrifle",
+  "vantage_alpha": {
+   "name": "Vantage Alpha Smartrifle",
    "type": "weapon",
    "dv": 9,
    "reach": "ranged",
@@ -857,7 +857,7 @@
    "desc": "Military smartrifle with an underbarrel grenade launcher. A veteran's right arm."
   },
   "heavy_smg2": {
-   "name": "Ingram Valiant SMG",
+   "name": "Hornet Valiant SMG",
    "type": "weapon",
    "dv": 8,
    "reach": "ranged",
@@ -867,7 +867,7 @@
    "desc": "Belt-fed, recoil-tamed, and absolutely without manners."
   },
   "combat_shotgun2": {
-   "name": "Mossberg AM-CMDT",
+   "name": "Tempest AM-CMDT",
    "type": "weapon",
    "dv": 10,
    "reach": "ranged",
@@ -877,7 +877,7 @@
    "desc": "Full-auto combat shotgun. Clears a room and the room behind it."
   },
   "anti_materiel": {
-   "name": "Barrett Model 122",
+   "name": "Anvil Model 122",
    "type": "weapon",
    "dv": 13,
    "reach": "ranged",
@@ -1047,7 +1047,7 @@
    "type": "credits",
    "amount": 600,
    "value": 0,
-   "desc": "An anonymous certified stick, heavy with nuyen."
+   "desc": "An anonymous certified stick, heavy with creds."
   },
   "credstick_corp": {
    "name": "Helix Black Card",
@@ -1087,7 +1087,7 @@
    "desc": "A military filter mask for the Floodline's chem-flooded streets."
   },
   "deck2": {
-   "name": "Fairlight Excalibur Deck",
+   "name": "Paragon Excalibur Deck",
    "type": "gear",
    "value": 6000,
    "desc": "The finest cyberdeck money can't legally buy. The Deep Matrix awaits."
@@ -1104,7 +1104,7 @@
    "dv": 7,
    "init": 9,
    "karma": 5,
-   "nuyen": [
+   "creds": [
     80,
     160
    ],
@@ -1131,7 +1131,7 @@
    "dv": 7,
    "init": 12,
    "karma": 4,
-   "nuyen": [
+   "creds": [
     0,
     20
    ],
@@ -1154,7 +1154,7 @@
    "dv": 6,
    "init": 13,
    "karma": 3,
-   "nuyen": [
+   "creds": [
     0,
     0
    ],
@@ -1172,7 +1172,7 @@
    "dv": 6,
    "init": 7,
    "karma": 4,
-   "nuyen": [
+   "creds": [
     40,
     90
    ],
@@ -1199,7 +1199,7 @@
    "dv": 8,
    "init": 7,
    "karma": 6,
-   "nuyen": [
+   "creds": [
     70,
     130
    ],
@@ -1226,7 +1226,7 @@
    "dv": 9,
    "init": 10,
    "karma": 16,
-   "nuyen": [
+   "creds": [
     400,
     700
    ],
@@ -1253,7 +1253,7 @@
    "dv": 8,
    "init": 12,
    "karma": 6,
-   "nuyen": [
+   "creds": [
     0,
     0
    ],
@@ -1271,7 +1271,7 @@
    "dv": 8,
    "init": 13,
    "karma": 14,
-   "nuyen": [
+   "creds": [
     0,
     0
    ],
@@ -1289,7 +1289,7 @@
    "dv": 8,
    "init": 10,
    "karma": 8,
-   "nuyen": [
+   "creds": [
     0,
     0
    ],
@@ -1307,7 +1307,7 @@
    "dv": 8,
    "init": 11,
    "karma": 8,
-   "nuyen": [
+   "creds": [
     120,
     220
    ],
@@ -1317,7 +1317,7 @@
      0.3
     ],
     [
-     "ares_alpha",
+     "vantage_alpha",
      0.3
     ]
    ],
@@ -1334,7 +1334,7 @@
    "dv": 8,
    "init": 8,
    "karma": 10,
-   "nuyen": [
+   "creds": [
     150,
     280
    ],
@@ -1357,7 +1357,7 @@
    "dv": 8,
    "init": 9,
    "karma": 14,
-   "nuyen": [
+   "creds": [
     200,
     350
    ],
@@ -1384,7 +1384,7 @@
    "dv": 8,
    "init": 11,
    "karma": 9,
-   "nuyen": [
+   "creds": [
     100,
     200
    ],
@@ -1407,7 +1407,7 @@
    "dv": 8,
    "init": 12,
    "karma": 18,
-   "nuyen": [
+   "creds": [
     0,
     0
    ],
@@ -1416,7 +1416,7 @@
    "portrait": "enemy_the_conductor.jpg"
   },
   "director_helix": {
-   "name": "Director Saburo Vane",
+   "name": "Director Ezar Vane",
    "desc": "Helix's architect: flawless, ancient in chrome, smiling at your funeral.",
    "hp": 70,
    "attack": 11,
@@ -1425,7 +1425,7 @@
    "dv": 9,
    "init": 12,
    "karma": 30,
-   "nuyen": [
+   "creds": [
     1500,
     2500
    ],
@@ -1474,7 +1474,7 @@
     {
      "if_item": "helix_codes",
      "if_not_flag": "p2_mq2",
-     "text": "Saint turns the Access Spike over in her fingers, and something like respect crosses her face. 'You're still the best there is.' She hands it back. 'The tower lobby will swallow this and open the lift. Climb to the top -- the Uplink chamber. Saburo Vane will be waiting; he always is. Whatever you find up there, the choice of what to do with it is yours. Just know the whole city is downstream of it.'",
+     "text": "Saint turns the Access Spike over in her fingers, and something like respect crosses her face. 'You're still the best there is.' She hands it back. 'The tower lobby will swallow this and open the lift. Climb to the top -- the Uplink chamber. Ezar Vane will be waiting; he always is. Whatever you find up there, the choice of what to do with it is yours. Just know the whole city is downstream of it.'",
      "effects": [
       {
        "type": "quest",
@@ -1738,7 +1738,7 @@
   },
   "p2_mq3": {
    "name": "Main: The Genesis Uplink",
-   "desc": "Director Saburo Vane stands between you and the Uplink core. Beat him, then decide the fate of the city's chrome: destroy the Uplink, give its key to the AI Choir, or seize the power for yourself."
+   "desc": "Director Ezar Vane stands between you and the Uplink core. Beat him, then decide the fate of the city's chrome: destroy the Uplink, give its key to the AI Choir, or seize the power for yourself."
   },
   "p2_sq_flood": {
    "name": "Side: Floodline Refugees",
