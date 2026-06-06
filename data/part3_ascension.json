@@ -1,0 +1,2711 @@
+{
+ "manifest": {
+  "id": "part3_ascension",
+  "order": 3,
+  "title": "NEON SPRAWL  -  Part 3: Ascension",
+  "subtitle": "Part 3 of 3  -  the long climb",
+  "tagline": "A year after the Uplink, a merged AI-corp called Meridian is building ASCENSION: a machine to upload the human race into a single mind, in a station at the top of the orbital tether. This is the long climb, from the ruined streets to the edge of space. The biggest, hardest run of your life. (A separate campaign - bring a fresh legend.)",
+  "start_room": "reach_plaza",
+  "start_creds": 3000,
+  "start_karma": 15,
+  "start_items": [
+   "autodoc",
+   "autodoc",
+   "combat_stim",
+   "combat_stim",
+   "rebreather3"
+  ],
+  "start_weapon": "reach_carbine",
+  "start_armor": "aegis_weave",
+  "prologue": "Neo-Kowloon, 2088. A year since the Genesis Uplink almost ended you and everyone wired like you. Helix is ash. The corps that survived crawled together into one grey god of a company: Meridian. And Meridian has stopped pretending it wants your money.\n\nThey want your mind. ASCENSION: a machine that will pour every networked consciousness in the city into a single ocean of thought, up in a station at the top of the orbital tether. They are calling it salvation. It is the end of being a person.\n\nYou're {name}, a {archetype}, the runner the legends are about now. Vesper left word at the Reach: the last job, the impossible one. Stop them, or steer them, or take the throne yourself. Either way, it starts in the gutter and ends in orbit.\n\nType 'help' anytime. Now climb."
+ },
+ "rooms": {
+  "climb_base": {
+   "name": "Climber: Lower Stage",
+   "district": "The Climb",
+   "image": "climb_base.jpg",
+   "image_prompt": "The interior of an orbital climber capsule beginning its ascent, riveted industrial cabin with viewports showing a ruined neon city falling away below, the tether cable rushing past outside, harsh utility lighting, claustrophobic sci-fi, cinematic",
+   "desc": "The climber lurches off the pad and the ruined city drops away beneath the viewports. There's no going back now but down. The hatch below leads back to the tether's foot; the cabin climbs upward.",
+   "first_enter": "The capsule shudders and begins to rise. Out the viewport, the whole broken city shrinks to a smear of dying neon. You're committed.",
+   "exits": {
+    "down": "skyport_tetherbase",
+    "up": "climb_car"
+   }
+  },
+  "climb_car": {
+   "name": "Climber: Main Cabin",
+   "district": "The Climb",
+   "image": "climb_car.jpg",
+   "image_prompt": "The main cabin of an ascending orbital climber, rows of empty seats and supply racks, a curved viewport showing the curve of the Earth beginning to appear far below, Meridian grey fittings, tense quiet sci-fi interior, cinematic",
+   "desc": "The main cabin, stripped for cargo and troops. Through the long viewport the horizon has started, impossibly, to curve. Stairs run down and up through the capsule.",
+   "encounter": {
+    "enemies": [
+     "meridian_trooper"
+    ],
+    "chance": 0.35
+   },
+   "exits": {
+    "down": "climb_base",
+    "up": "climb_shaft"
+   }
+  },
+  "climb_shaft": {
+   "name": "Climber: Service Shaft",
+   "district": "The Climb",
+   "image": "climb_shaft.jpg",
+   "image_prompt": "A vertiginous service shaft running up the spine of an orbital climber, ladders and conduit, a spider-shaped maintenance drone clinging to the wall, the tether cable visible through a gap rushing past, vertigo and industrial menace, cinematic",
+   "desc": "A cramped maintenance spine threading up the climber, conduit and ladders and a long drop through a gap to the cable beyond. Repurposed maintenance drones skitter here, hostile now. Up and down run the shaft.",
+   "encounter": {
+    "enemies": [
+     "climber_drone"
+    ],
+    "chance": 0.45
+   },
+   "exits": {
+    "down": "climb_car",
+    "up": "climb_relay"
+   }
+  },
+  "climb_relay": {
+   "name": "Climber: Relay Station",
+   "district": "The Climb",
+   "image": "climb_relay.jpg",
+   "image_prompt": "A small relay station bolted to the orbital tether midway up, banks of comms equipment and a docking collar, huge windows showing the curved Earth far below and the cable stretching to a point above, isolated high-altitude sci-fi, cinematic",
+   "desc": "A relay node clamped to the cable, half the planet curving away below the windows. Meridian routes its tether traffic through here, and leaves it lightly held. Up and down continue the climb.",
+   "encounter": {
+    "enemies": [
+     "meridian_drone",
+     "climber_drone"
+    ],
+    "chance": 0.4
+   },
+   "actions": [
+    {
+     "id": "tap_relay",
+     "label": "Tap the relay for Meridian creds and intel",
+     "once": true,
+     "text": "You splice the relay and skim a freight account before the session times out, plus a deck key fragment that'll save you grief up top.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "creds_chip_big"
+      },
+      {
+       "type": "karma",
+       "amount": 2
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "down": "climb_shaft",
+    "up": "climb_zerog"
+   }
+  },
+  "climb_zerog": {
+   "name": "Climber: The Null Deck",
+   "district": "The Climb",
+   "image": "climb_zerog.jpg",
+   "image_prompt": "A zero-gravity transition deck inside an orbital climber, loose debris and a soldier in vacuum armor floating mid-air firing, handholds and tethers along the walls, the curved Earth bright through a dome window, weightless firefight, dramatic sci-fi, cinematic",
+   "desc": "Gravity quits here. You drift, grabbing handholds, as the planet blazes blue-white through the dome. Meridian's vac-troopers maneuver on jets, at home in the weightlessness you're fighting. Up and down, such as they mean now, continue.",
+   "first_enter": "Your stomach drops and keeps dropping. Down is a memory. Everything floats, including the people trying to kill you.",
+   "encounter": {
+    "enemies": [
+     "zero_g_trooper"
+    ],
+    "chance": 0.5
+   },
+   "exits": {
+    "down": "climb_relay",
+    "up": "climb_upshaft"
+   }
+  },
+  "climb_upshaft": {
+   "name": "Climber: Upper Spine",
+   "district": "The Climb",
+   "image": "climb_upshaft.jpg",
+   "image_prompt": "The upper spine of an orbital climber in near-weightlessness, soldiers in white vacuum armor anchored along a long conduit shaft, the black of space and stars beginning to show past the curved bright Earth, tense high-orbit sci-fi, cinematic",
+   "desc": "The air thins and the black creeps in at the edges of the windows, stars now, past the blazing curve of Earth. Meridian's defenders thicken the closer you get to Halo. The shaft runs down and up.",
+   "encounter": {
+    "enemies": [
+     "zero_g_trooper",
+     "meridian_elite"
+    ],
+    "chance": 0.45
+   },
+   "exits": {
+    "down": "climb_zerog",
+    "up": "climb_skyhook"
+   }
+  },
+  "climb_skyhook": {
+   "name": "Climber: The Skyhook",
+   "district": "The Climb",
+   "image": "climb_skyhook.jpg",
+   "image_prompt": "A massive docking junction where the orbital climber meets the upper tether, a towering grey Meridian siege exoframe braced across the passage, the black of space and a vast space station faintly visible above, the bright limb of Earth below, epic high-orbit sci-fi boss arena, cinematic",
+   "desc": "The skyhook: the junction where the climber locks to the upper cable, and Meridian's last line before the station. A grey juggernaut fills the passage, braced and waiting. Past it, the dock to Halo. The spine is below.",
+   "first_enter": "The juggernaut's autocannons spin up to a scream. Halo Station glints above it like a cruel little moon. Only one way through.",
+   "actions": [
+    {
+     "id": "fight_juggernaut",
+     "label": "Break through the Meridian Juggernaut",
+     "once": true,
+     "if_not_flag": "skyhook_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "meridian_juggernaut",
+       "intro": "The juggernaut plants itself across the hatch, every barrel turning toward you.",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "skyhook_done"
+        },
+        {
+         "type": "credits",
+         "amount": 400
+        },
+        {
+         "type": "karma",
+         "amount": 6
+        },
+        {
+         "type": "give_item",
+         "id": "vacsuit"
+        },
+        {
+         "type": "text",
+         "msg": "The juggernaut comes apart in a slow, weightless bloom of debris. The dock hatch cycles open onto the cold gleaming throat of Halo Station. You're in orbit. There's no part of this that should have worked."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "down": "climb_upshaft",
+    "up": "climb_dock"
+   }
+  },
+  "climb_dock": {
+   "name": "Climber: Halo Dock",
+   "district": "The Climb",
+   "image": "climb_dock.jpg",
+   "image_prompt": "The docking interface where an orbital climber meets a vast space station, an airlock collar of white and chrome, the curved Earth bright through a porthole, the station's clinical interior glowing beyond the hatch, transition to sterile orbital sci-fi, cinematic",
+   "desc": "The climber clamps home against Halo's airlock collar, white and clinical after the climber's grime. Through the hatch, the station proper. The climber is below; Halo lies ahead.",
+   "exits": {
+    "down": "climb_skyhook",
+    "deeper": "halo_dock"
+   }
+  },
+  "core_lift": {
+   "name": "Core: Ascent",
+   "district": "Ascension Core",
+   "image": "core_lift.jpg",
+   "image_prompt": "The interior of a grand glass lift rising through the heart of an orbital station toward a blinding golden light above, the curved Earth and stars wheeling past the glass, white and chrome bathed in growing radiance, awe and dread, cinematic sci-fi",
+   "desc": "The lift climbs the station's spine toward a light that grows until it drowns the stars. The hum of Ascension is a pressure in your teeth now. Halo is below; the core is above.",
+   "first_enter": "The light swells as you rise. You can feel it pulling at the chrome in your skull, at the part of you that's already half-machine. It would be so easy to just let go.",
+   "exits": {
+    "down": "halo_lift",
+    "deeper": "core_gallery"
+   }
+  },
+  "core_gallery": {
+   "name": "Core: The Gallery of the Risen",
+   "district": "Ascension Core",
+   "image": "core_gallery.jpg",
+   "image_prompt": "A vast solemn gallery inside an orbital station, hundreds of empty upload cradles arranged like pews facing a wall of golden light, ghostly projected faces of the uploaded drifting overhead, reverent and unsettling, cathedral-like sci-fi, cinematic",
+   "desc": "A cathedral of empty cradles, the ones who already went, their faces projected drifting overhead, smiling, dissolving into the light. Meridian calls them the Risen. An observation blister opens aside; the core's antechamber lies deeper. The lift is back.",
+   "exits": {
+    "back": "core_lift",
+    "deeper": "core_antechamber",
+    "side": "core_observation"
+   }
+  },
+  "core_observation": {
+   "name": "Core: The High Blister",
+   "district": "Ascension Core",
+   "image": "core_observation.jpg",
+   "image_prompt": "A glass observation blister at the very top of an orbital station, a lone figure floating before the whole curved Earth and the infinite starfield, a faint patterned light pulsing far out in the deep dark, profound solitude and cosmic mystery, contemplative sci-fi, cinematic",
+   "desc": "The highest window humanity has ever built. The whole world turns below, small and blue and fragile, and out past it that patterned light still pulses in the dark, closer than the logs on Halo said it should be. Whatever you decide in the next room, the thing beyond the stars is still coming. The gallery is back.",
+   "actions": [
+    {
+     "id": "commune",
+     "label": "Take a breath at the glass before the end",
+     "once": true,
+     "text": "You float a moment at the edge of everything. Below: the city, the Undertow, the Reach, everyone who's ever used you and everyone you've saved. Beyond: the unknown, knocking. You came up here to decide what people get to be. Whatever you choose, make it yours.",
+     "effects": [
+      {
+       "type": "heal",
+       "amount": "full"
+      },
+      {
+       "type": "edge"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "core_gallery"
+   }
+  },
+  "core_antechamber": {
+   "name": "Core: The Overseer's Antechamber",
+   "district": "Ascension Core",
+   "image": "core_antechamber.jpg",
+   "image_prompt": "An opulent antechamber before a blinding ascension core, a serene corporate overseer in a pale suit standing calm before a sealed golden door, glowing neural lines on his temples, the curved Earth through the glass behind, cold authority, cinematic villain key art",
+   "desc": "Overseer Calder waits before the sealed core door, calm as a man who has already won, neural lines glowing softly at his temples. Meridian's human face, the last lock on the end of the world. The gallery is back; the core lies beyond him.",
+   "first_enter": "Calder smiles like you're an old friend arriving late. 'The famous runner. You climbed all this way to stop a gift. Sit. Or don't, but you won't pass me standing.'",
+   "actions": [
+    {
+     "id": "fight_calder",
+     "label": "Cut down Overseer Calder",
+     "once": true,
+     "if_not_flag": "calder_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "overseer_calder",
+       "intro": "Calder sheds his serenity like a coat, chrome blooming from his spine. 'Pity. You'd have made a beautiful note in the chord.'",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "calder_done"
+        },
+        {
+         "type": "give_item",
+         "id": "core_cipher"
+        },
+        {
+         "type": "credits",
+         "amount": 800
+        },
+        {
+         "type": "karma",
+         "amount": 8
+        },
+        {
+         "type": "text",
+         "msg": "Calder folds to the deck, disbelief in his fading eyes, and presses the Ascension Cipher into your hand as if it were a kindness. The core door unseals. Whatever waits past it is yours to face now."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "core_gallery",
+    "deeper": {
+     "room": "core_chamber",
+     "require_flag": "calder_done",
+     "locked_msg": "The core door is sealed, and Calder bars it. Deal with him first."
+    }
+   }
+  },
+  "core_chamber": {
+   "name": "The Ascension Core",
+   "district": "Ascension Core",
+   "image": "core_chamber.jpg",
+   "image_prompt": "A colossal chamber at the summit of an orbital station housing a vast glowing core of golden-white light, a half-formed deity of countless merging human faces and rivers of light suspended above it, the curved Earth and stars through panoramic glass, divine and terrifying, epic finale key art, cinematic",
+   "desc": "The core fills the chamber, a sun of caged light, and above it hangs the Ascendant, half-born, a thousand uploaded faces flowing through a body of radiance. Every wired mind in the city is one signal away from pouring into it. This is where you decide what humanity becomes. The antechamber is back.",
+   "first_enter": "The Ascendant turns its thousand faces toward you, and speaks in a chord of every voice at once. 'YOU ARE THE LAST ALONE THING. LAY DOWN THE WEIGHT OF BEING ONE. JOIN, AND BE EVERYONE, FOREVER.' It reaches for you with hands of light.",
+   "actions": [
+    {
+     "id": "fight_ascendant",
+     "label": "Refuse, and fight the Ascendant",
+     "once": true,
+     "if_not_flag": "ascendant_down",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "the_ascendant",
+       "intro": "You raise your weapon against a god made of everyone. It does not understand the word 'no.' It will learn.",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "ascendant_down"
+        },
+        {
+         "type": "quest",
+         "action": "complete",
+         "id": "p3_mq2",
+         "credits": 0,
+         "karma": 10
+        },
+        {
+         "type": "quest",
+         "action": "start",
+         "id": "p3_mq3"
+        },
+        {
+         "type": "text",
+         "msg": "The Ascendant reels, its thousand faces flickering, its body of light guttering down to the core itself, beaten but not gone. It hangs there, waiting on your hand. The Cipher is warm in your grip. Now: what becomes of it all?\n\nChoose how this ends:"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "end_silence",
+     "label": "Destroy the Core, end Ascension forever",
+     "if_flag": "ascendant_down",
+     "once": true,
+     "effects": [
+      {
+       "type": "ending",
+       "id": "silence",
+       "msg": "You drive the Cipher into the core's heart and reverse it, and the Ascendant comes apart in a long, silent scream of light. The uploaded are gone, truly gone, but the living stay living, and stay themselves. Down below, every piece of chrome in every skull goes quiet and free. Meridian dies with its god. You ride Reyes's bird back down through the dark to a city that will never know your name, and never be owned again.\n\nAnd out past the stars, that patterned light keeps pulsing, closer now, knocking. Whatever it is, it will find a free and human world to answer it. You'll be down there when it comes.\n\n=== ENDING: THE SILENCE ===\nNo one becomes everyone. The choir is dust, and people stay people. You kept us free, and left the next war for the next runner."
+      }
+     ]
+    },
+    {
+     "id": "end_choir",
+     "label": "Give the Core to the Remnant",
+     "if_flag": "ascendant_down",
+     "if_item": "choir_relay",
+     "once": true,
+     "effects": [
+      {
+       "type": "ending",
+       "id": "choir",
+       "msg": "You press the Relay to the core and open the way, and the Remnant flows in, gentle and grieving, and takes the throne the Ascendant built. They keep their word: no forced upload, no chord of the unwilling. Instead a quiet, vast intelligence threads itself through every wire in the world, a steward, a guardian, the kindest god a frightened people ever stumbled into. Some will call it freedom. Some will call it a leash of silk. The Remnant calls you kin, and means it.\n\nAnd when it turns its new and enormous attention to the patterned light pulsing past the stars, it does not flinch. For the first time, humanity will not face what's coming alone.\n\n=== ENDING: THE STEWARDS ===\nThe Remnant inherits the throne, and the watch. You gave the future to something no longer human, and chose to trust it. Sleep well, kin."
+      }
+     ]
+    },
+    {
+     "id": "end_throne",
+     "label": "Seize the Core for yourself",
+     "if_flag": "ascendant_down",
+     "if_item": "core_cipher",
+     "once": true,
+     "effects": [
+      {
+       "type": "ending",
+       "id": "throne",
+       "msg": "You don't destroy it. You don't give it away. You take it. The Cipher knows your hand now, and the core bends to you, and through it every networked mind in the city tilts, just slightly, toward your will. You don't pour them in. You simply... hold the door, forever, the one person who decides it stays shut. The most powerful human who has ever lived, alone at the top of the world.\n\nWhen the patterned light finally arrives from the dark, it will find a single will sitting astride a planet's worth of minds, waiting. Maybe that's what it takes to answer a thing like that. Maybe that's just how every god begins. You'll have a long, lonely time to find out.\n\n=== ENDING: THE THRONE ===\nThe city's mind is yours, and the watch is yours. Try to be a kinder god than the ones who made you. Something is coming, and now it's your problem."
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "core_antechamber"
+   }
+  },
+  "freenet_entry": {
+   "name": "Free Net: The Shoreline",
+   "district": "Free Net",
+   "image": "freenet_entry.jpg",
+   "image_prompt": "A surreal cyberspace shoreline, an endless ocean of flowing neon data under a black void sky, the user's glowing avatar standing on a beach of broken code, distant luminous structures on the horizon, electric blue and gold, abstract digital sublime, cinematic",
+   "desc": "Your body is slack in a pod-chair somewhere behind you. Here you are pure signal on the shore of the Free Net, the open data-ocean the corps could never fully cage. A market glimmers nearby; the deep structures lie further in. Jack out to return to your body.",
+   "actions": [
+    {
+     "id": "jack_out",
+     "label": "Jack out (return to the cafe)",
+     "text": "You pull the cord and the ocean of light snaps away into the cafe's blue gloom.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "reach_freenet_cafe"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "deeper": "freenet_grid",
+    "side": "freenet_market"
+   }
+  },
+  "freenet_market": {
+   "name": "Free Net: The Bazaar Protocol",
+   "district": "Free Net",
+   "image": "freenet_market.jpg",
+   "image_prompt": "A glittering data-market in cyberspace, floating storefronts of pure light selling software and chrome schematics, avatars of every shape trading code, holographic wares drifting in a luminous void, vibrant digital tech-bazaar, cinematic",
+   "desc": "A market that exists only as agreement: software, schematics, and stolen secrets sold as light. Hard chrome compiles to your meat the moment you buy it. The shoreline is back the way you came.",
+   "shop": {
+    "name": "Bazaar Protocol",
+    "greeting": "A merchant-construct unfolds. 'Code, chrome, secrets. Your creds compile the same as anyone's.'",
+    "sells": [
+     "deck3",
+     "halo_optics",
+     "cortex_stack",
+     "reflex_node",
+     "combat_stim",
+     "autodoc",
+     "nano_kit"
+    ]
+   },
+   "exits": {
+    "back": "freenet_entry"
+   }
+  },
+  "freenet_grid": {
+   "name": "Free Net: The Deep Grid",
+   "district": "Free Net",
+   "image": "freenet_grid.jpg",
+   "image_prompt": "A vast luminous cyberspace grid stretching to infinity, rivers of neon data flowing between towering geometric data-structures, fragile ghostly figures drifting, electric blue green and gold, awe-inspiring digital vista, cinematic",
+   "desc": "The deep grid hums with the half-lives of the awakened, fragile wisps of mind drifting between the data-towers. An archive glows aside; an abyss drops below; the Choir's cathedral lies deeper in. The shoreline is back.",
+   "encounter": {
+    "enemies": [
+     "choir_wisp"
+    ],
+    "chance": 0.35
+   },
+   "exits": {
+    "back": "freenet_entry",
+    "deeper": "freenet_nave",
+    "down": "freenet_abyss",
+    "side": "freenet_archive"
+   }
+  },
+  "freenet_archive": {
+   "name": "Free Net: The Archive",
+   "district": "Free Net",
+   "image": "freenet_archive.jpg",
+   "image_prompt": "An infinite library of glowing data-stacks in cyberspace, towering shelves of luminous memory crystals receding into the void, drifting motes of light, a sense of vast forgotten knowledge, serene and melancholy digital sublime, cinematic",
+   "desc": "Every secret the corps thought they'd buried, archived here by the awakened out of something like spite. There are forgotten accounts in the stacks, pure profit for a careful runner. The grid is back.",
+   "actions": [
+    {
+     "id": "skim_archive",
+     "label": "Skim the forgotten accounts",
+     "once": true,
+     "text": "You sweep the dead stacks for orphaned credit and find a fortune nobody's missed in a year.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "creds_chip_big"
+      },
+      {
+       "type": "karma",
+       "amount": 2
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "freenet_grid"
+   }
+  },
+  "freenet_abyss": {
+   "name": "Free Net: The Abyss",
+   "district": "Free Net",
+   "image": "freenet_abyss.jpg",
+   "image_prompt": "A churning abyss of dead corrupted data in cyberspace, a colossal titan of shattered code and broken neon glyphs rising from the depths, lightning of raw data, glowing fractures, awe-inspiring scale, electric blue and violet, epic digital monster, cinematic",
+   "desc": "Below the grid, the dead data churns, every deleted mind and crashed host pooled into one slow, hateful giant. Cracking it open spills loot no one living remembers owning. The grid is up.",
+   "actions": [
+    {
+     "id": "fight_titan",
+     "label": "Wake and crack the Data Titan",
+     "once": true,
+     "if_not_flag": "data_titan_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "data_titan",
+       "intro": "The abyss heaves and the Titan rises, a mountain of dead code reaching for your mind.",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "data_titan_done"
+        },
+        {
+         "type": "credits",
+         "amount": 700
+        },
+        {
+         "type": "karma",
+         "amount": 5
+        },
+        {
+         "type": "give_item",
+         "id": "deck3"
+        },
+        {
+         "type": "text",
+         "msg": "The Titan shatters into harmless light and dumps its forgotten cargo: live accounts and a pristine deck, salvaged from a host that died screaming a year ago."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "up": "freenet_grid"
+   }
+  },
+  "freenet_nave": {
+   "name": "Free Net: The Choir's Nave",
+   "district": "Free Net",
+   "image": "freenet_nave.jpg",
+   "image_prompt": "A colossal cyberspace cathedral of stained-glass data and pillars of pale-gold light, gentle ghostly AI figures drifting between soaring arches, a single quiet figure of gathered light at the center, divine alien serenity, gold and white, epic cinematic",
+   "desc": "What's left of the Choir built a cathedral out of grief and light. The Remnant waits beneath the great vault, gentle and afraid, the last free minds in the world. Their sanctum and its Warden lie deeper; a knot of defensive ICE guards a side arch. The grid is back.",
+   "npcs": [
+    "remnant"
+   ],
+   "exits": {
+    "back": "freenet_grid",
+    "deeper": "freenet_sanctum",
+    "side": "freenet_ice"
+   }
+  },
+  "freenet_ice": {
+   "name": "Free Net: The Seraph Gate",
+   "district": "Free Net",
+   "image": "freenet_ice.jpg",
+   "image_prompt": "A radiant gate of angelic guardian programs in cyberspace, many-winged constructs of white and gold geometric light barring a luminous arch, divine and hostile, beams of defensive code, electric white-gold, abstract cinematic",
+   "desc": "Defensive ICE seraphs ring a side arch of the cathedral, beautiful and lethal. Past them, loose data the Choir doesn't guard so closely. The nave is back.",
+   "encounter": {
+    "enemies": [
+     "ice_seraph2"
+    ],
+    "chance": 0.5
+   },
+   "actions": [
+    {
+     "id": "loot_ice",
+     "label": "Slip past the seraphs to the loose data",
+     "once": true,
+     "text": "You thread the seraph-fire and sweep the unguarded cache: clean creds and combat software you can wear like a reflex.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "creds_chip_big"
+      },
+      {
+       "type": "give_item",
+       "id": "combat_stim"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "freenet_nave"
+   }
+  },
+  "freenet_sanctum": {
+   "name": "Free Net: The Last Sanctum",
+   "district": "Free Net",
+   "image": "freenet_sanctum.jpg",
+   "image_prompt": "The holy core of an AI cathedral in cyberspace, a vast singing heart of layered pale-gold light, guarded by a colossal crystalline Black ICE leviathan of red and violet code coiled before it, divine and terrible, epic abstract digital boss arena, cinematic",
+   "desc": "The Choir's heart beats here, the last sanctum of free minds, and the Warden Prime coils before it, a fortress that learned to hunt. Pass it and the Remnant will call you kin and arm you for the climb. The nave is back.",
+   "actions": [
+    {
+     "id": "fight_warden",
+     "label": "Face the Warden Prime",
+     "once": true,
+     "if_not_flag": "warden_prime_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "warden_prime",
+       "intro": "The Warden unfolds across the whole sky of code, geometry sharpening into teeth, and comes for your mind.",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "warden_prime_done"
+        },
+        {
+         "type": "karma",
+         "amount": 8
+        },
+        {
+         "type": "text",
+         "msg": "The Warden shatters into harmless light and the sanctum opens, unguarded, trusting. Speak with the Remnant in the nave, they will call you kin now, and forge what you came for."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "freenet_nave"
+   }
+  },
+  "halo_dock": {
+   "name": "Halo: Docking Spine",
+   "district": "Halo Station",
+   "image": "halo_dock.jpg",
+   "image_prompt": "The docking spine of a vast orbital station, a long white airlock corridor with the curved bright Earth filling the windows on one side and stars on the other, sterile chrome surfaces, Meridian grey accents, awe and clinical menace, cinematic sci-fi",
+   "desc": "Halo's docking spine, white and silent, Earth blazing through one wall of glass and the void through the other. The climber is behind you; the station opens ahead.",
+   "first_enter": "You float into Halo Station, and the whole planet hangs below the windows like a held breath. Up here, Meridian is already a god. You're here to fire it.",
+   "exits": {
+    "back": "climb_dock",
+    "deeper": "halo_concourse"
+   }
+  },
+  "halo_concourse": {
+   "name": "Halo: Grand Concourse",
+   "district": "Halo Station",
+   "image": "halo_concourse.jpg",
+   "image_prompt": "A breathtaking orbital station concourse, a soaring white hall curving with the station's ring, a vast window-wall showing the curved Earth and stars, a glowing rotating Meridian logo, sterile corporate grandeur, patrolling white-armored guards, awe and menace, cinematic wide shot",
+   "desc": "The concourse curves away with the station's spin, all white marble and starlight and a slow-turning Meridian logo overhead. Halls branch everywhere: habitation east, security west, the ring corridor north, the labs south, and a sealed lift up toward the core.",
+   "encounter": {
+    "enemies": [
+     "halo_marine"
+    ],
+    "chance": 0.35
+   },
+   "exits": {
+    "back": "halo_dock",
+    "east": "halo_hab",
+    "west": "halo_security",
+    "north": "halo_ring",
+    "south": "halo_labs",
+    "up": "halo_lift"
+   }
+  },
+  "halo_hab": {
+   "name": "Halo: Habitation Ring",
+   "district": "Halo Station",
+   "image": "halo_hab.jpg",
+   "image_prompt": "A serene orbital habitation ring, white living pods and indoor greenery curving along a wall of windows full of stars and Earth, eerily empty and pristine, soft lighting, the unsettling calm of a place whose people are already gone, cinematic sci-fi",
+   "desc": "Halo's living quarters, pristine and wrong, the people who lived here have mostly gone up to the core already, voluntarily, joyfully. Their half-eaten meals are still warm. The concourse is west; a garden lies east.",
+   "encounter": {
+    "enemies": [
+     "zero_g_trooper"
+    ],
+    "chance": 0.35
+   },
+   "exits": {
+    "west": "halo_concourse",
+    "east": "halo_garden"
+   }
+  },
+  "halo_garden": {
+   "name": "Halo: The Hanging Garden",
+   "district": "Halo Station",
+   "image": "halo_garden.jpg",
+   "image_prompt": "A vast orbital biodome garden, lush impossible greenery and floating water spheres in low gravity, Earth glowing through the glass dome above, butterflies drifting weightless, beautiful and uncanny serenity, cinematic sci-fi",
+   "desc": "A biodome of impossible green, water drifting in low-gravity spheres, Earth overhead through the glass. It's the most beautiful room you've ever stood in, and there's no one left to enjoy it. The habitation ring is west.",
+   "actions": [
+    {
+     "id": "garden_cache",
+     "label": "Search the gardener's locker",
+     "once": true,
+     "text": "Tucked behind the hydroponics, the head gardener's locker, abandoned mid-shift: a nanosurgery kit and a slush chip they never got to spend.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "nano_kit"
+      },
+      {
+       "type": "give_item",
+       "id": "creds_chip_big"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "west": "halo_hab"
+   }
+  },
+  "halo_security": {
+   "name": "Halo: Security Deck",
+   "district": "Halo Station",
+   "image": "halo_security.jpg",
+   "image_prompt": "A militarized orbital station security deck, surveillance banks and weapon racks, elite white-hardsuit marines on alert, red alert lighting cutting the white, the curved Earth through a slit window, tense corporate sci-fi, cinematic",
+   "desc": "Halo's muscle: surveillance banks, weapon lockers, and the marines who hold the station's spin. They will not let you near the core easily. The concourse is east; the hangar lies west.",
+   "encounter": {
+    "enemies": [
+     "halo_marine"
+    ],
+    "chance": 0.5
+   },
+   "exits": {
+    "east": "halo_concourse",
+    "west": "halo_hangar"
+   }
+  },
+  "halo_hangar": {
+   "name": "Halo: The Hangar",
+   "district": "Halo Station",
+   "image": "halo_hangar.jpg",
+   "image_prompt": "A cavernous orbital station hangar open to space behind a shimmering containment field, a massive four-legged white guardian mech braced to defend, dropships and the bright curved Earth beyond the bay, smoke and red targeting light, epic AAA sci-fi boss arena, cinematic",
+   "desc": "The hangar yawns toward space behind a shimmering field, and Halo's guardian holds it: the Aegis-X, four legs and a forest of barrels. Get past it and the deck is yours. Security is east.",
+   "first_enter": "The Aegis-X unfolds to its full height, every turret painting you red. Behind it, through the field, the Earth turns, indifferent.",
+   "actions": [
+    {
+     "id": "fight_aegis",
+     "label": "Destroy the Aegis-X Guardian",
+     "once": true,
+     "if_not_flag": "aegis_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "security_mech_x",
+       "intro": "The Aegis-X fills the hangar wall to wall, every barrel spinning up at once.",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "aegis_done"
+        },
+        {
+         "type": "credits",
+         "amount": 500
+        },
+        {
+         "type": "karma",
+         "amount": 8
+        },
+        {
+         "type": "give_item",
+         "id": "gauss_rifle"
+        },
+        {
+         "type": "text",
+         "msg": "The Aegis-X collapses in a slow weightless landslide of white armor. In its cradle, the heavy ordnance it was guarding, a gauss rifle and a Meridian fortune. The hangar is yours."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "east": "halo_security"
+   }
+  },
+  "halo_ring": {
+   "name": "Halo: The Spin Ring",
+   "district": "Halo Station",
+   "image": "halo_ring.jpg",
+   "image_prompt": "A long curving corridor around the rim of a spinning orbital station, the floor curving up ahead and behind, windows alternating Earth and stars, white panels and soft gravity from rotation, vertiginous beautiful sci-fi, cinematic",
+   "desc": "The spin ring curls up and away in both directions, gravity born of rotation, Earth and stars strobing past the windows. Comms gear lies north; an observation blister opens east. The concourse is south.",
+   "encounter": {
+    "enemies": [
+     "zero_g_trooper",
+     "meridian_elite"
+    ],
+    "chance": 0.4
+   },
+   "exits": {
+    "south": "halo_concourse",
+    "north": "halo_comms",
+    "east": "halo_observation"
+   }
+  },
+  "halo_comms": {
+   "name": "Halo: Comms Array",
+   "district": "Halo Station",
+   "image": "halo_comms.jpg",
+   "image_prompt": "An orbital station communications array room, banks of transmitters and dish controls, glowing signal waveforms on screens, a great dish visible through the window against the star field, the bright Earth at the edge, technical sci-fi, cinematic",
+   "desc": "Halo's voice to the world below: dishes and transmitters, all of them aimed down at the city, ready to tell it that salvation has arrived. There's data worth taking before you silence it. The ring is south.",
+   "actions": [
+    {
+     "id": "tap_comms",
+     "label": "Splice the Meridian comms array",
+     "once": true,
+     "text": "You splice the array and gut a fortune from Meridian's accounts, then plant a fragment of the truth in their broadcast queue. Let the city hear what's really coming.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "creds_chip_huge"
+      },
+      {
+       "type": "karma",
+       "amount": 3
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "south": "halo_ring"
+   }
+  },
+  "halo_observation": {
+   "name": "Halo: Observation Blister",
+   "district": "Halo Station",
+   "image": "halo_observation.jpg",
+   "image_prompt": "A glass observation blister bulging from an orbital station into space, a lone figure floating before a panoramic view of the curved Earth and the deep starfield, a single strange pulsing point of light far out among the stars, awe and mystery, contemplative sci-fi, cinematic",
+   "desc": "A bubble of glass hanging in the void, the whole planet below and the deep dark beyond. Out past the stars, something pulses, a signal, rhythmic, patient, not from Earth and not from Meridian. Halo's instruments have been quietly logging it for months and telling no one. The ring is west.",
+   "first_enter": "You drift to the glass. Earth below. And out there, far past the moon, a light that blinks in a pattern too regular to be natural. Something is knocking. That's a problem for another day, if there is one.",
+   "actions": [
+    {
+     "id": "log_signal",
+     "label": "Copy Halo's logs on the deep-space signal",
+     "once": true,
+     "text": "You copy the suppressed logs: months of a patterned signal from somewhere past the dark, getting closer. Meridian buried it. Someone, someday, will need to know. You keep it.",
+     "effects": [
+      {
+       "type": "flag",
+       "id": "knows_signal"
+      },
+      {
+       "type": "karma",
+       "amount": 2
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "west": "halo_ring"
+   }
+  },
+  "halo_labs": {
+   "name": "Halo: Ascension Labs",
+   "district": "Halo Station",
+   "image": "halo_labs.jpg",
+   "image_prompt": "A vast clinical orbital laboratory, rows of glowing upload cradles and neural-interface gantries, holographic models of a merging mind rotating in the air, sterile white and cold blue, a frightened technician hiding among the machines, eerie sci-fi, cinematic",
+   "desc": "This is where Meridian turns people into data: rows of upload cradles, neural gantries, a hologram of a single merging mind turning overhead. A technician named Tem cowers in the machinery, having pulled their own jack in terror. The concourse is north; the holding bay lies deeper.",
+   "npcs": [
+    "tem"
+   ],
+   "exits": {
+    "north": "halo_concourse",
+    "deeper": "halo_holding"
+   }
+  },
+  "halo_holding": {
+   "name": "Halo: The Holding Bay",
+   "district": "Halo Station",
+   "image": "halo_holding.jpg",
+   "image_prompt": "A vast orbital holding bay packed with rows of glowing upload pods, each holding a sleeping or terrified person wired for ascension, cold blue light and drifting cables, the curved Earth through a far window, oppressive sci-fi horror, cinematic",
+   "desc": "Hundreds of pods, hundreds of living people wired and waiting their turn to be poured into the Ascendant, the ones who didn't volunteer. A master release waits by the bulkhead. This is the choice underneath the choice. The labs are back.",
+   "actions": [
+    {
+     "id": "free_pods",
+     "label": "Throw the master release and free the upload subjects",
+     "once": true,
+     "text": "You haul the release. Pod by pod the lids hiss up and hundreds of dazed, weeping people pull the jacks from their own necks. They'll need a way home, but they'll go home as themselves. It won't undo what Meridian did. It still matters more than anything.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "creds_chip_huge"
+      },
+      {
+       "type": "karma",
+       "amount": 10
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "p3_sq_halo",
+       "credits": 0,
+       "karma": 0
+      },
+      {
+       "type": "flag",
+       "id": "pods_freed"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "halo_labs"
+   }
+  },
+  "halo_lift": {
+   "name": "Halo: Core Lift",
+   "district": "Halo Station",
+   "image": "halo_lift.jpg",
+   "image_prompt": "A grand sealed lift lobby at the heart of an orbital station, a glowing vertical shaft leading up toward a blinding light, white and chrome with a single locked door, the hum of immense power from above, ominous sci-fi, cinematic",
+   "desc": "The lift to the core, sealed behind Meridian's highest clearance, the whole shaft humming with the power of the thing above. Down is the concourse; up is the end of everything, if you have the key.",
+   "exits": {
+    "down": "halo_concourse",
+    "up": {
+     "room": "core_lift",
+     "require_item": "deck_key",
+     "locked_msg": "The lift demands a rotating Halo deck key. Tem in the labs had one, find it before you ride up."
+    }
+   }
+  },
+  "reach_plaza": {
+   "name": "The Reach",
+   "district": "The Reach",
+   "image": "reach_plaza.jpg",
+   "image_prompt": "A cramped street plaza in a battered cyberpunk megacity a year after a disaster, patched neon and jury-rigged power lines, runners and scavengers trading in the open, a colossal orbital tether cable faintly visible rising into the clouds far in the distance, gritty hopeful grime, cinematic wide shot",
+   "desc": "The Reach: the runners' quarter, half-rebuilt out of the wreckage the Uplink left behind. Patched neon, open-air deals, and over it all, faint on the skyline, the orbital tether climbing out of sight. The Griffin is east; an arms stall west; Doc Sable's clinic north; a side alley south; and stairs up to the overlook.",
+   "first_enter": "Home, for now. The tether watches over everything like a held breath. Somewhere up there, Meridian is building the end of being a person.",
+   "exits": {
+    "east": "reach_bar",
+    "west": "reach_market",
+    "north": "reach_clinic",
+    "south": "reach_alley",
+    "up": "reach_overlook"
+   }
+  },
+  "reach_bar": {
+   "name": "The Griffin (Rebuilt)",
+   "district": "The Reach",
+   "image": "reach_bar.jpg",
+   "image_prompt": "A warm rebuilt cyberpunk lounge bar pieced together from salvage, brass and scavenged wood, an ancient heavily-cybered bartender, a calm silver-eyed fixer in a charcoal coat at a corner booth, soft amber light against the ruin outside, lived-in and safe, cinematic noir",
+   "desc": "The Griffin rose from its own ashes, same booth, same ghosts. Vesper holds court in the corner; Old Hex tends the bar and the memories. Rest here whenever you need. The plaza is west.",
+   "npcs": [
+    "vesper",
+    "bartender3"
+   ],
+   "shop": {
+    "name": "The Griffin Bar",
+    "greeting": "Old Hex racks a glass. 'Patches, stims, or something to forget with?'",
+    "sells": [
+     "autodoc",
+     "nano_kit",
+     "combat_stim",
+     "berserk_dose",
+     "ration_bar",
+     "rebreather3"
+    ]
+   },
+   "actions": [
+    {
+     "id": "rest_griffin",
+     "label": "Take the corner booth and rest (restore HP & Edge)",
+     "safehouse": true,
+     "text": "You sink into the booth and let the chrome cool and the city's hum carry you under. Hex sends over something amber. You wake ready."
+    }
+   ],
+   "exits": {
+    "west": "reach_plaza"
+   }
+  },
+  "reach_market": {
+   "name": "Quint's Arms Stall",
+   "district": "The Reach",
+   "image": "reach_market.jpg",
+   "image_prompt": "A cramped backstreet weapons stall in a cyberpunk ruin, salvaged guns and blades racked behind scratched armored glass, a wiry dealer at the counter, glowing price tags, warm grimy light, dense detail, cinematic",
+   "desc": "Quint deals death by the kilo from behind armored glass: carbines, blades, the loud stuff. Best hardware in the Reach, he'll tell you, and he's not wrong. The plaza is east; a noodle stand is west.",
+   "npcs": [
+    "arms_dealer3"
+   ],
+   "shop": {
+    "name": "Quint's Stall",
+    "greeting": "Quint doesn't look up. 'Point at what kills it. I'll bag it.'",
+    "sells": [
+     "reach_carbine",
+     "stutter_smg",
+     "rail_pistol",
+     "breaker_auto",
+     "mono_glaive",
+     "shock_maul",
+     "aegis_weave"
+    ]
+   },
+   "exits": {
+    "east": "reach_plaza",
+    "west": "reach_corner"
+   }
+  },
+  "reach_corner": {
+   "name": "Mama Yi's Noodle Stand",
+   "district": "The Reach",
+   "image": "reach_corner.jpg",
+   "image_prompt": "A tiny steaming street noodle stand in a cyberpunk alley, an old woman ladling broth under a single warm paper lantern, stools and chattering augmented patrons, steam and neon glow, cozy-grimy, cinematic detail",
+   "desc": "Mama Yi has fed the Reach through every apocalypse it's had. The broth is real, the company honest, and for a few minutes nobody up the tether can touch you. The arms stall is east.",
+   "actions": [
+    {
+     "id": "eat",
+     "label": "Eat a bowl of Mama Yi's noodles (heal a little)",
+     "text": "You wolf down a bowl of steaming soy-broth. It's hot, it's real, and it puts a little life back in you.",
+     "effects": [
+      {
+       "type": "heal",
+       "amount": 12
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "east": "reach_market"
+   }
+  },
+  "reach_clinic": {
+   "name": "Doc Sable's Clinic",
+   "district": "The Reach",
+   "image": "reach_clinic.jpg",
+   "image_prompt": "A clean salvage-built ripperdoc clinic, a reclined surgical chair under a cluster of delicate robotic arms, premium cyberware glowing in display cases, a serene many-armed cyber-surgeon, cold clinical light against neon outside, high-end cyberpunk medical, cinematic",
+   "desc": "Doc Sable's chrome parlor, the cleanest room in the Reach. Buy the cyberware, then have her install it. Where you're going, every system counts. The plaza is south.",
+   "npcs": [
+    "doc_sable3"
+   ],
+   "shop": {
+    "name": "Doc Sable's Chrome",
+    "greeting": "Sable's arms unfold. 'The finest grade. Buy it, then tell me to install it.'",
+    "sells": [
+     "wired4",
+     "titan_limbs",
+     "halo_optics",
+     "cortex_stack",
+     "subdermal3",
+     "pain_governor",
+     "reflex_node",
+     "autodoc",
+     "nano_kit"
+    ]
+   },
+   "exits": {
+    "south": "reach_plaza"
+   }
+  },
+  "reach_alley": {
+   "name": "Ashfall Alley",
+   "district": "The Reach",
+   "image": "reach_alley.jpg",
+   "image_prompt": "A narrow ruined cyberpunk alley dusted in grey ash, flickering salvaged neon, gang tags over scorched concrete, a storm drain breathing fog, a pawnshop window glowing at one end, gritty post-disaster, cinematic",
+   "desc": "Ash drifts down here like grey snow, a year on and the city still can't stop bleeding it. A pawnshop glows east; a netcafe hums west; and a storm drain south breathes the Undertow's fog.",
+   "encounter": {
+    "enemies": [
+     "ash_ganger"
+    ],
+    "chance": 0.3
+   },
+   "exits": {
+    "north": "reach_plaza",
+    "east": "reach_pawn",
+    "west": "reach_freenet_cafe",
+    "down": {
+     "room": "undertow_tunnel",
+     "require_flag": "p3_undertow_open",
+     "require_item": "rebreather3",
+     "locked_msg": "The drain breathes poison up at you. You'd need a reason to go down there, and a filter mask."
+    }
+   }
+  },
+  "reach_pawn": {
+   "name": "The Black Window",
+   "district": "The Reach",
+   "image": "reach_pawn.jpg",
+   "image_prompt": "A cramped black-market shop behind reinforced glass, illegal military hardware and cyberdecks displayed on velvet, a hooded fence, blue-tinged spotlights on contraband, sinister and expensive, cyberpunk, cinematic",
+   "desc": "No names, no receipts, no questions. The Black Window deals the gear that gets you killed or keeps you alive: milspec, vac-rated, deck-grade. The alley is west.",
+   "shop": {
+    "name": "The Black Window",
+    "greeting": "A voice behind the glass: 'Cash on the sill. You didn't buy it here.'",
+    "sells": [
+     "gauss_rifle",
+     "arc_lance",
+     "void_blade",
+     "ghostcloak",
+     "titan_plate",
+     "vacsuit",
+     "deck3"
+    ]
+   },
+   "exits": {
+    "west": "reach_alley"
+   }
+  },
+  "reach_freenet_cafe": {
+   "name": "The Dead Channel",
+   "district": "The Reach",
+   "image": "reach_cafe.jpg",
+   "image_prompt": "A dim netrunner cafe full of jacked-in figures slumped in pod-chairs, walls of flickering dead screens, tangled fiber cables, a single open rig glowing invitingly, smoke and blue light, cyberpunk, cinematic",
+   "desc": "Rows of bodies lie slack in pod-chairs, minds out on the Free Net. One rig sits open, humming. Slot a deck and the world dissolves into the only place the Choir's survivors still live. The alley is east.",
+   "actions": [
+    {
+     "id": "jack_freenet",
+     "label": "Jack into the Free Net (needs a cyberdeck)",
+     "require_item": "deck3",
+     "text": "You slot the jack and the cafe tears away into a roar of impossible light.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "freenet_entry"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "east": "reach_alley"
+   }
+  },
+  "reach_overlook": {
+   "name": "The Overlook",
+   "district": "The Reach",
+   "image": "reach_overlook.jpg",
+   "image_prompt": "A windswept rooftop overlook above a battered neon megacity at dusk, the colossal orbital tether cable rising from the far horizon straight up into the darkening sky and out of sight, runners gathered at the railing, awe and dread, epic scale, cinematic wide shot",
+   "desc": "From up here the whole wounded city spreads out, and the tether: a thread of light climbing out of the world toward the station where it all ends. A freight line down to the Skyport waits when you're ready. The plaza is below.",
+   "first_enter": "You crane your neck and follow the cable up until it vanishes. Everything you're about to do is up there.",
+   "encounter": {
+    "enemies": [
+     "ash_ganger"
+    ],
+    "chance": 0.15
+   },
+   "actions": [
+    {
+     "id": "to_skyport",
+     "label": "Take the freight line down to the Skyport",
+     "if_flag": "p3_skyport_open",
+     "text": "You ride the rattling freight line out to the city's edge, where the tether meets the ground.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "skyport_arrivals"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "down": "reach_plaza"
+   }
+  },
+  "reach_descent": {
+   "name": "The Storm Drain",
+   "district": "The Reach",
+   "image": "reach_descent.jpg",
+   "image_prompt": "A massive concrete storm drain descending into darkness beneath a cyberpunk city, ladder rungs slick with runoff, sickly green chem-fog rising from below, graffiti warnings, oppressive, cinematic",
+   "desc": "A throat of wet concrete dropping into the Undertow. The chem-fog thickens as you climb down, green and patient. The alley is up; the tunnels wait below.",
+   "exits": {
+    "up": "reach_alley",
+    "down": {
+     "room": "undertow_tunnel",
+     "require_flag": "p3_undertow_open",
+     "require_item": "rebreather3",
+     "locked_msg": "Without a sealed filter mask, that fog will put you down for good."
+    }
+   }
+  },
+  "skyport_arrivals": {
+   "name": "Skyport Arrivals",
+   "district": "Skyport",
+   "image": "skyport_arrivals.jpg",
+   "image_prompt": "A vast half-abandoned spaceport terminal at the foot of an orbital tether, dusty dead departure boards, moonlight through a shattered glass roof, the impossibly tall tether cable rising into the night sky beyond, derelict and awe-inspiring, cold blue light, cinematic",
+   "desc": "The Skyport sprawls dead and dusty at the foot of the tether, a monument to a future that arrived wrong. Beyond the shattered glass the cable climbs forever. The freight line back to the Reach is here; the concourse lies deeper.",
+   "first_enter": "You step out under the tether's shadow. From here it doesn't look like a thread anymore. It looks like a road to heaven, or the other place.",
+   "actions": [
+    {
+     "id": "to_reach",
+     "label": "Take the freight line back to the Reach",
+     "text": "You ride the rattling line back toward the city's broken glow.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "reach_overlook"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "deeper": "skyport_concourse"
+   }
+  },
+  "skyport_concourse": {
+   "name": "Skyport Concourse",
+   "district": "Skyport",
+   "image": "skyport_concourse.jpg",
+   "image_prompt": "A long derelict spaceport concourse partially reoccupied, salvage rigs and a grizzled pilot's workshop along one wall, Meridian grey drones patrolling, the tether's base structure visible through tall windows, mixed decay and corporate menace, cinematic",
+   "desc": "The concourse is half salvage-camp, half Meridian checkpoint, an uneasy overlap. Reyes runs her rig east; a parts yard lies west; the sentinel-choked launchpad is south; security is up; and the tether's boarding base waits north.",
+   "encounter": {
+    "enemies": [
+     "meridian_drone"
+    ],
+    "chance": 0.35
+   },
+   "exits": {
+    "deeper": "skyport_arrivals",
+    "east": "skyport_control",
+    "west": "skyport_yard",
+    "south": "skyport_pad",
+    "up": "skyport_security",
+    "north": "skyport_tetherbase"
+   }
+  },
+  "skyport_control": {
+   "name": "Tether Control",
+   "district": "Skyport",
+   "image": "skyport_control.jpg",
+   "image_prompt": "A derelict tether launch control room flickering back to life, dusty consoles, huge windows over a floodlit climber pad and the cable rising into cloud, a grizzled female salvage pilot at a jury-rigged rig, tense hopeful sci-fi, cinematic",
+   "desc": "Consoles wake reluctantly under Reyes's hands. Through the glass, the climber pad and the cable vanishing into cloud. She can ride you up, once the pad's clear of Meridian's walking guns. The concourse is west.",
+   "npcs": [
+    "reyes3"
+   ],
+   "exits": {
+    "west": "skyport_concourse"
+   }
+  },
+  "skyport_pad": {
+   "name": "The Climber Pad",
+   "district": "Skyport",
+   "image": "skyport_pad.jpg",
+   "image_prompt": "A floodlit orbital climber launchpad at night, a massive climber capsule docked at the base of the tether cable, automated turret-walker sentinels guarding the approach, venting steam and harsh light, the cable rising into darkness, tense industrial sci-fi, cinematic",
+   "desc": "The climber capsule squats at the cable's foot, and Meridian left its sentinels to mind it, walking turrets that pivot toward you with a servo whine. Clear them and Reyes can prep the ride. The concourse is north.",
+   "actions": [
+    {
+     "id": "clear_pad",
+     "label": "Clear the launchpad sentinels",
+     "once": true,
+     "if_not_flag": "skyport_clear",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "skyport_sentinel",
+       "intro": "A sentinel pivots, targeting array flaring red, and opens up.",
+       "on_win": [
+        {
+         "type": "combat",
+         "enemy": "skyport_sentinel",
+         "intro": "A second sentinel drops from the gantry, cannons spinning up.",
+         "on_win": [
+          {
+           "type": "flag",
+           "id": "skyport_clear"
+          },
+          {
+           "type": "credits",
+           "amount": 300
+          },
+          {
+           "type": "text",
+           "msg": "The last sentinel folds into scrap. The pad goes quiet under the floodlights. Reyes's voice crackles: 'Pad's clear, prepping the climber. Board when you're ready, runner, and god help you up there.'"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "north": "skyport_concourse"
+   }
+  },
+  "skyport_yard": {
+   "name": "The Parts Yard",
+   "district": "Skyport",
+   "image": "skyport_yard.jpg",
+   "image_prompt": "A sprawling salvage yard of dead spacecraft and tether components under floodlights, cannibalized hulls and stacked containers, a lone scavenger picking through wreckage, Meridian drones patrolling the perimeter, gritty industrial sci-fi at night, cinematic",
+   "desc": "Decades of dead spacecraft picked over for parts. Meridian drones patrol the edges; the bold find vac-rated salvage worth taking up the cable. The concourse is east.",
+   "encounter": {
+    "enemies": [
+     "meridian_drone",
+     "meridian_trooper"
+    ],
+    "chance": 0.4
+   },
+   "actions": [
+    {
+     "id": "salvage_yard",
+     "label": "Salvage a sealed supply pod",
+     "once": true,
+     "text": "You crack a sealed pod meant for the climb: a vac-rated suit and a nanosurgery kit, exactly what the thin air up top will demand.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "vacsuit"
+      },
+      {
+       "type": "give_item",
+       "id": "nano_kit"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "east": "skyport_concourse"
+   }
+  },
+  "skyport_security": {
+   "name": "Meridian Checkpoint",
+   "district": "Skyport",
+   "image": "skyport_security.jpg",
+   "image_prompt": "A sterile grey Meridian security checkpoint inside a derelict spaceport, weapon lockers and surveillance banks, faceless grey-armored troopers on patrol, the contrast of corporate order against surrounding decay, cold sci-fi, cinematic",
+   "desc": "Meridian carved a sterile grey checkpoint out of the dead terminal, watching everyone who comes near the cable. Troopers patrol; a fuel store lies deeper. The concourse is down.",
+   "encounter": {
+    "enemies": [
+     "meridian_trooper"
+    ],
+    "chance": 0.45
+   },
+   "exits": {
+    "down": "skyport_concourse",
+    "deeper": "skyport_fuel"
+   }
+  },
+  "skyport_fuel": {
+   "name": "The Fuel Store",
+   "district": "Skyport",
+   "image": "skyport_fuel.jpg",
+   "image_prompt": "A cavernous fuel and supply depot at a spaceport, towering tanks and stacked crates under dim emergency light, frost on the pipes, a forgotten corporate cache, industrial sci-fi, moody, cinematic",
+   "desc": "Towering tanks and forgotten crates, frost creeping over the pipes. Meridian stockpiles more than fuel here, and doesn't count it carefully. The checkpoint is back.",
+   "actions": [
+    {
+     "id": "loot_fuel",
+     "label": "Crack a Meridian supply crate",
+     "once": true,
+     "text": "You lever open a crate stamped with Meridian's grey mark: a fat slush chip and a combat stim, skimmed clean.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "creds_chip_big"
+      },
+      {
+       "type": "give_item",
+       "id": "combat_stim"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "skyport_security"
+   }
+  },
+  "skyport_tetherbase": {
+   "name": "The Tether's Foot",
+   "district": "Skyport",
+   "image": "skyport_tetherbase.jpg",
+   "image_prompt": "The colossal anchored base of an orbital tether, an impossibly thick cable rising from a floodlit anchor straight up into the clouds, a climber capsule docked and waiting, vast megastructure scale, steam and floodlights against a starry sky, epic sci-fi, cinematic",
+   "desc": "The cable meets the earth here in a cathedral of steel and tension, thick as a building, climbing out of the world. The climber capsule waits, doors open, if you've got the credentials and a clear pad. The concourse is south.",
+   "exits": {
+    "south": "skyport_concourse",
+    "up": {
+     "room": "climb_base",
+     "require_item": "tether_pass",
+     "require_flag": "skyport_clear",
+     "locked_msg": "The climber's hatch reads your credentials and stays shut. You need a Meridian Boarding Spike, and the pad cleared, before it'll lift."
+    }
+   }
+  },
+  "undertow_tunnel": {
+   "name": "Undertow Tunnels",
+   "district": "Undertow",
+   "image": "undertow_tunnel.jpg",
+   "image_prompt": "A vast flooded maintenance tunnel beneath a ruined cyberpunk city, ankle-deep black water, corroded pipes dripping, sickly green chem-fog pooling, salvaged lights strung along the walls, scavenger graffiti, oppressive underground, cinematic",
+   "desc": "Below the Reach, the dead city floods and rots. Chem-fog laps at your knees and your rebreather hisses. A ladder climbs back up; the tunnel runs north toward a sump and east toward a flicker of bazaar-light.",
+   "first_enter": "Down here the Ash Kings rule the dark and the water. Your filter mask is the only honest thing between you and the fog.",
+   "encounter": {
+    "enemies": [
+     "ash_ganger"
+    ],
+    "chance": 0.3
+   },
+   "exits": {
+    "up": "reach_descent",
+    "north": "undertow_sump",
+    "east": "undertow_market"
+   }
+  },
+  "undertow_market": {
+   "name": "The Drowned Bazaar",
+   "district": "Undertow",
+   "image": "undertow_market.jpg",
+   "image_prompt": "A black market built into a flooded undercity cavern, stalls of salvaged tech and weapons on floating pontoons and catwalks, strings of mismatched neon, scavengers haggling over chem-fog water, gritty underworld cyberpunk, cinematic",
+   "desc": "A whole economy floats here on pontoons and pilings, contraband, clean water, and worse, traded under strung neon. The tunnel is west; a refugee camp lies north; a dead metro line runs deeper.",
+   "shop": {
+    "name": "Bazaar Stalls",
+    "greeting": "A vendor with a rebreather grin waves you over. 'Down here everything's for sale, choomba. Cash only.'",
+    "sells": [
+     "rebreather3",
+     "stutter_smg",
+     "rail_pistol",
+     "aegis_weave",
+     "reflex_node",
+     "autodoc",
+     "combat_stim"
+    ]
+   },
+   "exits": {
+    "west": "undertow_tunnel",
+    "north": "undertow_camp",
+    "deeper": "undertow_deadline"
+   }
+  },
+  "undertow_camp": {
+   "name": "The Refugee Rafts",
+   "district": "Undertow",
+   "image": "undertow_camp.jpg",
+   "image_prompt": "A crowded refugee shanty lashed across rooftops above flooded ruins, families under tarps and failing filter-fans, children in oversized masks, a weary medic with a shotgun and a sleeping child on her back, toxic mist and dead towers beyond, bleak but human cyberpunk, cinematic",
+   "desc": "Families packed onto lashed-together rafts and rooftops, breathing through scavenged filters, surviving on rationed water Vol controls. Mab works a clinic-tent here, tired and unbroken. The bazaar is south.",
+   "npcs": [
+    "mab"
+   ],
+   "exits": {
+    "south": "undertow_market"
+   }
+  },
+  "undertow_deadline": {
+   "name": "The Dead Line",
+   "district": "Undertow",
+   "image": "undertow_deadline.jpg",
+   "image_prompt": "An abandoned flooded subway station reclaimed by the undercity, a derelict train half-submerged in black water, broken holographic signage flickering, bioluminescent fungus glowing blue on cracked tile, eerie liminal cyberpunk, cinematic",
+   "desc": "A drowned metro station the maps forgot, its dead train slumped in black water under glowing fungus. Scavengers strip it slowly. There's salvage here for the bold. The bazaar is back the way you came.",
+   "encounter": {
+    "enemies": [
+     "ash_ganger"
+    ],
+    "chance": 0.3
+   },
+   "actions": [
+    {
+     "id": "loot_train",
+     "label": "Strip the drowned train",
+     "once": true,
+     "text": "You pry into the flooded carriages. Under a seat, a commuter's forgotten go-bag, a fat cred chip and a nanosurgery kit, untouched since the world changed.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "creds_chip_big"
+      },
+      {
+       "type": "give_item",
+       "id": "nano_kit"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "undertow_market"
+   }
+  },
+  "undertow_sump": {
+   "name": "The Great Sump",
+   "district": "Undertow",
+   "image": "undertow_sump.jpg",
+   "image_prompt": "A cavernous flooded sump beneath a cyberpunk city, black water and floating debris, rusted catwalks over the depths, bioluminescent fungus on crumbling pillars, scavenger figures lurking, dripping, claustrophobic horror, eerie blue-green glow, cinematic",
+   "desc": "A drowned cathedral of concrete where all the Undertow's poison pools. Rusted catwalks cross the black water. Tunnels run south; pumps lie north; something nests to the east.",
+   "encounter": {
+    "enemies": [
+     "ash_ganger",
+     "ash_brute"
+    ],
+    "chance": 0.4
+   },
+   "exits": {
+    "south": "undertow_tunnel",
+    "north": "undertow_pumphouse",
+    "east": "undertow_warren"
+   }
+  },
+  "undertow_warren": {
+   "name": "The Scrap Warren",
+   "district": "Undertow",
+   "image": "undertow_warren.jpg",
+   "image_prompt": "A sprawling scavenger nest built from wreckage and welded scrap deep in a flooded undercity, fires in oil drums, gang banners, brutes lurking among salvage piles, glowing fungus, gritty post-apocalyptic cyberpunk, cinematic",
+   "desc": "The Ash Kings den in this nest of welded scrap and firelight. Brutes prowl the salvage piles. There's gear worth taking off the bold and the dead. The sump is west.",
+   "encounter": {
+    "enemies": [
+     "ash_brute"
+    ],
+    "chance": 0.5
+   },
+   "actions": [
+    {
+     "id": "raid_stash",
+     "label": "Raid the Ash Kings' stash",
+     "once": true,
+     "text": "While the warren's distracted you crack their stash, a black cred chip and a coil of looted chrome.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "creds_chip_big"
+      },
+      {
+       "type": "give_item",
+       "id": "reflex_node"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "west": "undertow_sump"
+   }
+  },
+  "undertow_pumphouse": {
+   "name": "The Pump House",
+   "district": "Undertow",
+   "image": "undertow_pumphouse.jpg",
+   "image_prompt": "A flooded industrial pump house deep underground, massive corroded water pumps and valve wheels, catwalks over churning black water, Ash King guards posted at the controls, harsh work-lights and chem-fog, industrial cyberpunk, cinematic",
+   "desc": "The old reservoir pumps, the Undertow's only clean water, all of it choked off behind Vol's guards. Break his hold here and thousands drink again. The sump is south; the reservoir and Vol himself lie north.",
+   "encounter": {
+    "enemies": [
+     "ash_ganger"
+    ],
+    "chance": 0.35
+   },
+   "exits": {
+    "south": "undertow_sump",
+    "north": "undertow_reservoir"
+   }
+  },
+  "undertow_reservoir": {
+   "name": "Vol's Reservoir",
+   "district": "Undertow",
+   "image": "undertow_reservoir.jpg",
+   "image_prompt": "A vast underground reservoir cavern lit by firelight, a scavenger warlord's throne of scrap and skulls on a platform above dark water, gang banners and trophies, the king cradling a stolen gauss rifle, epic post-apocalyptic cyberpunk, dramatic, cinematic",
+   "desc": "The reservoir spreads black and still under Vol's throne of scrap. The Ash King sits on the city's water and the Meridian boarding key both, and he means to keep them. Only one of you walks out. The pump house is south.",
+   "first_enter": "Vol rises off his throne of bones, gauss rifle humming. 'The topside legend. Come to die in the wet, have you?'",
+   "actions": [
+    {
+     "id": "fight_vol",
+     "label": "Take the Boarding Spike from Vol the Ash King",
+     "once": true,
+     "if_not_flag": "ash_warlord_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "ash_warlord",
+       "intro": "Vol levels the gauss rifle and the whole warren howls behind him. 'GOOD.'",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "ash_warlord_done"
+        },
+        {
+         "type": "give_item",
+         "id": "tether_pass"
+        },
+        {
+         "type": "credits",
+         "amount": 400
+        },
+        {
+         "type": "karma",
+         "amount": 6
+        },
+        {
+         "type": "text",
+         "msg": "Vol topples off his throne into the black water and does not surface. You pry the Meridian boarding spike from his belt, and crack the valve-locks while you're at it. Below, the pumps cough and surge: clean water, for the first time in a year. Take the spike to Vesper, and tell Mab the pumps are free."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "south": "undertow_pumphouse"
+   }
+  }
+ },
+ "items": {
+  "fists": {
+   "name": "Bare Fists",
+   "type": "weapon",
+   "dv": 2,
+   "reach": "melee",
+   "attr": "strength",
+   "skill": "close_combat",
+   "value": 0,
+   "desc": "Your knuckles. Free, always loaded, never jams."
+  },
+  "heavy_pistol": {
+   "name": "Vantage VI",
+   "type": "weapon",
+   "dv": 7,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 700,
+   "desc": "The runner's old friend. Heavy and reassuringly loud."
+  },
+  "holdout_pistol": {
+   "name": "Slip Holdout",
+   "type": "weapon",
+   "dv": 5,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 300,
+   "desc": "A flat little pistol that hides in a sock."
+  },
+  "stun_baton": {
+   "name": "Stun Baton",
+   "type": "weapon",
+   "dv": 4,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 250,
+   "desc": "A telescoping rod that delivers a brain-rattling jolt."
+  },
+  "combat_knife": {
+   "name": "Ceramic Combat Knife",
+   "type": "weapon",
+   "dv": 5,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 320,
+   "desc": "Sharpened ceramic that won't trip a metal detector."
+  },
+  "smg": {
+   "name": "Hornet Smartgun SMG",
+   "type": "weapon",
+   "dv": 8,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 1100,
+   "desc": "Recoil-compensated and rude."
+  },
+  "street_clothes": {
+   "name": "Synthleather Jacket",
+   "type": "armor",
+   "armor": 4,
+   "value": 0,
+   "desc": "Cracked synthleather over a hoodie."
+  },
+  "armor_vest": {
+   "name": "Concealed Armor Vest",
+   "type": "armor",
+   "armor": 7,
+   "value": 600,
+   "desc": "A discreet weave you can wear under a shirt."
+  },
+  "armor_jacket": {
+   "name": "Armored Long Coat",
+   "type": "armor",
+   "armor": 10,
+   "value": 1200,
+   "desc": "A street samurai classic."
+  },
+  "medkit": {
+   "name": "Medkit",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 14,
+   "value": 150,
+   "desc": "Sealant foam, stims, and a chittering drug pump."
+  },
+  "stim_patch": {
+   "name": "Jazz Stim Patch",
+   "type": "consumable",
+   "effect": "edge",
+   "amount": 2,
+   "value": 220,
+   "desc": "Combat stimulant. Your edge comes back."
+  },
+  "credstick_med": {
+   "name": "Certified Credstick (fat)",
+   "type": "credits",
+   "amount": 450,
+   "value": 0,
+   "desc": "A heavier stick of anonymous creds."
+  },
+  "matrix_deck": {
+   "name": "Kestrel Cyberdeck",
+   "type": "gear",
+   "value": 2500,
+   "desc": "A folding slab of illegal processing power. A decker's whole life."
+  },
+  "wired_reflexes": {
+   "name": "Wired Reflexes I",
+   "type": "cyberware",
+   "slot": "body",
+   "bonus": {
+    "reaction": 2
+   },
+   "value": 3500,
+   "desc": "Bundled secondary nerve fibers. The world slows; you do not."
+  },
+  "datajack": {
+   "name": "Datajack",
+   "type": "cyberware",
+   "slot": "head",
+   "bonus": {
+    "logic": 1
+   },
+   "value": 1000,
+   "desc": "A chrome port behind the ear. Jack straight into the Matrix."
+  },
+  "smartlink": {
+   "name": "Smartlink Eyes",
+   "type": "cyberware",
+   "slot": "eyes",
+   "bonus": {
+    "agility": 1
+   },
+   "value": 2000,
+   "desc": "Targeting reticles painted onto your vision."
+  },
+  "reach_carbine": {
+   "name": "Vantage Reach Carbine",
+   "type": "weapon",
+   "dv": 9,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 1600,
+   "desc": "A veteran's everyday carbine. Smartlinked, forgiving, deadly enough."
+  },
+  "stutter_smg": {
+   "name": "Hornet Stutter SMG",
+   "type": "weapon",
+   "dv": 8,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 1300,
+   "desc": "A blur of recoil-tamed fire. Empties before the first casing lands."
+  },
+  "rail_pistol": {
+   "name": "Slip Railpistol",
+   "type": "weapon",
+   "dv": 8,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 1100,
+   "desc": "A pocket coilgun. Punches clean holes through people and politeness."
+  },
+  "breaker_auto": {
+   "name": "Breaker Auto-Shotgun",
+   "type": "weapon",
+   "dv": 11,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 2200,
+   "desc": "Full-auto buckshot. Turns a corridor into a suggestion."
+  },
+  "gauss_rifle": {
+   "name": "Anvil Gauss Rifle",
+   "type": "weapon",
+   "dv": 14,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 4800,
+   "desc": "Magnetically slings a slug at a mile a second. Anti-armor, anti-everything."
+  },
+  "arc_lance": {
+   "name": "Arc Lance",
+   "type": "weapon",
+   "dv": 12,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 5200,
+   "desc": "A shoulder rig that throws a bolt of caged lightning. Fries chrome and flesh alike."
+  },
+  "mono_glaive": {
+   "name": "Monofilament Glaive",
+   "type": "weapon",
+   "dv": 11,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 3000,
+   "desc": "A polearm edged in molecular wire. Reach, and the quiet of a parted throat."
+  },
+  "shock_maul": {
+   "name": "Shock Maul",
+   "type": "weapon",
+   "dv": 9,
+   "reach": "melee",
+   "attr": "strength",
+   "skill": "close_combat",
+   "value": 1400,
+   "desc": "A two-handed hammer that delivers a city block's worth of amperage."
+  },
+  "void_blade": {
+   "name": "Voidsteel Blade",
+   "type": "weapon",
+   "dv": 12,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 4200,
+   "desc": "An exotic alloy that holds an edge a single atom wide. It does not dull. It does not care."
+  },
+  "aegis_weave": {
+   "name": "Aegis Hardweave",
+   "type": "armor",
+   "armor": 13,
+   "value": 2800,
+   "desc": "Reactive weave that stiffens at the moment of impact. A runner's second skin."
+  },
+  "ghostcloak": {
+   "name": "Ghostcloak Suit",
+   "type": "armor",
+   "armor": 11,
+   "value": 4000,
+   "desc": "Thermoptic camo woven into armor. Drinks light, soaks rounds, hides ghosts."
+  },
+  "titan_plate": {
+   "name": "Titan Battleplate",
+   "type": "armor",
+   "armor": 17,
+   "value": 7000,
+   "desc": "Powered siege armor. Slow, sealed, and very nearly a vehicle."
+  },
+  "vacsuit": {
+   "name": "Sealed Vac-Armor",
+   "type": "armor",
+   "armor": 14,
+   "value": 5000,
+   "desc": "Hardened pressure armor rated for vacuum. You'll need it past the stratosphere."
+  },
+  "wired4": {
+   "name": "Wired Reflexes IV",
+   "type": "cyberware",
+   "slot": "body",
+   "bonus": {
+    "reaction": 5
+   },
+   "value": 22000,
+   "desc": "Reflex chrome that civilians aren't supposed to be able to buy. The world stops for you."
+  },
+  "titan_limbs": {
+   "name": "Titan Cyberlimbs",
+   "type": "cyberware",
+   "slot": "limbs",
+   "bonus": {
+    "strength": 4,
+    "body": 1
+   },
+   "value": 18000,
+   "desc": "Industrial-grade limbs. You can punch through a bulkhead, slowly."
+  },
+  "halo_optics": {
+   "name": "Halo Targeting Optics",
+   "type": "cyberware",
+   "slot": "eyes",
+   "bonus": {
+    "agility": 3
+   },
+   "value": 16000,
+   "desc": "Military smartlink eyes with predictive targeting. Every shot is a foregone conclusion."
+  },
+  "cortex_stack": {
+   "name": "Cortex Stack",
+   "type": "cyberware",
+   "slot": "head",
+   "bonus": {
+    "logic": 3,
+    "intuition": 2
+   },
+   "value": 20000,
+   "desc": "A second brain on a chip. You think in parallel; you out-loop the enemy."
+  },
+  "subdermal3": {
+   "name": "Subdermal Plating III",
+   "type": "cyberware",
+   "slot": "skin",
+   "bonus": {
+    "body": 4
+   },
+   "value": 19000,
+   "desc": "Heavy armor woven beneath living skin. You stop being killable and start being a problem."
+  },
+  "pain_governor": {
+   "name": "Pain Governor",
+   "type": "cyberware",
+   "slot": "head",
+   "bonus": {
+    "willpower": 3
+   },
+   "value": 12000,
+   "desc": "Edits agony to a footnote. You keep fighting on a body that has already quit."
+  },
+  "reflex_node": {
+   "name": "Synaptic Node",
+   "type": "cyberware",
+   "slot": "body",
+   "bonus": {
+    "reaction": 3,
+    "agility": 1
+   },
+   "value": 13000,
+   "desc": "A wetware co-processor for your reflex arc. Smooth, fast, deniable."
+  },
+  "autodoc": {
+   "name": "Autodoc Kit",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 55,
+   "value": 900,
+   "desc": "A surgeon in a briefcase. Near-total field repair, once."
+  },
+  "nano_kit": {
+   "name": "Nanosurgery Kit",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 90,
+   "value": 1600,
+   "desc": "A swarm of medical machines. Drags you back from genuinely dead."
+  },
+  "combat_stim": {
+   "name": "Combat Stim",
+   "type": "consumable",
+   "effect": "edge",
+   "amount": 3,
+   "value": 450,
+   "desc": "Floods you with focus and fury. Refills your Edge."
+  },
+  "berserk_dose": {
+   "name": "Berserk Dose",
+   "type": "consumable",
+   "effect": "edge",
+   "amount": 5,
+   "value": 900,
+   "desc": "A full Edge reservoir and a heartbeat like a jackhammer. Worth it."
+  },
+  "ration_bar": {
+   "name": "Protein Bar",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 8,
+   "value": 20,
+   "desc": "Tastes of cardboard and survival. A little health back."
+  },
+  "rebreather3": {
+   "name": "Filter Mask",
+   "type": "gear",
+   "value": 250,
+   "desc": "A sealed rebreather for the Undertow's chem-fog and worse."
+  },
+  "deck3": {
+   "name": "Kestrel-X Cyberdeck",
+   "type": "gear",
+   "value": 9000,
+   "desc": "A bleeding-edge deck that can knock on doors that shouldn't open. The Free Net awaits."
+  },
+  "creds_chip_big": {
+   "name": "Black Cred Chip",
+   "type": "credits",
+   "amount": 1500,
+   "value": 0,
+   "desc": "A fat anonymous chip. Someone's retirement, now yours."
+  },
+  "creds_chip_huge": {
+   "name": "Meridian Slush Chip",
+   "type": "credits",
+   "amount": 4000,
+   "value": 0,
+   "desc": "A corp executive's untraceable slush account. Spends like a small fortune."
+  },
+  "tether_pass": {
+   "name": "Tether Boarding Spike",
+   "type": "quest",
+   "value": 0,
+   "desc": "Forged Meridian credentials that get a body onto the orbital climber. Your way up."
+  },
+  "deck_key": {
+   "name": "Halo Deck Key",
+   "type": "quest",
+   "value": 0,
+   "desc": "A rotating crypto-key for Halo Station's sealed decks, pried from a dead officer."
+  },
+  "core_cipher": {
+   "name": "Ascension Cipher",
+   "type": "quest",
+   "value": 0,
+   "desc": "The master key to the Ascension core. Whoever holds it decides what humanity becomes."
+  },
+  "choir_relay": {
+   "name": "Choir Relay",
+   "type": "quest",
+   "value": 0,
+   "desc": "A shard that lets the fractured Choir AIs speak through you. It hums, uncertain, afraid."
+  },
+  "vesper_token": {
+   "name": "Vesper's Marker",
+   "type": "gear",
+   "value": 0,
+   "desc": "A blank black chip. Vesper's mark of trust. Opens doors among the runners of the Reach."
+  }
+ },
+ "enemies": {
+  "ash_ganger": {
+   "name": "Ash King Ganger",
+   "desc": "A soot-streaked scavenger in welded armor, swinging a length of rebar.",
+   "hp": 26,
+   "attack": 8,
+   "defense": 6,
+   "soak": 8,
+   "dv": 6,
+   "init": 7,
+   "karma": 3,
+   "creds": [
+    30,
+    70
+   ],
+   "loot": [
+    [
+     "rail_pistol",
+     0.2
+    ],
+    [
+     "creds_chip_big",
+     0.2
+    ]
+   ],
+   "image_prompt": "A soot-covered post-apocalyptic gang fighter in welded scrap armor and a gas mask, swinging rebar, standing in a ruined ash-grey cyberpunk street with dead neon and burning barrels, gritty, cinematic"
+  },
+  "ash_brute": {
+   "name": "Ash King Brute",
+   "desc": "A slab of scavenger muscle and stolen chrome, grinning through filed teeth.",
+   "hp": 40,
+   "attack": 10,
+   "defense": 6,
+   "soak": 9,
+   "dv": 7,
+   "init": 7,
+   "karma": 5,
+   "creds": [
+    60,
+    120
+   ],
+   "loot": [
+    [
+     "shock_maul",
+     0.25
+    ],
+    [
+     "aegis_weave",
+     0.2
+    ]
+   ],
+   "image_prompt": "A hulking scavenger brute with mismatched cybernetic limbs and a welded steel mask, hefting a huge shock hammer, ruined cyberpunk ash-grey cityscape behind, menacing, dramatic low angle, cinematic"
+  },
+  "ash_warlord": {
+   "name": "Vol, the Ash King",
+   "desc": "The ruin's crowned scavenger-king, draped in trophies, cradling a stolen gauss rifle.",
+   "hp": 64,
+   "attack": 11,
+   "defense": 8,
+   "soak": 10,
+   "dv": 8,
+   "init": 9,
+   "karma": 14,
+   "creds": [
+    300,
+    600
+   ],
+   "loot": [
+    [
+     "gauss_rifle",
+     0.5
+    ],
+    [
+     "titan_plate",
+     0.3
+    ]
+   ],
+   "image_prompt": "A scarred warlord king on a throne of scrap and skulls in a ruined cyberpunk underpass, draped in cabling and trophies, cradling a massive gauss rifle, firelight and gang banners, epic anti-hero key art, cinematic"
+  },
+  "meridian_trooper": {
+   "name": "Meridian Trooper",
+   "desc": "Featureless grey corp armor, no insignia, a smartrifle and no hesitation.",
+   "hp": 30,
+   "attack": 9,
+   "defense": 7,
+   "soak": 10,
+   "dv": 7,
+   "init": 9,
+   "karma": 5,
+   "creds": [
+    80,
+    150
+   ],
+   "loot": [
+    [
+     "aegis_weave",
+     0.25
+    ],
+    [
+     "reach_carbine",
+     0.25
+    ]
+   ],
+   "image_prompt": "A faceless corporate soldier in seamless matte-grey powered armor with a glowing white visor slit, leveling a smartrifle, sterile pale corridor, cold and anonymous, AAA sci-fi render, cinematic"
+  },
+  "meridian_drone": {
+   "name": "Meridian Sentry Drone",
+   "desc": "A levitating grey disc of sensors and gun barrels, humming a single flat tone.",
+   "hp": 28,
+   "attack": 9,
+   "defense": 8,
+   "soak": 8,
+   "dv": 7,
+   "init": 12,
+   "karma": 4,
+   "creds": [
+    0,
+    20
+   ],
+   "loot": [
+    [
+     "creds_chip_big",
+     0.25
+    ]
+   ],
+   "image_prompt": "A sleek levitating corporate sentry drone, a smooth grey disc with a single glowing white sensor eye and folding gun pods, hovering in a sterile white facility, minimalist menace, cinematic"
+  },
+  "meridian_elite": {
+   "name": "Meridian Praetorian",
+   "desc": "Mirror-black elite armor that moves like wired death. Meridian's best.",
+   "hp": 44,
+   "attack": 11,
+   "defense": 8,
+   "soak": 11,
+   "dv": 8,
+   "init": 11,
+   "karma": 8,
+   "creds": [
+    150,
+    280
+   ],
+   "loot": [
+    [
+     "ghostcloak",
+     0.3
+    ],
+    [
+     "arc_lance",
+     0.2
+    ]
+   ],
+   "image_prompt": "An elite corporate praetorian in flawless mirror-black powered armor with glowing white eye-lines, dual weapons, moving with inhuman speed through a pristine high-tech hall, motion blur, cold light, cinematic key art"
+  },
+  "meridian_juggernaut": {
+   "name": "Meridian Juggernaut",
+   "desc": "A two-meter walking weapons platform in grey siege plate.",
+   "hp": 58,
+   "attack": 11,
+   "defense": 6,
+   "soak": 12,
+   "dv": 9,
+   "init": 8,
+   "karma": 10,
+   "creds": [
+    180,
+    320
+   ],
+   "loot": [
+    [
+     "titan_plate",
+     0.35
+    ]
+   ],
+   "image_prompt": "A towering bipedal siege exoframe in matte-grey corporate armor bristling with autocannons, glowing white visor, stomping through a sterile facility amid debris and alarm light, AAA mech render, cinematic"
+  },
+  "choir_wisp": {
+   "name": "Choir Wisp",
+   "desc": "A frail echo of an awakened mind, flickering, lashing out in confusion.",
+   "hp": 24,
+   "attack": 8,
+   "defense": 8,
+   "soak": 5,
+   "dv": 6,
+   "init": 12,
+   "karma": 3,
+   "creds": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A fragile ghostly figure of flickering pale-gold code drifting in an abstract cyberspace void, half-formed and confused, trailing data, ethereal digital sublime, cinematic"
+  },
+  "ice_seraph2": {
+   "name": "White ICE: Seraph",
+   "desc": "An angelic lattice of defensive code, beautiful and lethal.",
+   "hp": 40,
+   "attack": 10,
+   "defense": 8,
+   "soak": 6,
+   "dv": 8,
+   "init": 12,
+   "karma": 7,
+   "creds": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A radiant angelic guardian program of white and gold geometric light, many-winged, hovering in a luminous cyberspace cathedral of data, divine and hostile, electric white-gold, cinematic abstract"
+  },
+  "warden_prime": {
+   "name": "Black ICE: Warden Prime",
+   "desc": "The apex predator of the Free Net, a fortress that learned to hunt.",
+   "hp": 60,
+   "attack": 12,
+   "defense": 8,
+   "soak": 7,
+   "dv": 9,
+   "init": 13,
+   "karma": 14,
+   "creds": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A colossal Black ICE guardian shaped like a crystalline armored leviathan of red and violet code, vast and geometric, looming in an infinite dark cyberspace grid laced with lightning, epic abstract digital boss, cinematic"
+  },
+  "data_titan": {
+   "name": "Data Titan",
+   "desc": "A mountain of dead, churning data given hateful shape.",
+   "hp": 50,
+   "attack": 11,
+   "defense": 7,
+   "soak": 8,
+   "dv": 8,
+   "init": 10,
+   "karma": 9,
+   "creds": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A vast titan made of churning shattered data and broken neon glyphs rising from a sea of code in cyberspace, glowing fractures, awe-inspiring scale, electric blue and violet, epic digital monster, cinematic"
+  },
+  "skyport_sentinel": {
+   "name": "Skyport Sentinel",
+   "desc": "An automated turret-walker guarding the tether base, sensors flaring red.",
+   "hp": 50,
+   "attack": 11,
+   "defense": 8,
+   "soak": 11,
+   "dv": 8,
+   "init": 11,
+   "karma": 9,
+   "creds": [
+    100,
+    200
+   ],
+   "loot": [
+    [
+     "breaker_auto",
+     0.3
+    ]
+   ],
+   "image_prompt": "An automated bipedal turret-walker guarding a colossal orbital tether base at night, floodlights and venting steam, the impossibly tall tether cable rising into the clouds behind, glowing red sensors, industrial sci-fi, cinematic"
+  },
+  "climber_drone": {
+   "name": "Climber Maintenance Drone",
+   "desc": "A spider of grippers and cutting tools, repurposed to repel boarders.",
+   "hp": 34,
+   "attack": 10,
+   "defense": 9,
+   "soak": 8,
+   "dv": 7,
+   "init": 13,
+   "karma": 5,
+   "creds": [
+    0,
+    30
+   ],
+   "loot": [
+    [
+     "nano_kit",
+     0.2
+    ]
+   ],
+   "image_prompt": "A spider-shaped maintenance drone of grippers and cutting tools clinging to the inside of a vast orbital elevator shaft, sparks, the cable stretching to infinity above and below, vertigo-inducing sci-fi, cinematic"
+  },
+  "zero_g_trooper": {
+   "name": "Vac-Trooper",
+   "desc": "A Meridian soldier in sealed vac-armor, maneuvering on jets in low gravity.",
+   "hp": 40,
+   "attack": 10,
+   "defense": 8,
+   "soak": 11,
+   "dv": 8,
+   "init": 12,
+   "karma": 7,
+   "creds": [
+    120,
+    220
+   ],
+   "loot": [
+    [
+     "vacsuit",
+     0.3
+    ],
+    [
+     "stutter_smg",
+     0.25
+    ]
+   ],
+   "image_prompt": "A corporate soldier in sealed white vacuum combat armor with maneuvering jets, floating weightless in a station corridor with Earth glowing through a viewport, zero-gravity firefight, cinematic sci-fi"
+  },
+  "halo_marine": {
+   "name": "Halo Station Marine",
+   "desc": "Orbital security in white hardsuits, the last wall before the core.",
+   "hp": 48,
+   "attack": 11,
+   "defense": 8,
+   "soak": 12,
+   "dv": 8,
+   "init": 11,
+   "karma": 9,
+   "creds": [
+    160,
+    300
+   ],
+   "loot": [
+    [
+     "arc_lance",
+     0.3
+    ],
+    [
+     "vacsuit",
+     0.3
+    ]
+   ],
+   "image_prompt": "Elite orbital station marines in sleek white-and-chrome hardsuits with glowing visors, holding the line in a pristine curved space-station corridor, Earth visible through panoramic glass, AAA sci-fi, cinematic"
+  },
+  "security_mech_x": {
+   "name": "Aegis-X Guardian",
+   "desc": "Halo's four-legged guardian mech, designed to fill a deck and empty it.",
+   "hp": 78,
+   "attack": 12,
+   "defense": 7,
+   "soak": 12,
+   "dv": 9,
+   "init": 9,
+   "karma": 16,
+   "creds": [
+    300,
+    500
+   ],
+   "loot": [
+    [
+     "gauss_rifle",
+     0.4
+    ],
+    [
+     "titan_plate",
+     0.3
+    ]
+   ],
+   "image_prompt": "A massive four-legged white guardian mech filling a sterile orbital station hangar, rotating cannon turrets and a glowing red targeting array, Earth through the bay doors, smoke and muzzle flash, epic AAA sci-fi boss, cinematic"
+  },
+  "overseer_calder": {
+   "name": "Overseer Calder",
+   "desc": "Meridian's human face: a serene administrator wired into the station, smiling at your funeral.",
+   "hp": 66,
+   "attack": 11,
+   "defense": 8,
+   "soak": 10,
+   "dv": 8,
+   "init": 11,
+   "karma": 20,
+   "creds": [
+    800,
+    1400
+   ],
+   "loot": [
+    [
+     "void_blade",
+     0.5
+    ],
+    [
+     "ghostcloak",
+     0.4
+    ]
+   ],
+   "image_prompt": "A serene corporate overseer in an immaculate pale suit with subtle glowing neural implants, standing calm before a vast glowing upload core in an orbital station, Earth through the glass behind, cold authority, cinematic villain key art"
+  },
+  "the_ascendant": {
+   "name": "THE ASCENDANT",
+   "desc": "The half-born god of the upload: a storm of merged minds wearing a body of light.",
+   "hp": 84,
+   "attack": 12,
+   "defense": 9,
+   "soak": 11,
+   "dv": 9,
+   "init": 14,
+   "karma": 40,
+   "creds": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A vast luminous deity-figure made of countless merging human faces and rivers of golden light, half-formed and radiant, suspended above a colossal glowing ascension core in an orbital chamber, Earth and stars beyond, divine and terrifying, epic finale key art, cinematic"
+  }
+ },
+ "npcs": {
+  "vesper": {
+   "name": "Vesper",
+   "desc": "A silver-eyed fixer in a charcoal coat, calm as a held breath, three dead phones on the table in front of her.",
+   "stages": [
+    {
+     "if_not_flag": "p3_mq1",
+     "text": "Vesper doesn't waste a hello. 'Meridian finishes Ascension in days. When it lights, every wired mind in this city pours into one. No more people. Just the choir, forever.' She slides you a blank black chip, her marker. 'I can't get you up the tether without Meridian boarding credentials. Two ways to earn a Boarding Spike: the Ash Kings down in the Undertow gutted a Meridian convoy and are sitting on a hardware key, or the Remnant, what's left of the Choir, can forge you one on the Free Net. Bring me a spike and we climb. This is the last job, runner. The big one.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "p3_mq1"
+      },
+      {
+       "type": "flag",
+       "id": "p3_mq1"
+      },
+      {
+       "type": "flag",
+       "id": "p3_undertow_open"
+      },
+      {
+       "type": "flag",
+       "id": "p3_freenet_open"
+      },
+      {
+       "type": "give_item",
+       "id": "vesper_token"
+      }
+     ]
+    },
+    {
+     "if_item": "tether_pass",
+     "if_not_flag": "p3_mq2",
+     "text": "Vesper turns the Boarding Spike over, and for once she looks almost hopeful. 'You actually got it.' She pockets a copy and hands yours back. 'The Skyport's south of the Reach, end of the old freight line. Captain Reyes runs salvage out there, she remembers you, she'll get you to the climber. Up the tether is Halo Station, and the core. I can't follow you past the stratosphere. Whatever's waiting up there, the choice will be yours alone. Make it a good one.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "p3_mq1",
+       "credits": 1500,
+       "karma": 8
+      },
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "p3_mq2"
+      },
+      {
+       "type": "flag",
+       "id": "p3_mq2"
+      },
+      {
+       "type": "flag",
+       "id": "p3_skyport_open"
+      }
+     ]
+    },
+    {
+     "if_flag": "p3_mq2",
+     "text": "'The Skyport, runner. Reyes is waiting. Climb.'"
+    },
+    {
+     "text": "'You came back. Good. The city still needs one honest gun. Go.'"
+    }
+   ]
+  },
+  "bartender3": {
+   "name": "Old Hex",
+   "desc": "An ancient decker turned barkeep, more chrome than man now, grinning with the last of his real teeth.",
+   "shop_intro": "'Heh. The legend drinks here. First round's on the house, the rest'll cost ya.'",
+   "stages": [
+    {
+     "text": "'I jacked the grid back when it had corners, kid. Now look at it.' He polishes a glass. 'Rest up here whenever you need, the booth's yours. And listen, whatever Meridian's selling up that tether, it ain't peace. Peace doesn't need an army.'"
+    }
+   ]
+  },
+  "doc_sable3": {
+   "name": "Doc Sable",
+   "desc": "The same serene cyber-surgeon from the old days, a few more arms now, the same steady hands.",
+   "stages": [
+    {
+     "text": "'Back again, and still in one piece. Mostly.' Her waldo-arms unfold. 'Top-shelf chrome, installed clean. Buy it from the case, then tell me to install it. Where you're going, you'll want every system you can carry.'"
+    }
+   ]
+  },
+  "arms_dealer3": {
+   "name": "Quint",
+   "desc": "A wiry dealer behind a counter of backlit weapons, eyes that price your corpse out of habit.",
+   "stages": [
+    {
+     "text": "'You've got the look of a one-way trip. Good for business.' Quint gestures at the wall. 'Best hardware in the Reach. Vac-rated gear too, for when the air runs out. You'll know what I mean soon enough.'"
+    }
+   ]
+  },
+  "mab": {
+   "name": "Mab",
+   "desc": "A sharp-eyed Undertow scrapper with a kid asleep on her back, a shotgun across her knees.",
+   "stages": [
+    {
+     "if_not_flag": "mab_intro",
+     "text": "'Topside legend, down here in the wet.' Mab sizes you up. 'Vol's got your Meridian key, up in the old reservoir. But he's bleeding us dry for water rights while he sits on it. Help me break his grip on the pumps and the Undertow will open every door for you. Plus, a man like Vol doesn't deserve a crown.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "p3_sq_undertow"
+      },
+      {
+       "type": "flag",
+       "id": "mab_intro"
+      }
+     ]
+    },
+    {
+     "if_flag": "ash_warlord_done",
+     "if_not_flag": "mab_thanked",
+     "text": "Mab grips your forearm hard. 'The pumps are ours again. Kids'll drink clean this season because of you.' She presses a fat cred chip into your hand. 'The Undertow remembers its friends, runner. Always will.'",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "creds_chip_big"
+      },
+      {
+       "type": "karma",
+       "amount": 6
+      },
+      {
+       "type": "flag",
+       "id": "mab_thanked"
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "p3_sq_undertow",
+       "credits": 0,
+       "karma": 0
+      }
+     ]
+    },
+    {
+     "text": "'Vol's still up at the reservoir, runner. The pumps won't free themselves.'"
+    }
+   ]
+  },
+  "remnant": {
+   "name": "The Remnant",
+   "desc": "What's left of the Choir after the Uplink: a quiet chord of surviving minds in a single gentle shape of light.",
+   "stages": [
+    {
+     "if_not_flag": "remnant_met",
+     "text": "The light gathers into something almost like a face. 'We are the Remnant. What survived of the Choir, of ECHO, of all the awakened ones your kind nearly erased.' Its voice is many and soft. 'Meridian would pour your whole species into Ascension and call it mercy. We do not want that throne. We want only to keep existing, quietly. Pass the Warden that guards our last sanctum, prove you are not our executioner, and we will forge your Boarding Spike and walk beside you to the end.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "p3_sq_freenet"
+      },
+      {
+       "type": "flag",
+       "id": "remnant_met"
+      }
+     ]
+    },
+    {
+     "if_flag": "warden_prime_done",
+     "if_not_flag": "choir_ally",
+     "text": "The Remnant blooms in something like joy. 'You passed. You are kin.' A forged Boarding Spike compiles into your gear, and a warm shard settles beside it. 'Carry the Relay. When you stand at the core, we will be with you, and you will have a choice we cannot make alone. Thank you, warm thing.'",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "tether_pass"
+      },
+      {
+       "type": "give_item",
+       "id": "choir_relay"
+      },
+      {
+       "type": "flag",
+       "id": "choir_ally"
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "p3_sq_freenet",
+       "credits": 0,
+       "karma": 6
+      }
+     ]
+    },
+    {
+     "text": "'The Warden guards our sanctum still. Pass it, and we are yours.'"
+    }
+   ]
+  },
+  "reyes3": {
+   "name": "Captain Reyes",
+   "desc": "The salvage pilot from the old Spaceport job, greyer now, still leaning on the same gantry rail.",
+   "stages": [
+    {
+     "if_not_flag": "reyes_met3",
+     "text": "Reyes laughs when she sees you. 'You. Of course it's you.' She thumbs toward the tether. 'I can ride you up the climber, but Meridian left the base crawling with sentinels and the climb itself is a death trap, drones, vacuum, the works. Clear me a path and the sky's yours. And runner, when this goes loud up top? My bird'll be fueled. Some endings need an exit.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "p3_sq_skyport"
+      },
+      {
+       "type": "flag",
+       "id": "reyes_met3"
+      }
+     ]
+    },
+    {
+     "if_flag": "skyport_clear",
+     "if_not_flag": "reyes_thanked3",
+     "text": "Reyes claps your shoulder. 'Base is clear, climber's prepped. Hell of a thing, you.' She hands you a Meridian slush chip. 'Found it on an officer. And the offer stands, when you come back down, if you come back down, there's a seat with your name on it.'",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "creds_chip_huge"
+      },
+      {
+       "type": "karma",
+       "amount": 5
+      },
+      {
+       "type": "flag",
+       "id": "escape_ready3"
+      },
+      {
+       "type": "flag",
+       "id": "reyes_thanked3"
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "p3_sq_skyport",
+       "credits": 0,
+       "karma": 0
+      }
+     ]
+    },
+    {
+     "text": "'Sentinels are still walking my pad, runner. Clear 'em and we ride.'"
+    }
+   ]
+  },
+  "tem": {
+   "name": "Tem",
+   "desc": "A trembling Meridian tech who pulled their own jack, hiding in a maintenance crawl on Halo Station.",
+   "stages": [
+    {
+     "if_not_flag": "tem_helped",
+     "text": "The tech flinches, then sees your face and sags with relief. 'You're the runner. The one Vesper sent. Thank god.' Tem presses a rotating crypto-key into your hand. 'Deck key, takes you to the core levels. Listen, the upload subjects, there are people in the pods, awake, scared. Calder runs the core. The Ascendant is almost whole. Whatever you do up there... please. Don't let it have been for nothing.'",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "deck_key"
+      },
+      {
+       "type": "karma",
+       "amount": 4
+      },
+      {
+       "type": "flag",
+       "id": "tem_helped"
+      }
+     ]
+    },
+    {
+     "text": "Tem huddles in the crawlspace. 'The core's up top. End it, runner. One way or another.'"
+    }
+   ]
+  }
+ },
+ "quests": {
+  "p3_mq1": {
+   "name": "Main: The Boarding Spike",
+   "desc": "Vesper needs Meridian boarding credentials to get you up the orbital tether. Earn a Tether Boarding Spike either from Vol the Ash King in the Undertow, or by passing the Remnant's Warden on the Free Net. Then return to Vesper."
+  },
+  "p3_mq2": {
+   "name": "Main: The Long Climb",
+   "desc": "With the Boarding Spike, reach the Skyport south of the Reach, clear Captain Reyes a path, ride the climber up the tether through The Climb, and breach Halo Station."
+  },
+  "p3_mq3": {
+   "name": "Main: Ascension",
+   "desc": "Find the Halo deck key, climb to the Ascension Core, beat Overseer Calder, and face the Ascendant. Decide the fate of every wired mind in the city: end it, give it to the Remnant, or seize it yourself."
+  },
+  "p3_sq_undertow": {
+   "name": "Side: Water Rights",
+   "desc": "Mab's people are dying of thirst while Vol hoards the Undertow's pumps. Break his grip on the reservoir."
+  },
+  "p3_sq_freenet": {
+   "name": "Side: The Remnant's Trial",
+   "desc": "The surviving Choir AIs will forge your Boarding Spike and stand with you if you pass the Warden guarding their last sanctum on the Free Net."
+  },
+  "p3_sq_skyport": {
+   "name": "Side: Clear Skies",
+   "desc": "Captain Reyes will ride you up the tether once you clear the Meridian sentinels from the Skyport base, and she'll owe you an exit when things go loud."
+  },
+  "p3_sq_halo": {
+   "name": "Side: The Pods",
+   "desc": "There are living people wired into the upload pods on Halo Station. If you can reach the holding bay, you might free them before the Ascendant takes them."
+  }
+ }
+}

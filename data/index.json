@@ -12,5 +12,12 @@
   "subtitle": "Part 2 of 2  -  the war for the wire",
   "tagline": "Six months after the Idol job, a corp called Helix is building a killswitch for every body in the city, and a choir of awakened AIs wants it for themselves. You're a legend now. Time to earn it. (A separate, harder campaign - start a fresh runner here.)",
   "order": 2
+ },
+ {
+  "id": "part3_ascension",
+  "title": "NEON SPRAWL  -  Part 3: Ascension",
+  "subtitle": "Part 3 of 3  -  the long climb",
+  "tagline": "A year after the Uplink, a merged AI-corp called Meridian is building ASCENSION: a machine to upload the human race into a single mind, in a station at the top of the orbital tether. This is the long climb, from the ruined streets to the edge of space. The biggest, hardest run of your life. (A separate campaign - bring a fresh legend.)",
+  "order": 3
  }
 ]
