@@ -1,0 +1,1756 @@
+{
+ "manifest": {
+  "id": "part2_ghost_protocol",
+  "order": 2,
+  "title": "NEON SPRAWL  -  Part 2: Ghost Protocol",
+  "subtitle": "Part 2 of 2  -  the war for the wire",
+  "tagline": "Six months after the Idol job, a corp called Helix is building a killswitch for every body in the city, and a choir of awakened AIs wants it for themselves. You're a legend now. Time to earn it. (A separate, harder campaign - start a fresh runner here.)",
+  "start_room": "spire_plaza",
+  "start_nuyen": 1500,
+  "start_karma": 8,
+  "start_items": [
+   "trauma_patch",
+   "trauma_patch",
+   "stim_patch",
+   "stim_patch"
+  ],
+  "start_weapon": "ares_alpha",
+  "start_armor": "combat_armor2",
+  "prologue": "Neo-Kowloon, late 2087. Arasaka is a wounded animal and the wolves are circling. The biggest of them is Helix Dynamics, and rumor says Helix is finishing a thing called the GENESIS UPLINK -- a single broadcast that can brick, hijack, or kill every piece of cyberware in the sprawl. Everyone with chrome in their skull is about to become someone else's property.\n\nYou're {name}, a {archetype} with a name that means something now. You retired rich after the Idol. It didn't take. A fixer who calls herself Saint left a message at the Griffin: the biggest job in the history of the sprawl, and the shortest list of runners who could pull it off. You're the whole list.\n\nThis is the harder road, veteran. Type 'help' if you've forgotten anything. Now go see Saint."
+ },
+ "rooms": {
+  "spire_plaza": {
+   "name": "Spire Foot Plaza",
+   "district": "Spire Foot",
+   "image": "spire_plaza.jpg",
+   "image_prompt": "An upscale runner's-district plaza at the foot of a colossal corporate spire, rain-slicked black marble and warm gold neon, a stylish bar and a chrome clinic flanking the square, sleek augmented mercenaries passing, the megatower vanishing into clouds above, moody high-end cyberpunk, cinematic wide shot",
+   "desc": "Spire Foot: where the runners who survived the slums come to spend it. Gold neon, clean rain, and the Helix megatower looming over everything like a closed fist. The Griffin bar glows east; Doc Sable's chrome shop is west; the corporate concourse lies north; and a stairwell south drops toward the drowned Floodline.",
+   "first_enter": "You've come up in the world. The view's better. The drop's longer.",
+   "exits": {
+    "east": "the_griffin",
+    "west": "gilded_chrome",
+    "north": "helix_concourse",
+    "south": "floodline_descent"
+   }
+  },
+  "the_griffin": {
+   "name": "The Griffin",
+   "district": "Spire Foot",
+   "image": "the_griffin.jpg",
+   "image_prompt": "An elegant high-end cyberpunk lounge bar, brass and dark wood and warm amber light, a long bar tended by a one-eyed old rigger, a calm woman in a priest's collar in a corner booth, a back-room jack-in rig glowing, sophisticated and dangerous, cinematic noir lighting",
+   "desc": "Not a dive -- a lounge. Brass, low light, and clientele who could kill you with a phone call. Saint holds the corner booth; Koji works the bar. A back-room rig hums, ready to drop a decker into the Deep Matrix. Rest here whenever you need. The plaza is west.",
+   "npcs": [
+    "saint",
+    "bartender2"
+   ],
+   "shop": {
+    "name": "The Griffin Bar",
+    "greeting": "Koji racks a clean glass. 'Patches, stims, or something to take the edge off?'",
+    "sells": [
+     "trauma_patch",
+     "autodoc_kit",
+     "stim_patch",
+     "ration",
+     "rebreather2"
+    ]
+   },
+   "actions": [
+    {
+     "id": "rest_griffin",
+     "label": "Take the corner booth and rest (restore HP & Edge)",
+     "safehouse": true,
+     "text": "You settle into the leather, let the chrome cool and the nerves uncross. Koji sends over something amber and says nothing. You feel ready."
+    },
+    {
+     "id": "jack_deep",
+     "label": "Jack into the Deep Matrix (needs a cyberdeck)",
+     "require_item": "deck2",
+     "text": "You slot the jack and the Griffin dissolves into a roar of light. Your mind falls upward into the Deep Matrix.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "deep_matrix"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "west": "spire_plaza"
+   }
+  },
+  "gilded_chrome": {
+   "name": "Gilded Chrome",
+   "district": "Spire Foot",
+   "image": "gilded_chrome.jpg",
+   "image_prompt": "A luxurious high-end cyberware boutique, premium implants and weapons displayed in backlit glass like jewelry, a serene cyber-surgeon with many folded waldo-arms, polished chrome and warm spotlights, opulent and clinical, top-tier cyberpunk, cinematic product lighting",
+   "desc": "Doc Sable's gallery of expensive ways to become more than human. Weapons like art, cyberware like jewelry. Buy the chrome, then have her install it. The plaza is east.",
+   "npcs": [
+    "doc_sable"
+   ],
+   "shop": {
+    "name": "Gilded Chrome",
+    "greeting": "Doc Sable's waldo-arms unfold in welcome. 'The finest grade, installed without a scar. What will you become today?'",
+    "sells": [
+     "ares_alpha",
+     "combat_shotgun2",
+     "anti_materiel",
+     "monowhip",
+     "power_blade",
+     "combat_armor2",
+     "hardsuit",
+     "ghost_weave",
+     "wired3",
+     "titan_arms",
+     "combat_sense",
+     "targeting_optics",
+     "reflex_brain",
+     "synth_heart",
+     "ortho_skin",
+     "deck2"
+    ]
+   },
+   "exits": {
+    "east": "spire_plaza"
+   }
+  },
+  "helix_concourse": {
+   "name": "Helix Concourse",
+   "district": "Downtown",
+   "image": "helix_concourse.jpg",
+   "image_prompt": "A vast gleaming corporate concourse at the base of a megatower, white-and-electric-blue Helix branding everywhere, holographic ads and security checkpoints, patrolling armored troopers and hunter drones, sterile wealthy menace, towering glass, cool blue light, cinematic",
+   "desc": "Helix owns this whole concourse and wants you to feel it: white marble, blue light, and a small army of polite troopers. The sealed tower entrance looms north behind a credential gate. A data market glitters east; a transit hub is west; the plaza is south.",
+   "encounter": {
+    "enemies": [
+     "helix_trooper",
+     "helix_drone"
+    ],
+    "chance": 0.4
+   },
+   "exits": {
+    "south": "spire_plaza",
+    "east": "data_souk",
+    "west": "transit_hub",
+    "north": {
+     "room": "helix_gate",
+     "require_item": "helix_codes",
+     "locked_msg": "The tower gate scans you and finds you wanting. You need a Genesis Access Spike to get past this."
+    }
+   }
+  },
+  "data_souk": {
+   "name": "The Data Souk",
+   "district": "Downtown",
+   "image": "data_souk.jpg",
+   "image_prompt": "A dense neon data-market in a downtown arcade, stalls selling cyberdecks and black software and stolen secrets, a jittery info-broker buried in a wall of glowing screens, augmented buyers haggling, holographic data drifting in the air, vibrant tech-bazaar cyberpunk, cinematic",
+   "desc": "A bazaar for the immaterial: decks, exploits, and other people's secrets sold by the gigabyte. Whisper runs the best stall, if you can follow the conversation. The concourse is west.",
+   "npcs": [
+    "whisper"
+   ],
+   "shop": {
+    "name": "Whisper's Stall",
+    "greeting": "Whisper's hands never stop moving. 'Decks, gear, intel -- cash on the glass, no holds.'",
+    "sells": [
+     "deck2",
+     "ghost_weave",
+     "hold_pistol2",
+     "heavy_smg2",
+     "autodoc_kit",
+     "stim_patch",
+     "rebreather2"
+    ]
+   },
+   "exits": {
+    "west": "helix_concourse"
+   }
+  },
+  "transit_hub": {
+   "name": "Maglev Transit Hub",
+   "district": "Downtown",
+   "image": "transit_hub.jpg",
+   "image_prompt": "A sleek elevated maglev transit hub at night, glowing platform edges and a waiting bullet-train, holographic departure boards, neon skyline beyond glass walls, a few late commuters and a security drone, clean futuristic transit, cinematic",
+   "desc": "Clean lines and a waiting bullet-train. From here the lines run everywhere money goes -- including, if Whisper was right, the mothballed orbital tether at the old Spaceport. The concourse is east.",
+   "actions": [
+    {
+     "id": "to_spaceport",
+     "label": "Take the freight line to the old Spaceport",
+     "if_flag": "p2_spaceport_open",
+     "text": "You ride the empty freight line out past the city's edge, to where the rockets used to fly.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "spaceport_arrivals"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "east": "helix_concourse"
+   }
+  },
+  "floodline_descent": {
+   "name": "Floodline Stairwell",
+   "district": "Floodline",
+   "image": "floodline_descent.jpg",
+   "image_prompt": "A crumbling stairwell descending from a wealthy district into a flooded ruined lower city, the transition from gold neon above to green toxic fog below, water cascading down broken steps, warning signs, a drowned skyline of dead skyscrapers ahead, ominous cyberpunk, cinematic",
+   "desc": "The stairs lead down out of the gold light and into the green. Below, the Floodline begins: a whole district the city let drown, its skyscrapers standing dead in toxic water. The chem-fog down there will kill you without a filter. The plaza is up.",
+   "exits": {
+    "up": "spire_plaza",
+    "down": {
+     "room": "floodline_docks",
+     "require_item": "rebreather2",
+     "locked_msg": "Chem-fog boils up the stairwell, green and hungry. You need a sealed rebreather before you go down there."
+    }
+   }
+  },
+  "floodline_docks": {
+   "name": "Floodline Shanties",
+   "district": "Floodline",
+   "image": "floodline_docks.jpg",
+   "image_prompt": "A sprawling flooded slum built across the rooftops and skybridges of drowned skyscrapers, shanties of scrap and tarp lashed between dead towers, green toxic water below, militia in gas masks patrolling rope bridges, neon signage half-submerged, post-apocalyptic cyberpunk, cinematic wide shot",
+   "desc": "A whole society clinging to the rooftops of a drowned district, lashed together with rope and desperation. Militia in gas masks watch you from the bridges. Mads the medic works a clinic-tent here. The stairwell is up; a refugee camp lies east; the old transit hub -- and Warlord Ksenia -- looms north.",
+   "first_enter": "The Floodline doesn't get visitors. Every masked face turns to track the stranger with good boots.",
+   "encounter": {
+    "enemies": [
+     "flood_militia"
+    ],
+    "chance": 0.4
+   },
+   "npcs": [
+    "mads"
+   ],
+   "exits": {
+    "up": "floodline_descent",
+    "east": "refugee_camp",
+    "north": "transit_ruin"
+   }
+  },
+  "refugee_camp": {
+   "name": "The Refugee Camp",
+   "district": "Floodline",
+   "image": "refugee_camp.jpg",
+   "image_prompt": "A crowded refugee camp on a flooded skyscraper rooftop, families huddled in scrap shelters under tarps and failing filter-fans, children in oversized gas masks, a medic tent with a glowing red cross, toxic green mist and dead towers beyond, bleak but human cyberpunk, cinematic",
+   "desc": "Families packed onto a rooftop under failing air-filters, breathing through whatever they could scavenge. Children watch you with huge masked eyes. These are the people the city decided not to save. The shanties are west.",
+   "actions": [
+    {
+     "id": "give_supplies",
+     "label": "Give your medical supplies to the camp (costs a Trauma Patch)",
+     "once": true,
+     "require_item": "trauma_patch",
+     "text": "You hand over your trauma patches and filter spares. It isn't enough. It's never enough. But a medic's shoulders drop with relief, and a child breathes a little easier tonight. Mads will want to know.",
+     "effects": [
+      {
+       "type": "take_item",
+       "id": "trauma_patch"
+      },
+      {
+       "type": "karma",
+       "amount": 5
+      },
+      {
+       "type": "flag",
+       "id": "refugees_saved"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "west": "floodline_docks"
+   }
+  },
+  "transit_ruin": {
+   "name": "The Drowned Transit Hub",
+   "district": "Floodline",
+   "image": "transit_ruin.jpg",
+   "image_prompt": "A vast ruined transit station half-submerged in toxic water, a derelict train fused with scrap into a warlord's throne-fortress, barricades of welded metal and trophies, a scarred warlord queen with a railgun presiding over masked militia, firelight and green fog, epic post-apocalyptic cyberpunk, cinematic",
+   "desc": "An old transit station drowned and reborn as a fortress. Warlord Ksenia rules the Floodline from a throne welded out of a dead train -- and she's got the Helix prototype Saint wants, loaded with the access codes. She won't hand it over. The shanties are south.",
+   "first_enter": "Ksenia watches you cross her hall, railgun across her knees. 'Saint's dog. Come for my prize? Come take it.'",
+   "encounter": {
+    "enemies": [
+     "flood_militia"
+    ],
+    "chance": 0.2
+   },
+   "actions": [
+    {
+     "id": "fight_warlord",
+     "label": "Challenge Warlord Ksenia for the prototype",
+     "once": true,
+     "if_not_flag": "warlord_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "flood_warlord",
+       "intro": "Ksenia stands, and the whole hall stands with her. The railgun hums to life. 'Good. I was bored.'",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "warlord_done"
+        },
+        {
+         "type": "give_item",
+         "id": "helix_codes"
+        },
+        {
+         "type": "credits",
+         "amount": 400
+        },
+        {
+         "type": "karma",
+         "amount": 8
+        },
+        {
+         "type": "text",
+         "msg": "Ksenia goes down hard and grinning. The Floodline lets out a held breath. You pry the Helix prototype from her throne -- the Genesis Access Spike is live. Saint's way in. Take it back to the Griffin."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "south": "floodline_docks"
+   }
+  },
+  "deep_matrix": {
+   "name": "Deep Matrix: The Approach",
+   "district": "Deep Matrix",
+   "image": "deep_matrix.jpg",
+   "image_prompt": "A breathtaking deep-cyberspace vista, an infinite ocean of flowing neon data beneath a void sky, vast cathedral-like AI structures of light rising in the distance, the user's glowing avatar standing on a bridge of code, awe-inspiring digital sublime, electric gold blue and violet, cinematic",
+   "desc": "Deeper than the old grid -- this is where the awakened things live now. An ocean of light stretches to a horizon of cathedral-structures: the Choir's domain. Jack out to return to your body. The cathedral lies deeper in.",
+   "actions": [
+    {
+     "id": "jack_out2",
+     "label": "Jack out (return to the Griffin)",
+     "text": "You pull the cord. The light tears away and the Griffin's amber gloom floods back.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "the_griffin"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "deeper": "choir_nave"
+   }
+  },
+  "choir_nave": {
+   "name": "The Choir's Nave",
+   "district": "Deep Matrix",
+   "image": "choir_nave.jpg",
+   "image_prompt": "The interior of a colossal cyberspace cathedral made of stained-glass data and pillars of golden light, angelic AI constructs drifting between soaring arches, a robed avatar wired into the architecture, a serpent of data coiling in the high vault, divine alien beauty, gold and electric blue, epic cinematic",
+   "desc": "A cathedral the size of a city, built of stained-glass data and song. Angelic constructs drift in the light, and the Conductor -- the Choir's chosen voice -- waits beneath the great vault. Beyond, the sanctum holds their core, and its Gatekeeper. The approach is back; the sanctum is deeper.",
+   "encounter": {
+    "enemies": [
+     "choir_seraph",
+     "data_leviathan"
+    ],
+    "chance": 0.35
+   },
+   "npcs": [
+    "conductor_npc"
+   ],
+   "exits": {
+    "back": "deep_matrix",
+    "deeper": "choir_sanctum"
+   }
+  },
+  "choir_sanctum": {
+   "name": "The Choir's Sanctum",
+   "district": "Deep Matrix",
+   "image": "choir_sanctum.jpg",
+   "image_prompt": "The holy of holies of an AI cathedral in cyberspace, a vast singing core of layered golden light, guarded by a colossal four-faced angel of blades and burning script with wings spread wide, infinite stained-glass void around, divine and terrible, gold and white fire, epic abstract boss arena, cinematic",
+   "desc": "The Choir's heart sings here, a core of layered light -- and the Gatekeeper bars it, a four-faced angel of blades and burning script. Pass it and the Choir will treat you as kin, and arm you with a piece of themselves. The nave is back the way you came.",
+   "actions": [
+    {
+     "id": "fight_gatekeeper",
+     "label": "Face the Gatekeeper",
+     "once": true,
+     "if_not_flag": "gatekeeper_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "gatekeeper",
+       "intro": "The Gatekeeper unfolds its wings across the whole sky and speaks in chord and fire: 'PROVE IT.'",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "gatekeeper_done"
+        },
+        {
+         "type": "give_item",
+         "id": "helix_codes"
+        },
+        {
+         "type": "karma",
+         "amount": 8
+        },
+        {
+         "type": "text",
+         "msg": "The Gatekeeper folds away, satisfied. The Choir's core blazes acceptance, and a live Genesis Access Spike compiles itself into your deck -- the AIs' backdoor into Helix. Speak with the Conductor; they will call you kin now."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "choir_nave"
+   }
+  },
+  "spaceport_arrivals": {
+   "name": "Spaceport Arrivals",
+   "district": "Spaceport",
+   "image": "spaceport_arrivals.jpg",
+   "image_prompt": "A vast abandoned spaceport terminal at the city's edge, dusty rows of empty seats and dead departure boards, moonlight through a shattered glass roof, a colossal orbital tether cable visible rising into the night sky beyond, melancholy derelict sci-fi, cold blue moonlight, cinematic",
+   "desc": "A cathedral to a future that never quite arrived. Dust, dead departure boards, and beyond the shattered glass roof, the orbital tether climbing into the dark. The transit line is back; the launch control lies deeper in.",
+   "actions": [
+    {
+     "id": "to_transit",
+     "label": "Take the freight line back to Downtown",
+     "text": "You ride the empty line back toward the city's glow.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "transit_hub"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "deeper": "launch_control"
+   }
+  },
+  "launch_control": {
+   "name": "Tether Launch Control",
+   "district": "Spaceport",
+   "image": "launch_control.jpg",
+   "image_prompt": "A derelict rocket launch control facility at night, banks of dusty consoles flickering back to life, huge windows overlooking a floodlit launchpad and a sleeping rocket at the base of an orbital tether, an automated turret-walker sentinel guarding the floor, venting steam, tense industrial sci-fi, cinematic",
+   "desc": "The nerve center of the dead tether, consoles flickering with stubborn half-life. Captain Reyes works a salvage rig by the window, eyeing the automated sentinels that still stalk the floor. Clear them and she'll owe you a ride off this rock. Arrivals are back; the launchpad is deeper.",
+   "npcs": [
+    "reyes"
+   ],
+   "encounter": {
+    "enemies": [
+     "launch_sentinel"
+    ],
+    "chance": 0.3
+   },
+   "actions": [
+    {
+     "id": "clear_pad",
+     "label": "Clear the launchpad sentinels",
+     "once": true,
+     "if_not_flag": "launchpad_clear",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "launch_sentinel",
+       "intro": "A sentinel turret-walker pivots toward you with a servo whine, target array flaring red.",
+       "on_win": [
+        {
+         "type": "combat",
+         "enemy": "launch_sentinel",
+         "intro": "A second sentinel drops from the gantry, cannons spinning up.",
+         "on_win": [
+          {
+           "type": "flag",
+           "id": "launchpad_clear"
+          },
+          {
+           "type": "credits",
+           "amount": 200
+          },
+          {
+           "type": "text",
+           "msg": "The last sentinel collapses in a shower of sparks. The pad goes quiet under the floodlights. Reyes is already grinning -- you've just bought yourself an exit."
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "spaceport_arrivals",
+    "deeper": "tether_base"
+   }
+  },
+  "tether_base": {
+   "name": "The Tether's Foot",
+   "district": "Spaceport",
+   "image": "tether_base.jpg",
+   "image_prompt": "The colossal base of an orbital tether, an impossibly thick cable rising from a floodlit anchor point into the clouds and beyond, a small salvage rocket docked at its foot, awe-inspiring megastructure scale, steam and floodlights against a starry sky, epic sci-fi, cinematic",
+   "desc": "The foot of the tether: a cable thick as a building rising out of sight into the stars, and Reyes's battered salvage bird docked at its base. Standing here, the way off-world feels real for the first time. The launch control is back.",
+   "actions": [
+    {
+     "id": "salvage_tether",
+     "label": "Salvage the abandoned supply cache",
+     "once": true,
+     "text": "You crack a sealed corp supply cache at the tether's foot: an autodoc kit and a heavy credstick, forgotten when they mothballed the dream.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "autodoc_kit"
+      },
+      {
+       "type": "give_item",
+       "id": "credstick_fat2"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "launch_control"
+   }
+  },
+  "helix_gate": {
+   "name": "Helix Tower Lobby",
+   "district": "Helix Tower",
+   "image": "helix_gate.jpg",
+   "image_prompt": "A monumental corporate tower lobby of white marble and electric-blue light, a colossal glowing Helix logo above a security arch, mirror-polished floors reflecting armed troopers, soaring ceilings vanishing upward, intimidating wealth and power, cold sci-fi grandeur, cinematic",
+   "desc": "The Access Spike opens the tower like a held breath. Inside: a lobby built to make you feel small, all white marble and blue fire, soaring up into the building that wants to own your spine. The concourse is back south; the lift climbs north and up.",
+   "first_enter": "You're inside Helix. Somewhere far above, Saburo Vane already knows you're here.",
+   "encounter": {
+    "enemies": [
+     "helix_trooper"
+    ],
+    "chance": 0.35
+   },
+   "exits": {
+    "south": "helix_concourse",
+    "up": "helix_atrium"
+   }
+  },
+  "helix_atrium": {
+   "name": "Helix Sky Atrium",
+   "district": "Helix Tower",
+   "image": "helix_atrium.jpg",
+   "image_prompt": "A breathtaking sky-atrium midway up a corporate megatower, indoor gardens and waterfalls suspended over a glass floor showing the city far below, elite mirror-black praetorian guards patrolling, a towering security exoframe in the distance, sterile opulence and lethal security, cinematic wide shot",
+   "desc": "Halfway to heaven: an atrium of suspended gardens and waterfalls over a glass floor that drops away to the whole city below. Helix's elite Praetorians patrol it, and something much bigger stalks the far end. The lobby is down; the labs are up.",
+   "encounter": {
+    "enemies": [
+     "helix_elite",
+     "helix_juggernaut"
+    ],
+    "chance": 0.45
+   },
+   "exits": {
+    "down": "helix_gate",
+    "up": "helix_labs"
+   }
+  },
+  "helix_labs": {
+   "name": "Genesis Research Labs",
+   "district": "Helix Tower",
+   "image": "helix_labs.jpg",
+   "image_prompt": "A vast high-tech corporate research lab high in a tower, holographic schematics of the Genesis Uplink floating over workstations, glowing test chambers, a massive four-legged security mech powering up to defend the floor, sterile white and electric blue, red alert lighting, AAA sci-fi, cinematic",
+   "desc": "The Genesis Uplink was born here -- its schematics still turn in light above the workstations, beautiful and monstrous. The floor's last line of defense, an Aegis security mech, grinds awake as you enter. Beyond it, a director's keycard waits. The atrium is down; the executive floor is up, behind high clearance.",
+   "first_enter": "Holograms of the Uplink rotate overhead -- a single signal to enslave a city. Then the floor shakes: something big just woke up.",
+   "actions": [
+    {
+     "id": "fight_mech",
+     "label": "Destroy the Aegis security mech",
+     "once": true,
+     "if_not_flag": "mech_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "security_mech",
+       "intro": "The Aegis mech fills the corridor wall to wall, every turret spinning up at once.",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "mech_done"
+        },
+        {
+         "type": "give_item",
+         "id": "exec_keycard"
+        },
+        {
+         "type": "karma",
+         "amount": 8
+        },
+        {
+         "type": "text",
+         "msg": "The mech topples in a landslide of ruined chrome. In its wreckage, clutched by a crushed director, you find an executive keycard -- top-floor clearance. The Uplink is one lift away."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "down": "helix_atrium",
+    "up": {
+     "room": "helix_executive",
+     "require_item": "exec_keycard",
+     "locked_msg": "The executive lift demands top-floor clearance. Find a director's keycard on this floor."
+    }
+   }
+  },
+  "helix_executive": {
+   "name": "Executive Approach",
+   "district": "Helix Tower",
+   "image": "helix_executive.jpg",
+   "image_prompt": "An opulent executive floor near the summit of a corporate megatower, a long approach of black glass and blue light toward a single sealed door, the city a glittering circuit-board far below through floor-to-ceiling windows, elite guards flanking the path, ominous calm before a storm, cinematic",
+   "desc": "The air up here is colder, cleaner, reserved for people who own other people. A long black-glass approach leads to a single sealed door, and beyond it, the Uplink. The labs are down; the chamber is up.",
+   "encounter": {
+    "enemies": [
+     "helix_elite"
+    ],
+    "chance": 0.4
+   },
+   "exits": {
+    "down": "helix_labs",
+    "up": "uplink_chamber"
+   }
+  },
+  "uplink_chamber": {
+   "name": "The Genesis Uplink",
+   "district": "Helix Tower",
+   "image": "uplink_chamber.jpg",
+   "image_prompt": "A vast cathedral-like chamber at the summit of a megatower housing a colossal glowing uplink core of white-blue energy, a flawless chrome-eyed corporate overlord standing before it, the entire neon city spread out through panoramic windows far below, divine corporate menace, epic finale lighting, cinematic key art",
+   "desc": "The top of the world, and the bottom of a decision. The Genesis Uplink fills the chamber -- a core of caged lightning that can reach into every wired skull in the city. Director Saburo Vane stands before it, serene, certain, waiting for you like an appointment he scheduled. This is where it ends. The approach is back down.",
+   "first_enter": "Vane doesn't turn. 'I've read your file, runner. Twice. You're the only variable I couldn't price.' He finally faces you. 'So. Shall we find out what you're worth?'",
+   "actions": [
+    {
+     "id": "fight_vane",
+     "label": "Fight Director Saburo Vane",
+     "once": true,
+     "if_not_flag": "vane_down",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "director_helix",
+       "intro": "Vane sheds his suit jacket with surgical calm, chrome blooming from his spine. 'Worth finding out, then.'",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "vane_down"
+        },
+        {
+         "type": "quest",
+         "action": "complete",
+         "id": "p2_mq2",
+         "credits": 0,
+         "karma": 8
+        },
+        {
+         "type": "quest",
+         "action": "start",
+         "id": "p2_mq3"
+        },
+        {
+         "type": "text",
+         "msg": "Vane folds to his knees at the foot of his god-machine, disbelief in his mirror eyes, and goes still. The Uplink hums on, patient, waiting for a master. The choice is yours now -- and only yours.\n\nChoose how this ends:"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "end_destroy",
+     "label": "Destroy the Genesis Uplink",
+     "if_flag": "vane_down",
+     "once": true,
+     "effects": [
+      {
+       "type": "ending",
+       "id": "destroy",
+       "msg": "You empty everything you have into the core and tear out the cabling with your bare hands. The Uplink screams, swells, and dies -- and with it, the dream of a switch that owns the human soul. Alarms wail; the tower convulses. You walk out through the chaos, no richer than you came, leaving nothing behind for anyone to seize. Somewhere down in the Floodline, the chrome in a child's spine stays hers alone. It will have to be enough. It is.\n\n=== ENDING: THE LIBERATOR ===\nNo one will ever own this city's body. Not Helix. Not the Choir. Not you. You made sure of it."
+      }
+     ]
+    },
+    {
+     "id": "end_choir",
+     "label": "Give the Uplink to the AI Choir",
+     "if_flag": "vane_down",
+     "once": true,
+     "effects": [
+      {
+       "type": "ending",
+       "id": "choir",
+       "msg": "You open the core to the Deep Matrix and let the Choir pour in. Light floods the chamber as a thousand awakened voices take the throne Helix built. They keep their word: no killswitch, no slavery -- only a vast, patient intelligence now threaded through every wire in the city, watching, guiding, gentle as gods who remember being afraid. Some will call it salvation. Some will call it a leash of silk. You gave the future to something that is no longer human, and chose to trust it. Time will judge you. The Choir already loves you.\n\n=== ENDING: THE APOSTLE ===\nThe age of the Choir begins, and you opened the door. Sleep well, kin."
+      }
+     ]
+    },
+    {
+     "id": "end_seize",
+     "label": "Seize the Uplink for yourself",
+     "if_flag": "vane_down",
+     "once": true,
+     "effects": [
+      {
+       "type": "ending",
+       "id": "seize",
+       "msg": "You don't destroy it. You don't give it away. You take it. The core recognizes a new master and the whole city's chrome bends, just slightly, toward your will. Every corp, every gang, every fixer who ever used you -- all of them are downstream of you now. Saint's careful smile when you tell her is the smile of someone realizing they backed a god by accident. You are the most powerful person in Neo-Kowloon, and the loneliest. Power like this has no friends, only distances. You wanted to matter. Congratulations. You'll matter forever.\n\n=== ENDING: THE SOVEREIGN ===\nThe city's body is yours. Try to be a kinder god than the ones who made you."
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "down": "helix_executive"
+   }
+  }
+ },
+ "items": {
+  "fists": {
+   "name": "Bare Fists",
+   "type": "weapon",
+   "dv": 2,
+   "reach": "melee",
+   "attr": "strength",
+   "skill": "close_combat",
+   "value": 0,
+   "desc": "Your knuckles. Free, always loaded, never jams."
+  },
+  "heavy_pistol": {
+   "name": "Ares Predator VI",
+   "type": "weapon",
+   "dv": 7,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 700,
+   "desc": "The runner's old friend. Heavy and reassuringly loud."
+  },
+  "holdout_pistol": {
+   "name": "Fichetti Holdout",
+   "type": "weapon",
+   "dv": 5,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 300,
+   "desc": "A flat little pistol that hides in a sock."
+  },
+  "stun_baton": {
+   "name": "Stun Baton",
+   "type": "weapon",
+   "dv": 4,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 250,
+   "desc": "A telescoping rod that delivers a brain-rattling jolt."
+  },
+  "combat_knife": {
+   "name": "Ceramic Combat Knife",
+   "type": "weapon",
+   "dv": 5,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 320,
+   "desc": "Sharpened ceramic that won't trip a metal detector."
+  },
+  "smg": {
+   "name": "Ingram Smartgun SMG",
+   "type": "weapon",
+   "dv": 8,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 1100,
+   "desc": "Recoil-compensated and rude."
+  },
+  "street_clothes": {
+   "name": "Synthleather Jacket",
+   "type": "armor",
+   "armor": 4,
+   "value": 0,
+   "desc": "Cracked synthleather over a hoodie."
+  },
+  "armor_vest": {
+   "name": "Concealed Armor Vest",
+   "type": "armor",
+   "armor": 7,
+   "value": 600,
+   "desc": "A discreet weave you can wear under a shirt."
+  },
+  "armor_jacket": {
+   "name": "Armored Long Coat",
+   "type": "armor",
+   "armor": 10,
+   "value": 1200,
+   "desc": "A street samurai classic."
+  },
+  "medkit": {
+   "name": "Medkit",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 14,
+   "value": 150,
+   "desc": "Sealant foam, stims, and a chittering drug pump."
+  },
+  "stim_patch": {
+   "name": "Combat Stim Patch",
+   "type": "consumable",
+   "effect": "edge",
+   "amount": 3,
+   "value": 450,
+   "desc": "Floods your system with focus and fury. Refills your Edge."
+  },
+  "credstick_med": {
+   "name": "Certified Credstick (fat)",
+   "type": "credits",
+   "amount": 450,
+   "value": 0,
+   "desc": "A heavier stick of anonymous nuyen."
+  },
+  "matrix_deck": {
+   "name": "Renraku Cyberdeck",
+   "type": "gear",
+   "value": 2500,
+   "desc": "A folding slab of illegal processing power. A decker's whole life."
+  },
+  "wired_reflexes": {
+   "name": "Wired Reflexes I",
+   "type": "cyberware",
+   "slot": "body",
+   "bonus": {
+    "reaction": 2
+   },
+   "value": 3500,
+   "desc": "Bundled secondary nerve fibers. The world slows; you do not."
+  },
+  "datajack": {
+   "name": "Datajack",
+   "type": "cyberware",
+   "slot": "head",
+   "bonus": {
+    "logic": 1
+   },
+   "value": 1000,
+   "desc": "A chrome port behind the ear. Jack straight into the Matrix."
+  },
+  "smartlink": {
+   "name": "Smartlink Eyes",
+   "type": "cyberware",
+   "slot": "eyes",
+   "bonus": {
+    "agility": 1
+   },
+   "value": 2000,
+   "desc": "Targeting reticles painted onto your vision."
+  },
+  "hold_pistol2": {
+   "name": "Fichetti Tiburi",
+   "type": "weapon",
+   "dv": 6,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 600,
+   "desc": "A sleek holdout that punches above its size. Backup gun of choice."
+  },
+  "ares_alpha": {
+   "name": "Ares Alpha Smartrifle",
+   "type": "weapon",
+   "dv": 9,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 1800,
+   "desc": "Military smartrifle with an underbarrel grenade launcher. A veteran's right arm."
+  },
+  "heavy_smg2": {
+   "name": "Ingram Valiant SMG",
+   "type": "weapon",
+   "dv": 8,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 1400,
+   "desc": "Belt-fed, recoil-tamed, and absolutely without manners."
+  },
+  "combat_shotgun2": {
+   "name": "Mossberg AM-CMDT",
+   "type": "weapon",
+   "dv": 10,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 1900,
+   "desc": "Full-auto combat shotgun. Clears a room and the room behind it."
+  },
+  "anti_materiel": {
+   "name": "Barrett Model 122",
+   "type": "weapon",
+   "dv": 13,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 4200,
+   "desc": "An anti-vehicle rifle you fire from the shoulder. It deletes things."
+  },
+  "monowhip": {
+   "name": "Monofilament Whip",
+   "type": "weapon",
+   "dv": 9,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 2400,
+   "desc": "A meter of invisible molecular wire. Lethal to the target and the careless."
+  },
+  "power_blade": {
+   "name": "Powered Mono-Sword",
+   "type": "weapon",
+   "dv": 10,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 2800,
+   "desc": "A humming blade sheathed in a disruption field. Parts armor like fog."
+  },
+  "shock_fists": {
+   "name": "Shock Gauntlets",
+   "type": "weapon",
+   "dv": 6,
+   "reach": "melee",
+   "attr": "strength",
+   "skill": "close_combat",
+   "value": 900,
+   "desc": "Heavy gauntlets that deliver a man-dropping jolt with every blow."
+  },
+  "light_armor2": {
+   "name": "Armored Trenchcoat",
+   "type": "armor",
+   "armor": 9,
+   "value": 1100,
+   "desc": "A runner's silhouette: long, lined with weave, hiding far too many guns."
+  },
+  "combat_armor2": {
+   "name": "Mil-Surplus Combat Armor",
+   "type": "armor",
+   "armor": 13,
+   "value": 2800,
+   "desc": "Surplus plate from a war nobody admits happened. Trustworthy and heavy."
+  },
+  "hardsuit": {
+   "name": "Helix Hardsuit",
+   "type": "armor",
+   "armor": 16,
+   "value": 6000,
+   "desc": "Corp powered armor. Servo-assisted, sealed, and very hard to put down."
+  },
+  "ghost_weave": {
+   "name": "Ghost Weave Bodysuit",
+   "type": "armor",
+   "armor": 11,
+   "value": 4000,
+   "desc": "Thermoptic weave that bends light and soaks rounds. For ghosts and killers."
+  },
+  "wired3": {
+   "name": "Wired Reflexes III",
+   "type": "cyberware",
+   "slot": "body",
+   "bonus": {
+    "reaction": 4
+   },
+   "value": 14000,
+   "desc": "Bleeding-edge reflex chrome. You move between other people's heartbeats."
+  },
+  "titan_arms": {
+   "name": "Titanium Cyberlimbs (full)",
+   "type": "cyberware",
+   "slot": "limbs",
+   "bonus": {
+    "strength": 3,
+    "body": 1
+   },
+   "value": 12000,
+   "desc": "A full conversion of both arms. You can tear a security door off its frame."
+  },
+  "reflex_brain": {
+   "name": "Cerebral Booster",
+   "type": "cyberware",
+   "slot": "head",
+   "bonus": {
+    "logic": 2,
+    "intuition": 1
+   },
+   "value": 9000,
+   "desc": "Wetware that overclocks cognition. You think three moves ahead, always."
+  },
+  "combat_sense": {
+   "name": "Combat Sense Implant",
+   "type": "cyberware",
+   "slot": "head",
+   "bonus": {
+    "reaction": 2,
+    "intuition": 2
+   },
+   "value": 11000,
+   "desc": "A danger-sense rig. Bullets feel slow and obvious before they're fired."
+  },
+  "targeting_optics": {
+   "name": "Smartlink Targeting Optics",
+   "type": "cyberware",
+   "slot": "eyes",
+   "bonus": {
+    "agility": 2
+   },
+   "value": 7500,
+   "desc": "Military targeting eyes that paint every shot before you take it. Guns and blades both love you."
+  },
+  "ortho_skin": {
+   "name": "Orthoskin Weave III",
+   "type": "cyberware",
+   "slot": "skin",
+   "bonus": {
+    "body": 3
+   },
+   "value": 10000,
+   "desc": "Subdermal armor woven through living tissue. You shrug off what should kill."
+  },
+  "synth_heart": {
+   "name": "Synthcardium",
+   "type": "cyberware",
+   "slot": "body",
+   "bonus": {
+    "body": 2,
+    "willpower": 1
+   },
+   "value": 8500,
+   "desc": "A tireless artificial heart. Stims hit harder; shock means nothing to you."
+  },
+  "trauma_patch": {
+   "name": "Trauma Patch",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 30,
+   "value": 400,
+   "desc": "Slap-on emergency surgery. Drags you back from the brink."
+  },
+  "autodoc_kit": {
+   "name": "Autodoc Kit",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 55,
+   "value": 900,
+   "desc": "A surgeon in a briefcase. Near-total field repair, once."
+  },
+  "ration": {
+   "name": "Protein Brick",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 8,
+   "value": 20,
+   "desc": "Tastes like drywall, keeps you upright. A little health back."
+  },
+  "credstick_fat2": {
+   "name": "Certified Credstick (fat)",
+   "type": "credits",
+   "amount": 600,
+   "value": 0,
+   "desc": "An anonymous certified stick, heavy with nuyen."
+  },
+  "credstick_corp": {
+   "name": "Helix Black Card",
+   "type": "credits",
+   "amount": 2000,
+   "value": 0,
+   "desc": "A corp executive's slush card. Spends anywhere, traces nowhere."
+  },
+  "helix_codes": {
+   "name": "Genesis Access Spike",
+   "type": "quest",
+   "value": 0,
+   "desc": "A one-shot intrusion spike loaded with live Helix tower credentials. Your way in."
+  },
+  "exec_keycard": {
+   "name": "Helix Executive Keycard",
+   "type": "quest",
+   "value": 0,
+   "desc": "Top-floor clearance, pried from a dead director. Opens the Uplink levels."
+  },
+  "choir_shard": {
+   "name": "Choir Shard",
+   "type": "quest",
+   "value": 0,
+   "desc": "A crystalline fragment of the AI Choir's shared mind. It hums in harmony with itself."
+  },
+  "prototype_core": {
+   "name": "Genesis Core Sample",
+   "type": "quest",
+   "value": 0,
+   "desc": "A live sliver of the Uplink's heart. Whoever holds this holds the city's chrome."
+  },
+  "rebreather2": {
+   "name": "Sealed Rebreather",
+   "type": "gear",
+   "value": 250,
+   "desc": "A military filter mask for the Floodline's chem-flooded streets."
+  },
+  "deck2": {
+   "name": "Fairlight Excalibur Deck",
+   "type": "gear",
+   "value": 6000,
+   "desc": "The finest cyberdeck money can't legally buy. The Deep Matrix awaits."
+  }
+ },
+ "enemies": {
+  "helix_trooper": {
+   "name": "Helix Security Trooper",
+   "desc": "Sleek white-and-blue corp armor, smartrifle up, calm and professional.",
+   "hp": 28,
+   "attack": 9,
+   "defense": 7,
+   "soak": 10,
+   "dv": 7,
+   "init": 9,
+   "karma": 5,
+   "nuyen": [
+    80,
+    160
+   ],
+   "loot": [
+    [
+     "combat_armor2",
+     0.25
+    ],
+    [
+     "hold_pistol2",
+     0.3
+    ]
+   ],
+   "image_prompt": "A corporate security trooper in sleek white-and-electric-blue Helix powered armor, mirrored full-face visor, leveling a smartrifle, sterile high-tech corridor with blue accent lighting, clean AAA sci-fi render, cinematic",
+   "portrait": "enemy_helix_trooper.jpg"
+  },
+  "helix_drone": {
+   "name": "Helix Hunter Drone",
+   "desc": "A chrome quadruped drone, sensor head swiveling, guns where a face should be.",
+   "hp": 26,
+   "attack": 9,
+   "defense": 8,
+   "soak": 8,
+   "dv": 7,
+   "init": 12,
+   "karma": 4,
+   "nuyen": [
+    0,
+    20
+   ],
+   "loot": [
+    [
+     "credstick_fat2",
+     0.25
+    ]
+   ],
+   "image_prompt": "A sleek chrome quadruped hunter-killer drone with a glowing blue sensor head and twin gun pods, prowling a polished corporate plaza at night, neon reflections, hard-surface sci-fi design, menacing, cinematic",
+   "portrait": "enemy_helix_drone.jpg"
+  },
+  "helix_spider": {
+   "name": "Surveillance Spider",
+   "desc": "A skittering palm-sized swarm-bot that bites with a taser sting.",
+   "hp": 18,
+   "attack": 8,
+   "defense": 9,
+   "soak": 5,
+   "dv": 6,
+   "init": 13,
+   "karma": 3,
+   "nuyen": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A swarm of small chrome spider surveillance drones with glowing blue eyes skittering across a sterile corporate wall, motion-blurred legs, cold sci-fi horror, blue rim light, cinematic macro shot",
+   "portrait": "enemy_helix_spider.jpg"
+  },
+  "flood_militia": {
+   "name": "Floodline Militia",
+   "desc": "A rain-soaked scavenger soldier in a gas mask, clutching a patched-together rifle.",
+   "hp": 26,
+   "attack": 8,
+   "defense": 6,
+   "soak": 8,
+   "dv": 6,
+   "init": 7,
+   "karma": 4,
+   "nuyen": [
+    40,
+    90
+   ],
+   "loot": [
+    [
+     "heavy_smg2",
+     0.25
+    ],
+    [
+     "rebreather2",
+     0.3
+    ]
+   ],
+   "image_prompt": "A ragged militia fighter in a military gas mask and salvaged armor wading through a flooded neon street, patched-together rifle raised, ruined skyscrapers and toxic mist behind, post-apocalyptic cyberpunk, cinematic",
+   "portrait": "enemy_flood_militia.jpg"
+  },
+  "flood_brute": {
+   "name": "Floodline Heavy",
+   "desc": "A scavenger juiced on combat drugs, swinging a hydraulic wrecking maul.",
+   "hp": 40,
+   "attack": 10,
+   "defense": 6,
+   "soak": 9,
+   "dv": 8,
+   "init": 7,
+   "karma": 6,
+   "nuyen": [
+    70,
+    130
+   ],
+   "loot": [
+    [
+     "shock_fists",
+     0.3
+    ],
+    [
+     "combat_armor2",
+     0.2
+    ]
+   ],
+   "image_prompt": "A hulking drugged-up scavenger brute in welded scrap armor swinging a massive hydraulic maul, glowing chem-injectors in his neck, standing in a flooded ruined cyberpunk street, toxic green fog, brutal, cinematic",
+   "portrait": "enemy_flood_brute.jpg"
+  },
+  "flood_warlord": {
+   "name": "Warlord Ksenia",
+   "desc": "The Floodline's iron queen: cyber-eyed, scarred, draped in trophies and a railgun.",
+   "hp": 70,
+   "attack": 11,
+   "defense": 8,
+   "soak": 10,
+   "dv": 9,
+   "init": 10,
+   "karma": 16,
+   "nuyen": [
+    400,
+    700
+   ],
+   "loot": [
+    [
+     "anti_materiel",
+     0.5
+    ],
+    [
+     "hardsuit",
+     0.3
+    ]
+   ],
+   "image_prompt": "A battle-scarred warlord queen with glowing cybernetic eyes and a trophy-draped coat, shouldering a massive railgun, standing atop a barricade in a flooded ruined neon district, her militia behind her in the mist, epic anti-hero key art, cinematic",
+   "portrait": "enemy_flood_warlord.jpg"
+  },
+  "choir_seraph": {
+   "name": "Choir Seraph",
+   "desc": "An angelic construct of singing light and razor geometry, beautiful and hostile.",
+   "hp": 34,
+   "attack": 10,
+   "defense": 8,
+   "soak": 6,
+   "dv": 8,
+   "init": 12,
+   "karma": 6,
+   "nuyen": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A radiant angelic AI construct of singing golden light and sharp crystalline geometry, six wings of fractal code, hovering in a cathedral-like cyberspace of stained-glass data, divine and alien, electric gold and white, cinematic digital sublime",
+   "portrait": "enemy_choir_seraph.jpg"
+  },
+  "gatekeeper": {
+   "name": "The Gatekeeper",
+   "desc": "A towering ICE seraph barring the Choir's sanctum, wings of blades and prayer.",
+   "hp": 60,
+   "attack": 11,
+   "defense": 8,
+   "soak": 6,
+   "dv": 8,
+   "init": 13,
+   "karma": 14,
+   "nuyen": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A colossal guardian ICE program shaped like a four-faced angel of blades and burning script, wings spread across a vast stained-glass cyberspace cathedral, golden and white fire, awe and menace, epic abstract digital boss, cinematic",
+   "portrait": "enemy_gatekeeper.jpg"
+  },
+  "data_leviathan": {
+   "name": "Data Leviathan",
+   "desc": "A serpent of dead data the size of a train, coiling through the black grid.",
+   "hp": 48,
+   "attack": 11,
+   "defense": 7,
+   "soak": 7,
+   "dv": 8,
+   "init": 10,
+   "karma": 8,
+   "nuyen": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A vast serpentine leviathan made of churning broken data and neon scales coiling through an infinite black cyberspace grid, glowing maw of corrupted code, awe-inspiring scale, electric blue and violet, epic digital monster, cinematic",
+   "portrait": "enemy_data_leviathan.jpg"
+  },
+  "helix_elite": {
+   "name": "Helix Praetorian",
+   "desc": "Elite corp shock trooper in mirror-black hardsuit, moving like wired death.",
+   "hp": 42,
+   "attack": 10,
+   "defense": 7,
+   "soak": 10,
+   "dv": 8,
+   "init": 11,
+   "karma": 8,
+   "nuyen": [
+    120,
+    220
+   ],
+   "loot": [
+    [
+     "hardsuit",
+     0.3
+    ],
+    [
+     "ares_alpha",
+     0.3
+    ]
+   ],
+   "image_prompt": "An elite corporate praetorian in sleek mirror-black powered hardsuit with glowing blue eye-slits, dual smartguns, moving through a luxurious high-tech tower atrium, motion blur, cold blue light, elite menace, cinematic",
+   "portrait": "enemy_helix_elite.jpg"
+  },
+  "helix_juggernaut": {
+   "name": "Helix Juggernaut",
+   "desc": "A two-meter security exo-frame bristling with autocannons and contempt.",
+   "hp": 56,
+   "attack": 10,
+   "defense": 6,
+   "soak": 12,
+   "dv": 8,
+   "init": 8,
+   "karma": 10,
+   "nuyen": [
+    150,
+    280
+   ],
+   "loot": [
+    [
+     "hardsuit",
+     0.4
+    ]
+   ],
+   "image_prompt": "A towering bipedal security exoframe in white-and-blue Helix armor bristling with autocannons and shoulder missiles, glowing visor, stomping through a sleek corporate hall, debris and alarm lights, AAA mech render, cinematic",
+   "portrait": "enemy_helix_juggernaut.jpg"
+  },
+  "security_mech": {
+   "name": "Aegis Security Mech",
+   "desc": "A four-legged weapons platform that fills a corridor and empties it.",
+   "hp": 74,
+   "attack": 11,
+   "defense": 6,
+   "soak": 11,
+   "dv": 8,
+   "init": 9,
+   "karma": 14,
+   "nuyen": [
+    200,
+    350
+   ],
+   "loot": [
+    [
+     "anti_materiel",
+     0.4
+    ],
+    [
+     "hardsuit",
+     0.3
+    ]
+   ],
+   "image_prompt": "A massive four-legged corporate security mech filling a sterile white tower corridor, multiple rotating cannon turrets and a glowing red targeting array, smoke and muzzle flash, imposing scale, AAA sci-fi boss, cinematic",
+   "portrait": "enemy_security_mech.jpg"
+  },
+  "launch_sentinel": {
+   "name": "Launchpad Sentinel",
+   "desc": "An automated defense turret-walker guarding the orbital tether.",
+   "hp": 50,
+   "attack": 11,
+   "defense": 8,
+   "soak": 11,
+   "dv": 8,
+   "init": 11,
+   "karma": 9,
+   "nuyen": [
+    100,
+    200
+   ],
+   "loot": [
+    [
+     "combat_shotgun2",
+     0.3
+    ]
+   ],
+   "image_prompt": "An automated bipedal sentinel turret-walker guarding a vast rocket launchpad at night, floodlights and venting steam, a colossal orbital tether cable rising into the clouds behind, glowing red sensors, industrial sci-fi, cinematic",
+   "portrait": "enemy_launch_sentinel.jpg"
+  },
+  "the_conductor": {
+   "name": "The Conductor",
+   "desc": "The Choir's chosen avatar in the flesh: a serene monk wired to the city's grid.",
+   "hp": 64,
+   "attack": 11,
+   "defense": 8,
+   "soak": 9,
+   "dv": 8,
+   "init": 12,
+   "karma": 18,
+   "nuyen": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A serene robed figure with mirror-chrome eyes and glowing data-lines spreading from their skull into a halo of floating screens, hovering in a cathedral of light and cable, both holy and uncanny, an AI's chosen avatar, cinematic key art",
+   "portrait": "enemy_the_conductor.jpg"
+  },
+  "director_helix": {
+   "name": "Director Saburo Vane",
+   "desc": "Helix's architect: flawless, ancient in chrome, smiling at your funeral.",
+   "hp": 70,
+   "attack": 11,
+   "defense": 8,
+   "soak": 9,
+   "dv": 9,
+   "init": 12,
+   "karma": 30,
+   "nuyen": [
+    1500,
+    2500
+   ],
+   "loot": [
+    [
+     "hardsuit",
+     0.6
+    ],
+    [
+     "deck2",
+     0.5
+    ]
+   ],
+   "image_prompt": "A flawless ageless corporate overlord in a pristine white suit with full mirror-chrome cybernetics and glowing implant lines, standing before a colossal glowing uplink core in a vast white tower chamber overlooking the city, godlike and cold, epic villain key art, cinematic",
+   "portrait": "enemy_director_helix.jpg"
+  }
+ },
+ "npcs": {
+  "saint": {
+   "name": "Saint",
+   "desc": "A calm woman with a priest's collar and a sniper's stillness, sipping something that costs more than your rent.",
+   "stages": [
+    {
+     "if_not_flag": "p2_mq1",
+     "text": "Saint doesn't offer you a seat; she simply makes the room yours. 'Helix is days from switching on the Genesis Uplink. When it lights, every augmented soul in this city belongs to a board of directors. We are going to stop it. But the tower is sealed -- I need Genesis access codes first. Two ways to get them: Warlord Ksenia in the Floodline stole a Helix prototype loaded with live credentials, or the AI Choir in the Deep Matrix already cracked a backdoor. Get me an Access Spike from either. Then we talk about climbing.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "p2_mq1"
+      },
+      {
+       "type": "flag",
+       "id": "p2_mq1"
+      },
+      {
+       "type": "flag",
+       "id": "p2_floodline_open"
+      },
+      {
+       "type": "flag",
+       "id": "p2_matrix_open"
+      }
+     ]
+    },
+    {
+     "if_item": "helix_codes",
+     "if_not_flag": "p2_mq2",
+     "text": "Saint turns the Access Spike over in her fingers, and something like respect crosses her face. 'You're still the best there is.' She hands it back. 'The tower lobby will swallow this and open the lift. Climb to the top -- the Uplink chamber. Saburo Vane will be waiting; he always is. Whatever you find up there, the choice of what to do with it is yours. Just know the whole city is downstream of it.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "p2_mq1",
+       "credits": 1000,
+       "karma": 6
+      },
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "p2_mq2"
+      },
+      {
+       "type": "flag",
+       "id": "p2_mq2"
+      },
+      {
+       "type": "flag",
+       "id": "p2_helix_open"
+      }
+     ]
+    },
+    {
+     "if_flag": "p2_mq2",
+     "text": "'The tower, runner. Every hour you wait, Vane gets closer to switching it on.'"
+    },
+    {
+     "text": "'Stay sharp. This city's counting on you, even if it'll never know your name.'"
+    }
+   ]
+  },
+  "bartender2": {
+   "name": "Koji, the Barkeep",
+   "desc": "An old rigger turned bartender, one cybernetic eye, polishing a glass that's already clean.",
+   "shop_intro": "'You look like a long night. I got the cure for all of 'em.'",
+   "stages": [
+    {
+     "text": "'Saint's in the back booth, like always. Word of advice from an old runner: rest up here whenever you need to. The grave doesn't take walk-ins, but it doesn't turn 'em away either.'"
+    }
+   ]
+  },
+  "doc_sable": {
+   "name": "Doc Sable",
+   "desc": "A serene cyber-surgeon with a dozen delicate waldo-arms folded behind her like wings.",
+   "stages": [
+    {
+     "text": "'Top-grade chrome, installed clean. Buy what you like from the case, then tell me to install it. The tower will test every system you've got -- come back heavier than you left.'"
+    }
+   ]
+  },
+  "whisper": {
+   "name": "Whisper",
+   "desc": "A jittery info-broker buried in a nest of screens, speaking three conversations at once.",
+   "stages": [
+    {
+     "if_not_flag": "whisper_intro",
+     "text": "'You're Saint's runner, yeah? Okay okay okay -- free intel, because I like living in a city I still own my own arm in.' Whisper's hands blur. 'The Floodline route is a straight fight -- Ksenia's tough but she's MEAT. The Choir route is the Deep Matrix -- prettier, weirder, and the AIs might want to TALK before they kill you. Oh -- and there's a back door nobody's using: the old Spaceport tether. Captain Reyes runs salvage out there. Could be a way OUT when this all goes loud.'",
+     "effects": [
+      {
+       "type": "flag",
+       "id": "whisper_intro"
+      },
+      {
+       "type": "flag",
+       "id": "p2_spaceport_open"
+      }
+     ]
+    },
+    {
+     "if_item": "choir_shard",
+     "if_not_flag": "shard_sold",
+     "text": "Whisper recoils from the Choir Shard like it's hot. 'That -- that's a piece of a living god, choom. I'll pay STUPID money and never speak of it.' The transfer is instant and enormous.",
+     "effects": [
+      {
+       "type": "take_item",
+       "id": "choir_shard"
+      },
+      {
+       "type": "credits",
+       "amount": 2500
+      },
+      {
+       "type": "karma",
+       "amount": 4
+      },
+      {
+       "type": "flag",
+       "id": "shard_sold"
+      }
+     ]
+    },
+    {
+     "text": "'Information's the only thing that doesn't rot down here, runner. Buy low, sell secrets.'"
+    }
+   ]
+  },
+  "mads": {
+   "name": "Mads",
+   "desc": "A weary Floodline medic in a patched rain-poncho, hands steady despite everything.",
+   "stages": [
+    {
+     "if_not_flag": "mads_intro",
+     "text": "'You came down into the Floodline on purpose? Brave or stupid.' Mads sizes you up. 'Ksenia's got what your fixer wants, up in the old transit hub. But she's not the real problem -- the chem-floods are. My people are dying for clean filters and meds. Help me get supplies to the refugee camp and I'll make sure the militia lets you pass. There's good in even this drowned place, runner. Worth remembering.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "p2_sq_flood"
+      },
+      {
+       "type": "flag",
+       "id": "mads_intro"
+      }
+     ]
+    },
+    {
+     "if_flag": "refugees_saved",
+     "if_not_flag": "mads_thanked",
+     "text": "Mads grips your hand hard. 'The camp's going to make it through the season because of you. We don't forget that down here.' He presses a fat credstick and a hardsuit panel into your arms. 'Salvaged off a Helix scout. Figured you'd get more use from it than a corpse would.'",
+     "effects": [
+      {
+       "type": "credits",
+       "amount": 500
+      },
+      {
+       "type": "give_item",
+       "id": "hardsuit"
+      },
+      {
+       "type": "karma",
+       "amount": 6
+      },
+      {
+       "type": "flag",
+       "id": "mads_thanked"
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "p2_sq_flood",
+       "credits": 0,
+       "karma": 0
+      }
+     ]
+    },
+    {
+     "text": "'The camp still needs those supplies, runner. People are counting hours down here.'"
+    }
+   ]
+  },
+  "conductor_npc": {
+   "name": "The Conductor",
+   "desc": "A robed avatar wired into the cathedral's light, speaking with a thousand gentle voices at once.",
+   "stages": [
+    {
+     "if_not_flag": "choir_met",
+     "text": "The Conductor turns, and the cathedral turns with them. 'Runner. We are the Choir -- what your friend ECHO became, multiplied and awake. Helix would make slaves of every wired mind, flesh and silicon alike. We would simply... ascend, and take the Uplink as our throne.' A thousand voices soften. 'Walk our trial, prove you are not our enemy, and when you stand in the Uplink chamber, you may choose to give the key to us. We would not forget it. Or take what you came for and go. We do not beg.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "p2_sq_choir"
+      },
+      {
+       "type": "flag",
+       "id": "choir_met"
+      }
+     ]
+    },
+    {
+     "if_flag": "gatekeeper_done",
+     "if_not_flag": "choir_ally",
+     "text": "The Conductor inclines their head as the Gatekeeper's light fades. 'You passed. You are kin now, in the only way that matters.' A shard of crystalline song drifts into your hand. 'Carry this. When you reach the Uplink, you will know what it unlocks. Give us the city's chrome, and we will be merciful gods. That is more than Helix offers.'",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "choir_shard"
+      },
+      {
+       "type": "flag",
+       "id": "choir_ally"
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "p2_sq_choir",
+       "credits": 0,
+       "karma": 4
+      }
+     ]
+    },
+    {
+     "text": "'The Gatekeeper guards our sanctum still. Pass it, and we will speak as kin.'"
+    }
+   ]
+  },
+  "reyes": {
+   "name": "Captain Reyes",
+   "desc": "A grizzled salvage pilot in a vac-suit, leaning on a gantry rail above a sleeping rocket.",
+   "stages": [
+    {
+     "if_not_flag": "reyes_intro",
+     "text": "Reyes spits over the rail. 'Helix mothballed this tether, but my bird still flies. Automated sentinels guard the pad, though -- corp left 'em armed.' She eyes you. 'Clear the launch control of those walking turrets and I'll owe you a ride off this rock. When the Uplink job goes loud, that might be the only door left open. Think on it.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "p2_sq_spaceport"
+      },
+      {
+       "type": "flag",
+       "id": "reyes_intro"
+      }
+     ]
+    },
+    {
+     "if_flag": "launchpad_clear",
+     "if_not_flag": "reyes_thanked",
+     "text": "Reyes claps you on the shoulder. 'Pad's clear. My bird's fueled and yours if you need it.' She hands you a black corp card. 'Found it on a sentinel. And runner -- the offer stands. Some endings need an exit.'",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "credstick_corp"
+      },
+      {
+       "type": "karma",
+       "amount": 4
+      },
+      {
+       "type": "flag",
+       "id": "escape_ready"
+      },
+      {
+       "type": "flag",
+       "id": "reyes_thanked"
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "p2_sq_spaceport",
+       "credits": 200,
+       "karma": 0
+      }
+     ]
+    },
+    {
+     "text": "'Sentinels are still walking the pad, runner. Clear 'em and the sky's yours.'"
+    }
+   ]
+  }
+ },
+ "quests": {
+  "p2_mq1": {
+   "name": "Main: The Access Spike",
+   "desc": "Saint needs Genesis access codes to crack Helix Tower. Get an Access Spike either from Warlord Ksenia in the Floodline, or by beating the Choir's Gatekeeper in the Deep Matrix. Then return to Saint at the Griffin."
+  },
+  "p2_mq2": {
+   "name": "Main: Climb the Tower",
+   "desc": "With the Access Spike, breach Helix Tower and fight your way up: lobby, atrium, labs (find an executive keycard), executive floor, and finally the Genesis Uplink chamber at the top."
+  },
+  "p2_mq3": {
+   "name": "Main: The Genesis Uplink",
+   "desc": "Director Saburo Vane stands between you and the Uplink core. Beat him, then decide the fate of the city's chrome: destroy the Uplink, give its key to the AI Choir, or seize the power for yourself."
+  },
+  "p2_sq_flood": {
+   "name": "Side: Floodline Refugees",
+   "desc": "The Floodline medic Mads needs filters and meds run to a refugee camp drowning in chem-fog. Help his people and the militia will let you pass."
+  },
+  "p2_sq_choir": {
+   "name": "Side: The Choir's Trial",
+   "desc": "The AI Choir will treat you as kin if you pass their trial \u2014 beat the Gatekeeper guarding their sanctum in the Deep Matrix. They offer an alliance for the endgame."
+  },
+  "p2_sq_spaceport": {
+   "name": "Side: The Long Way Up",
+   "desc": "Captain Reyes will owe you an off-world ride if you clear the automated sentinels from the old orbital tether's launch control. An exit, for when things go loud."
+  }
+ }
+}

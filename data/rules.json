@@ -1,0 +1,274 @@
+{
+ "archetypes": {
+  "street samurai": {
+   "key": "samurai",
+   "blurb": "Chrome and steel. The best gun and blade in the sprawl. Tanky, deadly, simple.",
+   "attrs": {
+    "body": 5,
+    "agility": 5,
+    "reaction": 4,
+    "strength": 4,
+    "logic": 2,
+    "intuition": 3,
+    "willpower": 3,
+    "charisma": 2
+   },
+   "skills": {
+    "close_combat": 4,
+    "firearms": 4
+   },
+   "weapon": "heavy_pistol",
+   "armor": "armor_jacket",
+   "items": [
+    "combat_knife",
+    "medkit",
+    "medkit"
+   ],
+   "cyberware": [
+    "wired_reflexes"
+   ],
+   "edge": 4,
+   "abilities": [
+    "adrenaline",
+    "killer_instinct"
+   ]
+  },
+  "decker": {
+   "key": "decker",
+   "blurb": "A ghost in the machine. Hacks the Matrix for nuyen and fights with data-spikes.",
+   "attrs": {
+    "body": 3,
+    "agility": 3,
+    "reaction": 4,
+    "strength": 2,
+    "logic": 5,
+    "intuition": 4,
+    "willpower": 3,
+    "charisma": 3
+   },
+   "skills": {
+    "firearms": 2,
+    "hacking": 5,
+    "close_combat": 1
+   },
+   "weapon": "holdout_pistol",
+   "armor": "armor_vest",
+   "items": [
+    "matrix_deck",
+    "medkit"
+   ],
+   "cyberware": [
+    "datajack"
+   ],
+   "edge": 3,
+   "abilities": [
+    "data_spike",
+    "system_overload"
+   ]
+  },
+  "mage": {
+   "key": "mage",
+   "blurb": "Bends mana to will. Hurls manabolts, heals wounds, stuns minds. Fragile but devastating.",
+   "attrs": {
+    "body": 3,
+    "agility": 3,
+    "reaction": 3,
+    "strength": 2,
+    "logic": 3,
+    "intuition": 4,
+    "willpower": 5,
+    "charisma": 4
+   },
+   "skills": {
+    "close_combat": 2,
+    "firearms": 1
+   },
+   "weapon": "stun_baton",
+   "armor": "street_clothes",
+   "items": [
+    "medkit",
+    "stim_patch"
+   ],
+   "cyberware": [],
+   "edge": 3,
+   "abilities": [
+    "manabolt",
+    "heal_spell",
+    "stunbolt"
+   ]
+  },
+  "rigger": {
+   "key": "rigger",
+   "blurb": "Commands drones and lays down fire. A walking weapons platform.",
+   "attrs": {
+    "body": 3,
+    "agility": 4,
+    "reaction": 4,
+    "strength": 3,
+    "logic": 4,
+    "intuition": 3,
+    "willpower": 3,
+    "charisma": 3
+   },
+   "skills": {
+    "firearms": 4,
+    "close_combat": 2
+   },
+   "weapon": "smg",
+   "armor": "armor_vest",
+   "items": [
+    "medkit",
+    "medkit"
+   ],
+   "cyberware": [
+    "smartlink"
+   ],
+   "edge": 3,
+   "abilities": [
+    "drone_strike",
+    "suppressing_fire"
+   ]
+  },
+  "face": {
+   "key": "face",
+   "blurb": "Charm, threats, and a hidden gun. Talks past trouble and gets the best prices.",
+   "attrs": {
+    "body": 3,
+    "agility": 4,
+    "reaction": 4,
+    "strength": 3,
+    "logic": 3,
+    "intuition": 4,
+    "willpower": 4,
+    "charisma": 5
+   },
+   "skills": {
+    "firearms": 3,
+    "close_combat": 3
+   },
+   "weapon": "heavy_pistol",
+   "armor": "armor_vest",
+   "items": [
+    "medkit",
+    "stim_patch",
+    "credstick_med"
+   ],
+   "cyberware": [],
+   "edge": 5,
+   "abilities": [
+    "intimidate",
+    "lucky_break"
+   ]
+  }
+ },
+ "abilities": {
+  "adrenaline": {
+   "name": "Adrenaline Surge",
+   "cost": 1,
+   "kind": "buff_atk",
+   "dice": 3,
+   "desc": "+3 attack dice for the rest of the fight."
+  },
+  "killer_instinct": {
+   "name": "Killer Instinct",
+   "cost": 2,
+   "kind": "attack",
+   "dice": 2,
+   "dv": 4,
+   "desc": "A focused, devastating strike (+2 dice, +4 DV)."
+  },
+  "data_spike": {
+   "name": "Data Spike",
+   "cost": 1,
+   "kind": "attack",
+   "dice": 0,
+   "dv": 6,
+   "attr": "logic",
+   "skill": "hacking",
+   "desc": "Ranged code attack using Logic + Hacking (DV 6)."
+  },
+  "system_overload": {
+   "name": "System Overload",
+   "cost": 2,
+   "kind": "debuff_def",
+   "value": 3,
+   "desc": "Cripple the target's defenses (-3 defense dice)."
+  },
+  "manabolt": {
+   "name": "Manabolt",
+   "cost": 1,
+   "kind": "attack",
+   "dice": 0,
+   "dv": 0,
+   "magic": true,
+   "pierce": true,
+   "desc": "Raw mana bolt. DV equals your Magic and pierces armor."
+  },
+  "heal_spell": {
+   "name": "Heal",
+   "cost": 2,
+   "kind": "heal",
+   "magic_mult": 3,
+   "desc": "Mend wounds (Magic x3 HP)."
+  },
+  "stunbolt": {
+   "name": "Stunbolt",
+   "cost": 2,
+   "kind": "attack",
+   "dice": 0,
+   "dv": 0,
+   "magic": true,
+   "pierce": true,
+   "stun": true,
+   "desc": "Mana stun. DV equals Magic, pierces armor, may stun (skip a turn)."
+  },
+  "drone_strike": {
+   "name": "Drone Strike",
+   "cost": 1,
+   "kind": "attack",
+   "dice": 1,
+   "dv": 6,
+   "desc": "Your combat drone strafes the target (DV 6)."
+  },
+  "suppressing_fire": {
+   "name": "Suppressing Fire",
+   "cost": 2,
+   "kind": "debuff_atk",
+   "value": 3,
+   "desc": "Pin the target down (-3 attack dice)."
+  },
+  "intimidate": {
+   "name": "Intimidate",
+   "cost": 2,
+   "kind": "intimidate",
+   "desc": "Try to terrify the target into fleeing."
+  },
+  "lucky_break": {
+   "name": "Lucky Break",
+   "cost": 1,
+   "kind": "heal_buff",
+   "heal": 8,
+   "value": 2,
+   "desc": "Heal 8 and gain +2 defense dice for the fight."
+  }
+ },
+ "attr_names": [
+  "body",
+  "agility",
+  "reaction",
+  "strength",
+  "logic",
+  "intuition",
+  "willpower",
+  "charisma"
+ ],
+ "cyber_slots": [
+  "head",
+  "eyes",
+  "body",
+  "limbs",
+  "skin"
+ ],
+ "attr_cap": 9,
+ "skill_cap": 9
+}

@@ -1,0 +1,16 @@
+[
+ {
+  "id": "part1_neon_sprawl",
+  "title": "NEON SPRAWL  -  Part 1: Bad Debts",
+  "subtitle": "Part 1 of 2  -  the Redline runner's tale",
+  "tagline": "A nobody runner in the Redline slums takes one bad job and ends up holding a secret the whole city will kill for. Start here.",
+  "order": 1
+ },
+ {
+  "id": "part2_ghost_protocol",
+  "title": "NEON SPRAWL  -  Part 2: Ghost Protocol",
+  "subtitle": "Part 2 of 2  -  the war for the wire",
+  "tagline": "Six months after the Idol job, a corp called Helix is building a killswitch for every body in the city, and a choir of awakened AIs wants it for themselves. You're a legend now. Time to earn it. (A separate, harder campaign - start a fresh runner here.)",
+  "order": 2
+ }
+]

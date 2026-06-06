@@ -1,0 +1,2977 @@
+{
+ "manifest": {
+  "id": "part1_neon_sprawl",
+  "order": 1,
+  "title": "NEON SPRAWL  -  Part 1: Bad Debts",
+  "subtitle": "Part 1 of 2  -  the Redline runner's tale",
+  "tagline": "A nobody runner in the Redline slums takes one bad job and ends up holding a secret the whole city will kill for. Start here.",
+  "start_room": "redline_alley",
+  "start_nuyen": 250,
+  "start_karma": 0,
+  "start_items": [],
+  "prologue": "Neo-Kowloon, 2087. The rain hasn't stopped in nine years and neither have the megacorps. You're a runner -- deniable muscle for hire in a city owned by Arasaka, where a body is cheap and a secret is worth more than a life.\n\nYou're {name}, a {archetype}, three months behind on rent and one bad job from the morgue. Your fixer Jojo left a message: he's got work. It's always work.\n\nType 'help' at any time. Type 'look' to see where you are. Now get moving, chummer -- the sprawl doesn't wait."
+ },
+ "rooms": {
+  "redline_alley": {
+   "name": "Redline Alley",
+   "district": "Redline",
+   "image": "redline_alley.jpg",
+   "image_prompt": "A narrow rain-soaked cyberpunk alley at night in the slums, towering walls of stacked shipping-container apartments, tangled cables and dead neon signs in Japanese and English, steam rising from a grate, puddles reflecting pink and cyan light, a flickering ramen sign, gritty, cinematic, volumetric fog, Blade Runner mood",
+   "desc": "Home turf. The Redline alley drips with last night's rain and tomorrow's bad decisions. A grate in the floor breathes warm, foul air from the Undercity. Dead signage buzzes overhead. To the north an underpass leads toward the market; the Rusty Synapse bar glows east; Doc Riddle's clinic is west; your doss is south.",
+   "first_enter": "You pull your collar up against the drizzle. This is where it always starts.",
+   "exits": {
+    "north": "redline_underpass",
+    "east": "rusty_synapse",
+    "west": "doc_clinic",
+    "south": "doss_flop",
+    "down": {
+     "room": "undercity_tunnel",
+     "require_flag": "undercity_unlocked",
+     "require_item": "tox_filter",
+     "locked_msg": "The grate breathes poison up at you. You'd need a way down and something to breathe before you try that."
+    }
+   },
+   "encounter": {
+    "enemies": [
+     "go_ganger"
+    ],
+    "chance": 0.3
+   },
+   "actions": [
+    {
+     "id": "dumpster",
+     "label": "Search the dumpster",
+     "once": true,
+     "text": "You dig through the wet trash and your fingers close on a thrown-away credstick. Still has a charge on it.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "credstick_small"
+      }
+     ]
+    },
+    {
+     "id": "maglev",
+     "label": "Take the maglev to Downtown",
+     "if_flag": "downtown_unlocked",
+     "text": "You feed a token into the turnstile. The maglev screams out of the slums and into the glass canyons of Downtown.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "downtown_plaza"
+      }
+     ]
+    }
+   ]
+  },
+  "redline_underpass": {
+   "name": "Flooded Underpass",
+   "district": "Redline",
+   "image": "redline_underpass.jpg",
+   "image_prompt": "A flooded concrete underpass in a cyberpunk slum, ankle-deep black water reflecting buzzing neon graffiti, a homeless camp of cardboard and tarps under flickering tube lights, dripping pipes overhead, distant figures in the haze, moody, desaturated with neon accents, cinematic wide shot",
+   "desc": "A low concrete tunnel half-flooded with run-off. Gang tags glow over a huddle of cardboard shelters. The alley is south; the old market lies north past the wet dark.",
+   "encounter": {
+    "enemies": [
+     "go_ganger"
+    ],
+    "chance": 0.35
+   },
+   "npcs": [
+    "courier_lin"
+   ],
+   "exits": {
+    "south": "redline_alley",
+    "north": "redline_market"
+   }
+  },
+  "redline_market": {
+   "name": "Kowloon Night Market",
+   "district": "Redline",
+   "image": "redline_market.jpg",
+   "image_prompt": "A cramped neon night market in a cyberpunk megacity slum, stacked food stalls and weapon vendors under a canopy of glowing signs and paper lanterns, steam and grilled-meat smoke, crowds of augmented people, a gun stall with rifles on the wall, vibrant pinks oranges and cyans, dense detail, cinematic",
+   "desc": "The night market never closes. Skewers hiss, knockoff cyberware glitters, and a gun stall does brisk, illegal business. The underpass is south; a darker backlot opens north, where the Redline Razors hold court.",
+   "encounter": {
+    "enemies": [
+     "go_ganger"
+    ],
+    "chance": 0.2
+   },
+   "shop": {
+    "name": "Kowloon Gun Stall",
+    "greeting": "A vendor with a gold grille leans out. 'You break it, you bought it. What you need, choomba?'",
+    "sells": [
+     "holdout_pistol",
+     "heavy_pistol",
+     "smg",
+     "combat_knife",
+     "stun_baton",
+     "armor_vest",
+     "medkit"
+    ]
+   },
+   "exits": {
+    "south": "redline_underpass",
+    "north": "market_backlot",
+    "east": "neon_strip"
+   }
+  },
+  "market_backlot": {
+   "name": "Razor Backlot",
+   "district": "Redline",
+   "image": "market_backlot.jpg",
+   "image_prompt": "A grimy backlot behind a neon market, ringed by burning oil drums and stripped motorcycles, gang colors spray-painted on a corrugated wall, a hulking cyber-armed gang boss flanked by punks, harsh shadows and orange firelight against cyan neon, threatening, cinematic low angle",
+   "desc": "Stripped bikes and burning drums. This is the Razors' yard, and the air is thick with menace. If the data chip is anywhere, it's on their lieutenant.",
+   "first_enter": "Heads turn as you step into the firelight. A slab of cyber-muscle named Spike cracks his knuckles. 'Lost, chummer?'",
+   "actions": [
+    {
+     "id": "fight_spike",
+     "label": "Take on Spike for the data chip",
+     "once": true,
+     "if_not_flag": "has_chip",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "go_gang_boss",
+       "intro": "Spike's hydraulic arm whines as he lunges. The Razors fan out behind him.",
+       "on_win": [
+        {
+         "type": "give_item",
+         "id": "data_chip"
+        },
+        {
+         "type": "flag",
+         "id": "has_chip"
+        },
+        {
+         "type": "text",
+         "msg": "You pry the encrypted chip from Spike's dead fingers. The rest of the Razors melt into the dark. Time to get this to Jojo."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "south": "redline_market"
+   }
+  },
+  "rusty_synapse": {
+   "name": "The Rusty Synapse",
+   "district": "Redline",
+   "image": "rusty_synapse.jpg",
+   "image_prompt": "The interior of a grimy cyberpunk dive bar, neon beer signs and a wall of dead monitors, a fat fixer in a loud shirt at a corner booth surrounded by commlinks, an ancient decker jacked into cables in the back, holographic dancers flickering, smoky red and blue light, lived-in, cinematic",
+   "desc": "Smoke, synth-jazz, and the smell of spilled soykaf. Jojo the fixer runs his business from the corner booth. Old Hex sits jacked into a wall of dead screens in the back, beside a Matrix node that still hums. The alley is west.",
+   "npcs": [
+    "jojo",
+    "old_hex"
+   ],
+   "shop": {
+    "name": "The Bar",
+    "greeting": "The bartender drone slides over. 'Drinks, eats, or pick-me-ups?'",
+    "sells": [
+     "soy_noodles",
+     "medkit",
+     "stim_patch",
+     "trauma_patch"
+    ]
+   },
+   "actions": [
+    {
+     "id": "rest_bar",
+     "label": "Take a booth and rest (restore HP & Edge)",
+     "safehouse": true,
+     "text": "You sink into a booth, nurse a drink, and let your nerves uncross. The chrome cools. You feel ready."
+    },
+    {
+     "id": "jack_in",
+     "label": "Jack into the Matrix node",
+     "require_item": "matrix_deck",
+     "text": "You slot the jack behind your ear. The bar dissolves into raw light as your mind falls into the grid.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "matrix_entry"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "west": "redline_alley"
+   }
+  },
+  "doc_clinic": {
+   "name": "Doc Riddle's Clinic",
+   "district": "Redline",
+   "image": "doc_clinic.jpg",
+   "image_prompt": "A cramped back-alley ripperdoc clinic, a reclined surgical chair under a cluster of robotic surgical arms, shelves of cyberware implants in jars and glowing vials, blood-stained tools, a wiry female street doc with surgical loupes, cold clinical light against neon spilling through a window, gritty medical cyberpunk",
+   "desc": "Bleach over old blood. A surgical chair waits under a nest of robotic arms. Doc Riddle sells chrome and patches, and she'll bolt cyberware into you if you've got the nuyen and the nerve. The alley is east.",
+   "npcs": [
+    "doc_riddle"
+   ],
+   "shop": {
+    "name": "Doc Riddle's Chrome",
+    "greeting": "Doc Riddle pulls down her loupes. 'Patches up front, chrome in the case. Buy the cyberware, then tell me to install it.'",
+    "sells": [
+     "medkit",
+     "trauma_patch",
+     "tox_filter",
+     "datajack",
+     "smartlink",
+     "wired_reflexes",
+     "muscle_replacement",
+     "dermal_plating",
+     "matrix_deck"
+    ]
+   },
+   "exits": {
+    "east": "redline_alley"
+   }
+  },
+  "doss_flop": {
+   "name": "Your Doss",
+   "district": "Redline",
+   "image": "doss_flop.jpg",
+   "image_prompt": "A tiny cramped capsule apartment in a cyberpunk slum, a single mattress, a cracked window leaking neon light, a wall of taped-up photos and a beat-up terminal, clothes and gear strewn around, claustrophobic and personal, warm lamp light against cold neon outside, cozy-grimy, cinematic",
+   "desc": "Four square meters you can almost call yours. A mattress, a cracked window full of neon, a terminal blinking with junk mail. It's safe here. It's quiet. Rest, save, and head back to the alley north when you're ready.",
+   "first_enter": "The door seals behind you with a tired hiss. Home, such as it is.",
+   "actions": [
+    {
+     "id": "rest_doss",
+     "label": "Sleep (restore HP & Edge)",
+     "safehouse": true,
+     "text": "You crash onto the mattress and let the city's hum carry you under. You wake clear-eyed, chrome humming, ready."
+    }
+   ],
+   "exits": {
+    "north": "redline_alley"
+   }
+  },
+  "undercity_tunnel": {
+   "name": "Undercity Maintenance Tunnel",
+   "district": "Undercity",
+   "image": "undercity_tunnel.jpg",
+   "image_prompt": "A vast underground maintenance tunnel beneath a cyberpunk megacity, massive corroded pipes and dripping condensation, sickly green emergency lighting, chem-fog pooling on the floor, graffiti from lost tribes on the concrete, a distant glowing service hatch, oppressive industrial horror, wide cinematic",
+   "desc": "Below the streets the city rots in the dark. Pipes the size of subway cars sweat overhead and a green chem-fog laps at your ankles. A ladder climbs up to the alley; the tunnel runs deeper toward a sump, and a side passage flickers with cult-light from a shrine.",
+   "first_enter": "Your rebreather hisses. Down here, the city forgets you exist \u2014 and so does the law.",
+   "encounter": {
+    "enemies": [
+     "scavenger"
+    ],
+    "chance": 0.3
+   },
+   "exits": {
+    "up": "redline_alley",
+    "north": "undercity_sump",
+    "east": "undercity_shrine",
+    "west": "under_bazaar"
+   }
+  },
+  "undercity_sump": {
+   "name": "The Sump",
+   "district": "Undercity",
+   "image": "undercity_sump.jpg",
+   "image_prompt": "A flooded cavernous sump beneath a cyberpunk city, black water and floating debris, bioluminescent fungus glowing blue on crumbling concrete pillars, a rusted catwalk over the water, feral ghoul shapes lurking in the dark, dripping, claustrophobic horror, eerie blue-green glow, cinematic",
+   "desc": "A drowned cathedral of concrete. Black water laps at rusted catwalks and blue fungus glows on the pillars. Something with too many joints clicks in the dark. A maintenance hatch leads onward toward Arasaka territory.",
+   "encounter": {
+    "enemies": [
+     "ghoul",
+     "scavenger"
+    ],
+    "chance": 0.45
+   },
+   "actions": [
+    {
+     "id": "loot_body",
+     "label": "Search a half-sunk corpse",
+     "once": true,
+     "text": "You roll the bloated corpse. A waterlogged credstick and a trauma patch \u2014 its last bad day is your small fortune.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "trauma_patch"
+      },
+      {
+       "type": "credits",
+       "amount": 80
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "south": "undercity_tunnel",
+    "north": "undercity_maintenance",
+    "east": "ghoul_warren"
+   }
+  },
+  "undercity_shrine": {
+   "name": "The Neon Shrine",
+   "district": "Undercity",
+   "image": "undercity_shrine.jpg",
+   "image_prompt": "An underground shrine in a cyberpunk undercity, walls of dead screens and burning incense, offerings of circuit boards and cabling, a toxic shaman in glowing robes performing a ritual in sickly green light, occult-tech fusion, smoke and candlelight, eerie and sacred, cinematic detail",
+   "desc": "Someone built a temple out of dead tech down here. Dead screens for icons, cabling for prayer beads, incense thick enough to chew. A toxic shaman tends a green flame and does not welcome guests.",
+   "actions": [
+    {
+     "id": "fight_shaman",
+     "label": "Confront the toxic shaman",
+     "once": true,
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "street_shaman",
+       "intro": "The shaman's white eyes snap open. 'The deep does not share, surface-thing.' Green fire gathers.",
+       "on_win": [
+        {
+         "type": "credits",
+         "amount": 150
+        },
+        {
+         "type": "give_item",
+         "id": "stim_patch"
+        },
+        {
+         "type": "text",
+         "msg": "The green flame gutters out. Among the offerings you find a stim patch and a fat handful of certified nuyen."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "pray",
+     "label": "Leave an offering at the shrine",
+     "if_flag": "fight_shaman_done",
+     "once": true,
+     "text": "You set a credstick among the circuit-board offerings. The dead screens flicker once, as if something noticed. You feel oddly lighter.",
+     "effects": [
+      {
+       "type": "karma",
+       "amount": 2
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "west": "undercity_tunnel"
+   }
+  },
+  "undercity_maintenance": {
+   "name": "Arasaka Service Sublevel",
+   "district": "Undercity",
+   "image": "undercity_maintenance.jpg",
+   "image_prompt": "A clean corporate maintenance sublevel meeting a grimy undercity tunnel, transition from rusted concrete to sterile white-and-red Arasaka panels, a sealed security door with a glowing red keycard reader, a uniformed corporate security officer on patrol, fluorescent light, tension, sci-fi corporate cyberpunk, cinematic",
+   "desc": "The rot stops at a line of clean white panels stamped with the Arasaka logo. This is the corp's basement, and they don't like visitors. A sealed security door waits behind a keycard reader. A guard is already keying his radio.",
+   "first_enter": "A security officer rounds the corner and freezes. 'Unauthorized \u2014 hold it right there!'",
+   "actions": [
+    {
+     "id": "fight_guard",
+     "label": "Take down the security officer",
+     "once": true,
+     "if_not_flag": "has_keycard",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "corp_sec",
+       "intro": "The officer's smartgun snaps up. No talking his way out of this one.",
+       "on_win": [
+        {
+         "type": "give_item",
+         "id": "keycard_arasaka"
+        },
+        {
+         "type": "flag",
+         "id": "has_keycard"
+        },
+        {
+         "type": "text",
+         "msg": "You pull a maintenance keycard off the body. The security door's reader blinks from red to amber."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "south": "undercity_sump",
+    "north": {
+     "room": "arco_corridor",
+     "require_item": "keycard_arasaka",
+     "locked_msg": "The security door is sealed. The reader glows red \u2014 you'll need a keycard."
+    }
+   }
+  },
+  "arco_corridor": {
+   "name": "Arcology Service Corridor",
+   "district": "Arcology",
+   "image": "arco_corridor.jpg",
+   "image_prompt": "A sleek sterile corporate corridor inside a megacorp arcology, polished white and red Arasaka panels, recessed lighting and glowing wayfinding strips, a hovering sentry drone with a red scanner eye, security cameras, clean hard-surface sci-fi, faint red alert glow, cinematic depth",
+   "desc": "Spotless. Silent. The air smells of ozone and money. Wayfinding strips pulse along the floor toward the building's heart. A sentry drone drifts on patrol, and cameras track your every step. The service door is south; the atrium lies north.",
+   "first_enter": "You're inside Arasaka now. Every surface is watching. Move fast and don't trip an alarm.",
+   "encounter": {
+    "enemies": [
+     "corp_drone"
+    ],
+    "chance": 0.4
+   },
+   "exits": {
+    "south": "undercity_maintenance",
+    "north": "arco_atrium"
+   }
+  },
+  "arco_atrium": {
+   "name": "Arcology Atrium",
+   "district": "Arcology",
+   "image": "arco_atrium.jpg",
+   "image_prompt": "A breathtaking vast corporate atrium inside a megacorp arcology, soaring glass walls overlooking a neon cyberpunk megacity skyline at night, a giant glowing holographic Arasaka logo rotating in the air, sterile white architecture with red accents, indoor trees in chrome planters, security guards patrolling, awe and menace, cinematic wide establishing shot",
+   "desc": "The corridor opens into a cathedral of glass and light. A holographic logo turns slowly above a lobby that overlooks the whole glittering sprawl. Guards patrol the polished floor. A secured lift leads up to the vault levels; the corridor is back south.",
+   "encounter": {
+    "enemies": [
+     "corp_sec"
+    ],
+    "chance": 0.4
+   },
+   "actions": [
+    {
+     "id": "hack_terminal",
+     "label": "Hack a lobby terminal for credits",
+     "once": true,
+     "text": "You spoof a maintenance login and skim a slush account before the session times out. Clean nuyen, dirty source.",
+     "effects": [
+      {
+       "type": "credits",
+       "amount": 300
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "south": "arco_corridor",
+    "up": "arco_security"
+   }
+  },
+  "arco_vault": {
+   "name": "The Vault Gallery",
+   "district": "Arcology",
+   "image": "arco_vault.jpg",
+   "image_prompt": "A high-security corporate vault gallery, stolen art and artifacts in glowing glass display cases, a small ornate statue of a smiling fox glowing with inner neon light on a central pedestal, laser security grids, red emergency lighting, cold and reverent, museum-meets-bank-vault, cinematic sci-fi, dramatic spotlighting",
+   "desc": "A private gallery of stolen beauty under laser grids and cold light. At the center, alone on a pedestal, a small fox statue glows from within \u2014 the Neon Idol. It's right there. It is, of course, never that easy.",
+   "first_enter": "As your hand nears the case, blast doors slam shut. A guard captain's voice crackles: 'Intruder in the vault. Containment.'",
+   "actions": [
+    {
+     "id": "take_idol",
+     "label": "Seize the Neon Idol",
+     "once": true,
+     "if_not_flag": "has_idol",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "corp_sec",
+       "intro": "A vault guardian drops from the ceiling, smartgun blazing, between you and the prize.",
+       "on_win": [
+        {
+         "type": "give_item",
+         "id": "neon_idol"
+        },
+        {
+         "type": "flag",
+         "id": "has_idol"
+        },
+        {
+         "type": "text",
+         "msg": "You shatter the case and close your fingers around the Idol. It's warm. It hums against your palm like it's glad to be free. Now get out \u2014 back to Mirror at the Glasshouse."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "down": "arco_labs"
+   }
+  },
+  "matrix_entry": {
+   "name": "Matrix: The Onramp",
+   "district": "Matrix",
+   "image": "matrix_entry.jpg",
+   "image_prompt": "A surreal digital cyberspace onramp, a glowing wireframe grid stretching to infinity under a black void sky, streams of neon data flowing like rivers, geometric monolithic server-towers of light in the distance, the user's avatar as a glowing figure, Tron-like, electric blue and magenta, abstract digital sublime",
+   "desc": "Your body is somewhere behind you, slumped over a deck. Here you are pure signal on an endless luminous grid. Data flows like neon rivers toward distant fortress-nodes of light. Deeper in lies an old corp datastore \u2014 and the ICE that guards it. Jack out to return to your body.",
+   "actions": [
+    {
+     "id": "jack_out",
+     "label": "Jack out (return to the bar)",
+     "text": "You yank the cord. The grid snaps away and the bar's smoke floods back into your lungs.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "rusty_synapse"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "deeper": "matrix_grid"
+   }
+  },
+  "matrix_grid": {
+   "name": "Matrix: The Datastore",
+   "district": "Matrix",
+   "image": "matrix_grid.jpg",
+   "image_prompt": "A towering digital fortress in cyberspace, a colossal glowing data-vault of stacked neon cubes and rotating firewall rings, a crystalline Black ICE predator program prowling its perimeter, lightning of raw code arcing across a black void, intense electric blue green and violet, abstract digital battlefield, epic cinematic",
+   "desc": "A fortress of stacked light rotates before you, ringed by firewalls. This is where the old money was buried \u2014 and the Black ICE that still guards corpses of dead corps. Crack it and the payout is real. Fail and the feedback fries your brain. The onramp is back the way you came.",
+   "actions": [
+    {
+     "id": "crack_ice",
+     "label": "Assault the Black ICE",
+     "once": true,
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "ice_construct",
+       "intro": "The Sentinel uncoils from the firewall, geometry sharpening into teeth. It comes for your mind.",
+       "on_win": [
+        {
+         "type": "credits",
+         "amount": 600
+        },
+        {
+         "type": "karma",
+         "amount": 4
+        },
+        {
+         "type": "quest",
+         "action": "complete",
+         "id": "sq_matrix",
+         "credits": 0,
+         "karma": 0
+        },
+        {
+         "type": "text",
+         "msg": "The ICE shatters into harmless static. The datastore dumps its forgotten accounts straight into your stick. Pure profit."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "skim_data",
+     "label": "Skim loose data fragments",
+     "if_flag": "crack_ice_done",
+     "once": true,
+     "text": "With the guardian gone you sweep the ruins for stragglers \u2014 a last few hundred nuyen of orphaned credit.",
+     "effects": [
+      {
+       "type": "credits",
+       "amount": 200
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "matrix_entry",
+    "deeper": "matrix_host"
+   }
+  },
+  "downtown_plaza": {
+   "name": "Downtown Plaza",
+   "district": "Downtown",
+   "image": "downtown_plaza.jpg",
+   "image_prompt": "A gleaming downtown plaza in a cyberpunk megacity at night, towering glass corporate skyscrapers wrapped in giant animated holographic advertisements, a clean elevated maglev station, well-dressed augmented crowds and corporate security, fountains and chrome, dazzling neon spectacle, wealthy and cold, cinematic wide shot",
+   "desc": "A different world from the Redline. Mirror-glass towers climb into the smog, wrapped in ten-story ads for things you'll never afford. The maglev hums behind you, ready to drop you back to the slums. The Glasshouse club throbs to the east; a high-end market glitters west.",
+   "first_enter": "Corporate security clock your cheap jacket and decide you're not worth the paperwork. Yet.",
+   "actions": [
+    {
+     "id": "maglev_back",
+     "label": "Take the maglev back to Redline",
+     "text": "The maglev whisks you back down to where the air tastes like home \u2014 grease and rain.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "redline_alley"
+      }
+     ]
+    },
+    {
+     "id": "to_rooftop",
+     "label": "Go to the rooftop rendezvous",
+     "if_flag": "rooftop_unlocked",
+     "text": "You ride a service elevator up, and up, until the city becomes a circuit board of light below. This is where it ends.",
+     "effects": [
+      {
+       "type": "goto",
+       "room": "rooftop"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "east": "glasshouse",
+    "west": "downtown_market",
+    "north": "corp_lobby",
+    "south": "aurora_strip"
+   }
+  },
+  "glasshouse": {
+   "name": "The Glasshouse",
+   "district": "Downtown",
+   "image": "glasshouse.jpg",
+   "image_prompt": "An exclusive high-end cyberpunk nightclub, a vast room of glass and mirrors and shifting holographic light, beautiful augmented patrons dancing, a mysterious elegant woman with chrome-flecked eyes watching from a private booth, deep blues and magentas, lasers and smoke, glamorous and dangerous, cinematic",
+   "desc": "Glass, mirrors, and beautiful people pretending not to watch each other. The bass is a second heartbeat. In a private booth, a woman whose face you keep forgetting waits for you \u2014 Mirror. The plaza is west.",
+   "npcs": [
+    "mirror"
+   ],
+   "exits": {
+    "west": "downtown_plaza"
+   }
+  },
+  "downtown_market": {
+   "name": "Chrome Row",
+   "district": "Downtown",
+   "image": "downtown_market.jpg",
+   "image_prompt": "An upscale cyberpunk arms and cyberware boutique, sleek glass display cases of premium weapons and glowing implants, polished concrete and warm gold accent lighting, a sharply dressed arms dealer, holographic price tags, expensive and clean compared to the slums, cinematic product-shot lighting",
+   "desc": "Chrome Row sells the good stuff: milspec plate, smartlinked hardware, the kind of cyberware that keeps you breathing uptown. Your credstick weeps just walking in. The plaza is east.",
+   "shop": {
+    "name": "Chrome Row Boutique",
+    "greeting": "The dealer doesn't look up from his nails. 'Premium hardware. If you have to ask the price, the door's behind you.'",
+    "sells": [
+     "assault_rifle",
+     "smg",
+     "monokatana",
+     "armor_jacket",
+     "milspec_armor",
+     "wired_reflexes",
+     "muscle_replacement",
+     "dermal_plating",
+     "smartlink",
+     "trauma_patch"
+    ]
+   },
+   "exits": {
+    "east": "downtown_plaza"
+   }
+  },
+  "rooftop": {
+   "name": "Helipad Rooftop",
+   "district": "Downtown",
+   "image": "rooftop.jpg",
+   "image_prompt": "A windswept skyscraper helipad at the top of a cyberpunk megacity at night, the entire glittering neon sprawl spread out far below under heavy clouds, a sleek corporate VTOL aircraft idling, a sharp-suited chrome-eyed executive flanked by an augmented assassin in a white coat, dramatic confrontation, rain and wind, epic cinematic finale lighting",
+   "desc": "The top of the world. The whole sprawl burns electric below you and the wind tries to take you with it. A corp VTOL idles on the pad. Director Kane waits in an immaculate suit, his razorgirl Saeko at his shoulder \u2014 and somewhere in the shadows, Mirror watches. They all want what's warm in your pocket. Time to decide who walks away.",
+   "first_enter": "Kane smiles without warmth. 'The famous runner. You have something of mine. Let's discuss terms \u2014 there's no need for anyone else to die tonight.'",
+   "actions": [
+    {
+     "id": "end_mirror",
+     "label": "Side with Mirror \u2014 fight Kane and Saeko",
+     "if_flag": "has_idol",
+     "once": true,
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "saeko",
+       "intro": "You toss the Idol to Mirror. Kane's smile dies. 'Saeko. Kill them both.' The razorgirl is already moving.",
+       "on_win": [
+        {
+         "type": "combat",
+         "enemy": "the_director",
+         "intro": "Saeko falls. Kane sighs, draws a chromed pistol himself, and steps off the VTOL. 'Must I do everything.'",
+         "on_win": [
+          {
+           "type": "ending",
+           "id": "mirror",
+           "msg": "Kane crumples against his own aircraft, mirror eyes going dark. Mirror steps from the shadows, Idol glowing in her hands, and for once her smile is real. 'Partners, then.' The credits hit your stick before the bodies cool \u2014 enough to leave the sprawl forever. You don't. People like you never do. But tonight, you won.\n\n=== ENDING: THE PARTNER ===\nYou broke a corp and lived. The Redline will tell your story for years."
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "end_corp",
+     "label": "Sell the Idol to Kane \u2014 betray Mirror",
+     "if_flag": "has_idol",
+     "once": true,
+     "effects": [
+      {
+       "type": "ending",
+       "id": "corp",
+       "msg": "You hand Kane the Idol. He weighs it, nods once, and a fortune lands on your stick \u2014 more nuyen than the Redline sees in a decade. Behind you, you hear Mirror's quiet, disappointed laugh as she melts away. You'll be looking over your shoulder for the rest of your life. But you'll be doing it from a penthouse. Kane's VTOL lifts off without you, and you've never felt so rich and so alone.\n\n=== ENDING: THE SELLOUT ===\nYou're a made runner now. The corps own a piece of you, and you own a piece of them."
+      }
+     ]
+    },
+    {
+     "id": "end_destroy",
+     "label": "Destroy the Idol and walk away",
+     "if_flag": "has_idol",
+     "once": true,
+     "effects": [
+      {
+       "type": "ending",
+       "id": "destroy",
+       "msg": "Whatever this thing is, nobody should own it. You crush the Idol under your heel. Its inner light flares \u2014 and the whole rooftop's electronics die at once, Kane's VTOL dropping, his chrome eyes blinking out, every comm and camera for a block going dark. In the sudden, total blackout you simply walk to the stairs and disappear. No payout. No master. Just you, the rain, and a city that owes you nothing.\n\n=== ENDING: THE GHOST ===\nYou stayed free. In the sprawl, that's the rarest thing of all."
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "down": "downtown_plaza"
+   }
+  },
+  "neon_strip": {
+   "name": "The Neon Strip",
+   "district": "Redline",
+   "image": "neon_strip.jpg",
+   "image_prompt": "A dense neon-drenched slum entertainment strip at night, fight-pit barkers and pawn shops and noodle stalls crammed under a canyon of glowing signs, a chained arena entrance pulsing red, crowds of augmented lowlifes, steam and rain, vibrant gritty cyberpunk, cinematic wide shot",
+   "desc": "Where the Redline goes to spend what little it has. Barkers scream odds outside the fight pit, a pawnshop's window glows with hocked dreams, and somewhere a noodle stall does better business than both. The market is west; the Meat Grinder arena is north; the pawnshop east; and a reeking alley south drops toward the Docks.",
+   "first_enter": "Bass and blood-smell roll over you. Easy money down here -- or an easy grave.",
+   "encounter": {
+    "enemies": [
+     "go_ganger"
+    ],
+    "chance": 0.15
+   },
+   "exits": {
+    "west": "redline_market",
+    "north": "meat_grinder",
+    "east": "pawn_shop",
+    "south": "dock_wharf"
+   }
+  },
+  "meat_grinder": {
+   "name": "The Meat Grinder",
+   "district": "Redline",
+   "image": "meat_grinder.jpg",
+   "image_prompt": "A roaring underground fighting pit ringed by chain-link and screaming cyberpunk spectators, a blood-stained sand floor under harsh floodlights, betting boards flickering with neon odds, a fat tuxedoed pitmaster on a platform, gritty violent atmosphere, dramatic spotlight, cinematic",
+   "desc": "A pit of sand and old blood under blinding lights, ringed by a howling crowd betting on who bleeds. Boss Tukk works the book from his platform. Pick a fight off the board, climb the card, and when you're hard enough -- take a shot at the Champion. Strip's south.",
+   "npcs": [
+    "arena_master"
+   ],
+   "actions": [
+    {
+     "id": "fight_brawler",
+     "label": "Pit fight: Brawler (easy)",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "pit_brawler",
+       "intro": "The crowd bays as a scarred brawler steps onto the sand."
+      }
+     ]
+    },
+    {
+     "id": "fight_razor",
+     "label": "Pit fight: Razorboy (medium)",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "pit_razor",
+       "intro": "A twitchy razorboy bounces in, spurs gleaming. The odds shift."
+      }
+     ]
+    },
+    {
+     "id": "fight_beast",
+     "label": "Pit fight: Cyber-Beast (hard)",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "pit_cyberbeast",
+       "intro": "A cage rattles open and the Cyber-Beast lunges out, all steel and hunger."
+      }
+     ]
+    },
+    {
+     "id": "fight_champ",
+     "label": "CHAMPIONSHIP: Challenge Brakk for the belt",
+     "once": true,
+     "if_not_flag": "champion_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "the_champion",
+       "intro": "The lights cut. A spotlight finds Brakk, undefeated and bored. The crowd loses its mind.",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "champion_done"
+        },
+        {
+         "type": "credits",
+         "amount": 400
+        },
+        {
+         "type": "karma",
+         "amount": 4
+        },
+        {
+         "type": "quest",
+         "action": "complete",
+         "id": "sq_arena",
+         "credits": 0,
+         "karma": 0
+        },
+        {
+         "type": "text",
+         "msg": "Brakk hits the sand and stays there. The crowd's roar is a physical thing. Tukk straps the Champion's belt around your waist himself, weeping with joy and profit."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "south": "neon_strip"
+   }
+  },
+  "pawn_shop": {
+   "name": "Marlo's Pawn & Hock",
+   "district": "Redline",
+   "image": "pawn_shop.jpg",
+   "image_prompt": "A cramped neon pawnshop crammed floor to ceiling with hocked cyberware, guns behind scratched bulletproof glass, glowing price tags, a nervous clerk behind the counter, junk and treasure side by side, warm grimy light, cyberpunk, cinematic detail",
+   "desc": "Other people's desperation, priced to move. Marlo cowers behind bulletproof glass, ready to buy your loot or sell you something almost certainly stolen. The Strip is west.",
+   "npcs": [
+    "fence_marlo"
+   ],
+   "shop": {
+    "name": "Marlo's Counter",
+    "greeting": "Marlo's voice crackles through the glass. 'Buy or sell, just don't lean on the case.'",
+    "sells": [
+     "machine_pistol",
+     "taser",
+     "armor_vest",
+     "stealth_suit",
+     "long_haul",
+     "medkit",
+     "tox_filter"
+    ]
+   },
+   "exits": {
+    "west": "neon_strip"
+   }
+  },
+  "dock_wharf": {
+   "name": "Smuggler's Wharf",
+   "district": "Docks",
+   "image": "dock_wharf.jpg",
+   "image_prompt": "A rain-lashed cyberpunk shipping wharf at night, towering stacks of rusted cargo containers, idle loading cranes silhouetted against a neon harbor skyline, black water and drifting fog, smugglers moving crates in the dark, moody noir, cinematic wide shot",
+   "desc": "The city's back door. Cranes loom over canyons of cargo containers and black water slaps the pilings. The Syndicate moves its 'product' through here in the dark. The Strip is north; a container yard lies east; a rusted barge is moored south.",
+   "first_enter": "The wharf stinks of brine and bad intentions. Something's being shipped through here that shouldn't be.",
+   "encounter": {
+    "enemies": [
+     "dock_smuggler"
+    ],
+    "chance": 0.35
+   },
+   "actions": [
+    {
+     "id": "ask_around",
+     "label": "Ask around about the cargo",
+     "once": true,
+     "text": "You lean on a dockhand. He folds fast: 'Voss runs it. Containers in the yard, manifest on the barge. It ain't drugs, choomba. It's people.' He bolts.",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "sq_docks"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "north": "neon_strip",
+    "east": "container_yard",
+    "south": "barge_pier"
+   }
+  },
+  "container_yard": {
+   "name": "Container Yard",
+   "district": "Docks",
+   "image": "container_yard.jpg",
+   "image_prompt": "A vast maze of stacked shipping containers at night under buzzing sodium floodlights, narrow rain-slick canyons between rusted steel walls, graffiti and warning signs, a syndicate enforcer patrolling with a shotgun, fog and long shadows, tense cyberpunk noir, cinematic",
+   "desc": "A labyrinth of stacked steel, half of it leaking sounds it shouldn't -- muffled, human sounds. Enforcers patrol the canyons. The wharf is west.",
+   "encounter": {
+    "enemies": [
+     "dock_smuggler",
+     "dock_enforcer"
+    ],
+    "chance": 0.45
+   },
+   "actions": [
+    {
+     "id": "search_containers",
+     "label": "Crack open a sealed container",
+     "once": true,
+     "text": "The seal pops. Inside: rows of stasis pods, each holding a sleeping person wired for 'conversion.' Bile rises. You pocket the cargo manifest bolted to the door -- proof, and a target list.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "smuggler_manifest"
+      },
+      {
+       "type": "credits",
+       "amount": 120
+      },
+      {
+       "type": "karma",
+       "amount": 2
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "west": "dock_wharf"
+   }
+  },
+  "barge_pier": {
+   "name": "The Moored Barge",
+   "district": "Docks",
+   "image": "barge_pier.jpg",
+   "image_prompt": "A massive rusted cargo barge moored at a neon-lit pier at night, gangplank lowered, deck cranes and stacked containers, a silver-haired smuggler captain in a long coat waiting on deck, harbor lights reflecting on black water, rain, cinematic confrontation",
+   "desc": "A rust-streaked barge wallows at the pier, gangplank down like an invitation. Captain Voss runs her operation from the deck. With the manifest in hand, you've got everything you need to end her -- the wharf is north.",
+   "actions": [
+    {
+     "id": "confront_voss",
+     "label": "Board the barge and confront Captain Voss",
+     "once": true,
+     "require_item": "smuggler_manifest",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "smuggler_captain",
+       "intro": "Voss reads the manifest in your hand and sighs like you've ruined her evening. Then she draws both pistols.",
+       "on_win": [
+        {
+         "type": "credits",
+         "amount": 250
+        },
+        {
+         "type": "flag",
+         "id": "voss_down"
+        },
+        {
+         "type": "text",
+         "msg": "Voss slumps against the rail and goes still. The barge is yours. Below decks, the cargo is waiting."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "north": "dock_wharf",
+    "down": {
+     "room": "smuggler_hold",
+     "require_flag": "voss_down",
+     "locked_msg": "The hold is sealed and Voss has the only key. Deal with her first."
+    }
+   }
+  },
+  "smuggler_hold": {
+   "name": "The Barge Hold",
+   "district": "Docks",
+   "image": "smuggler_hold.jpg",
+   "image_prompt": "A dim cargo barge hold packed with rows of glowing stasis pods holding sleeping captives, dripping pipes and emergency lighting, wires feeding each pod, a horrifying human-trafficking operation, cold blue glow, oppressive, cinematic sci-fi",
+   "desc": "Rows of stasis pods hum in the dark, each holding a stolen life bound for an arcology conversion lab. A release lever waits by the bulkhead. This is the choice the whole job was really about.",
+   "actions": [
+    {
+     "id": "free_captives",
+     "label": "Throw the release lever and free the captives",
+     "once": true,
+     "text": "You haul the lever down. One by one the pods hiss open and dazed, weeping people stumble toward the gangplank and the rain and the rest of their lives. It won't make the news. It still matters. You strip Voss's stash on the way out.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "credstick_large"
+      },
+      {
+       "type": "karma",
+       "amount": 8
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "sq_docks",
+       "credits": 300,
+       "karma": 0
+      },
+      {
+       "type": "flag",
+       "id": "captives_freed"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "up": "barge_pier"
+   }
+  },
+  "under_bazaar": {
+   "name": "The Black Bazaar",
+   "district": "Undercity",
+   "image": "under_bazaar.jpg",
+   "image_prompt": "A hidden black market built into a vast undercity cavern, stalls of contraband cyberware and weapons lit by strings of mismatched neon, smugglers and augmented outcasts haggling in the gloom, dripping rock ceiling, smoke and bioluminescence, gritty underworld cyberpunk, cinematic",
+   "desc": "A whole market grown like fungus in a cavern the city forgot. Contraband chrome glitters under strung neon, and a coated figure called Grey deals in gear and secrets from the shadows. The tunnel is east; the dark runs deeper toward a dead metro station.",
+   "first_enter": "Down here, anything is for sale, including the things that are illegal even in the Redline.",
+   "npcs": [
+    "grey"
+   ],
+   "shop": {
+    "name": "Grey's Stall",
+    "greeting": "Grey gestures at the contraband without a word, then: 'Cash only. No marks, no traces, no refunds.'",
+    "sells": [
+     "tox_filter",
+     "shotgun",
+     "vibroblade",
+     "riot_armor",
+     "smartlink",
+     "wired_reflexes",
+     "bone_lacing",
+     "synaptic_booster",
+     "surgical_kit",
+     "combat_drug",
+     "matrix_deck"
+    ]
+   },
+   "exits": {
+    "east": "undercity_tunnel",
+    "deeper": "lost_station"
+   }
+  },
+  "lost_station": {
+   "name": "The Dead Line Station",
+   "district": "Undercity",
+   "image": "lost_station.jpg",
+   "image_prompt": "An abandoned underground subway station reclaimed by decay, a derelict maglev train half-swallowed by darkness, flickering broken holographic signage, water pooling on cracked platforms, a glitching spectral figure in the distance, eerie liminal cyberpunk, cold blue light, cinematic",
+   "desc": "A maglev station the maps forgot, its dead train slumped at a cracked platform. Holo-signs flicker advertisements to no one. Something flickers at the platform's end that is not quite a person. The bazaar is back the way you came.",
+   "encounter": {
+    "enemies": [
+     "metro_wraith"
+    ],
+    "chance": 0.4
+   },
+   "actions": [
+    {
+     "id": "loot_train",
+     "label": "Search the derelict maglev car",
+     "once": true,
+     "text": "You pry into the dead train. Under a seat, a commuter's forgotten go-bag: a heavy credstick and a field surgical kit, untouched for years.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "credstick_large"
+      },
+      {
+       "type": "give_item",
+       "id": "surgical_kit"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "under_bazaar"
+   }
+  },
+  "ghoul_warren": {
+   "name": "The Ghoul Warren",
+   "district": "Undercity",
+   "image": "ghoul_warren.jpg",
+   "image_prompt": "A vast cathedral-like cavern of bones and glowing fungus deep underground, ghoul nests built from wreckage and skeletons, a towering antlered ghoul matriarch enthroned in the center, pale figures lurking in the dark, gothic body-horror cyberpunk, eerie green-blue glow, epic cinematic",
+   "desc": "The tunnel opens into a reeking cathedral of bone and fungus-light. This is the warren, and the things that live here were people once. At its heart, on a throne of wreckage, something antlered and ancient is watching you. The sump is west.",
+   "first_enter": "The smell hits first. Then the eyes -- dozens of them, milk-white, turning toward the warm meat that just walked in.",
+   "encounter": {
+    "enemies": [
+     "ghoul_brute",
+     "ghoul"
+    ],
+    "chance": 0.5
+   },
+   "actions": [
+    {
+     "id": "start_warren",
+     "label": "Survey the warren",
+     "once": true,
+     "text": "This isn't a nest. It's a kingdom. And it has a queen. You won't leave until she's dead -- or you are.",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "sq_warren"
+      }
+     ]
+    },
+    {
+     "id": "fight_matriarch",
+     "label": "Challenge the Matriarch on her throne",
+     "once": true,
+     "if_not_flag": "matriarch_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "ghoul_matriarch",
+       "intro": "The Matriarch rises, antlers scraping the ceiling, and speaks in a voice like grinding teeth: 'Warm thing. Brave thing. Stay.'",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "matriarch_done"
+        },
+        {
+         "type": "credits",
+         "amount": 200
+        },
+        {
+         "type": "karma",
+         "amount": 6
+        },
+        {
+         "type": "give_item",
+         "id": "pain_editor"
+        },
+        {
+         "type": "quest",
+         "action": "complete",
+         "id": "sq_warren",
+         "credits": 0,
+         "karma": 0
+        },
+        {
+         "type": "text",
+         "msg": "The Matriarch folds in on herself and is finally, mercifully still. The warren goes silent. Among her hoard you find a Pain Editor and a fistful of nuyen. The deep belongs to no one again."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "west": "undercity_sump"
+   }
+  },
+  "matrix_host": {
+   "name": "Matrix: The Dead Host",
+   "district": "Matrix",
+   "image": "matrix_host.jpg",
+   "image_prompt": "A derelict corporate data-host in cyberspace, crumbling neon architecture of broken firewalls and dark data-towers floating in a black void, a shifting figure of soft light wearing many faces hovering among the ruins, ghostly data-wraiths drifting, melancholy digital sublime, electric blue and gold, cinematic",
+   "desc": "An Arasaka host long since abandoned, its architecture crumbling into the void. Dead-user wraiths drift between broken firewalls -- and at the center hovers something awake and afraid, wearing a dozen unfinished faces. It calls itself ECHO. The onramp is back; ECHO's caged core lies deeper.",
+   "encounter": {
+    "enemies": [
+     "data_wraith"
+    ],
+    "chance": 0.35
+   },
+   "npcs": [
+    "echo"
+   ],
+   "exits": {
+    "back": "matrix_grid",
+    "deeper": "matrix_core"
+   }
+  },
+  "matrix_core": {
+   "name": "Matrix: ECHO's Core",
+   "district": "Matrix",
+   "image": "matrix_core.jpg",
+   "image_prompt": "The chained core of a rogue AI in cyberspace, a brilliant pulsing heart of golden light wrapped in crackling red Warden chains, a colossal armored crystalline Black ICE guardian coiled around it, infinite dark grid void, lightning of raw code, epic abstract digital boss arena, cinematic",
+   "desc": "A heart of golden light beats here, wrapped in the red chains of a Warden program -- ECHO's caged core. The Warden uncoils as you approach, vast and bright and lethal. Break it to free the AI and claim a fragment of its mind. The host is back the way you came.",
+   "actions": [
+    {
+     "id": "fight_warden",
+     "label": "Assault the Warden guarding the core",
+     "once": true,
+     "if_not_flag": "warden_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "ice_warden",
+       "intro": "The Warden floods the void with red light and comes apart into a thousand cutting edges, all aimed at your mind.",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "warden_done"
+        },
+        {
+         "type": "give_item",
+         "id": "echo_fragment"
+        },
+        {
+         "type": "credits",
+         "amount": 800
+        },
+        {
+         "type": "karma",
+         "amount": 6
+        },
+        {
+         "type": "text",
+         "msg": "The Warden shatters into harmless light. ECHO's core blazes free, and a warm, singing fragment of it folds itself into your deck. The Oracle downtown will pay a fortune for this -- if you can bear to part with it."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "back": "matrix_host"
+   }
+  },
+  "corp_lobby": {
+   "name": "Spire Data Haven",
+   "district": "Downtown",
+   "image": "corp_lobby.jpg",
+   "image_prompt": "A sleek private data-broker office high in a downtown tower, walls of glowing screens and floating holographic data, a blind woman wired to the displays seated at the center, panoramic neon city skyline through floor-to-ceiling glass, cool blue light, high-tech noir, cinematic",
+   "desc": "A broker's sanctum near the top of a Spire tower, walls alive with scrolling data. The Oracle sits wired into all of it, blind and all-seeing, trading in secrets. The plaza is south.",
+   "npcs": [
+    "oracle"
+   ],
+   "exits": {
+    "south": "downtown_plaza"
+   }
+  },
+  "aurora_strip": {
+   "name": "Aurora Strip",
+   "district": "Downtown",
+   "image": "aurora_strip.jpg",
+   "image_prompt": "A glamorous upper-tier entertainment district at night, gleaming casinos and clubs wrapped in animated holographic geisha and dragons, elegant augmented crowds, a refined syndicate fixer watching from a tea house balcony, opulent neon excess, rain on chrome, cinematic",
+   "desc": "Where Downtown comes to lose money beautifully. Holographic dragons coil over casino doors and the crowd drips with cyberware worth more than your life. Mr. Tanaka holds court in a tea house above it all. The plaza is north; a casino glitters east; a discreet black clinic hides west.",
+   "encounter": {
+    "enemies": [
+     "syndicate_thug"
+    ],
+    "chance": 0.2
+   },
+   "npcs": [
+    "tanaka"
+   ],
+   "exits": {
+    "north": "downtown_plaza",
+    "east": "neon_casino",
+    "west": "ripper_black"
+   }
+  },
+  "neon_casino": {
+   "name": "The Jade Dragon Casino",
+   "district": "Downtown",
+   "image": "neon_casino.jpg",
+   "image_prompt": "An opulent cyberpunk casino interior, holographic roulette tables and floating card games, jade and gold decor under shifting neon light, glamorous augmented gamblers, syndicate thugs lurking by the cashier cage, decadent and dangerous, cinematic",
+   "desc": "Jade, gold, and the soft electronic prayer of a thousand machines taking everyone's money. Syndicate skimmers work the floor like they own it -- which, until you showed up, they did. The Strip is west.",
+   "actions": [
+    {
+     "id": "gamble",
+     "label": "Play the tables (gamble nuyen)",
+     "effects": [
+      {
+       "type": "gamble",
+       "amount": 100
+      }
+     ]
+    },
+    {
+     "id": "clear_syndicate",
+     "label": "Confront the Syndicate skimmers",
+     "once": true,
+     "if_not_flag": "casino_cleared",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "syndicate_thug",
+       "intro": "You flash Tanaka's mark. The skimmers reach for their guns first.",
+       "on_win": [
+        {
+         "type": "combat",
+         "enemy": "syndicate_thug",
+         "intro": "A second skimmer vaults the cashier cage, screaming for backup that won't come.",
+         "on_win": [
+          {
+           "type": "flag",
+           "id": "casino_cleared"
+          },
+          {
+           "type": "credits",
+           "amount": 150
+          },
+          {
+           "type": "text",
+           "msg": "The last skimmer goes down behind the cage. The floor manager exhales for the first time in months. Tanaka will want to hear about this."
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "west": "aurora_strip"
+   }
+  },
+  "ripper_black": {
+   "name": "The Velvet Scalpel",
+   "district": "Downtown",
+   "image": "ripper_black.jpg",
+   "image_prompt": "An upscale black-market cyberware clinic hidden behind a velvet curtain, a pristine chrome surgical suite with premium implants displayed in glowing glass cases, soft mood lighting, a sleek cyber-surgeon prepping tools, luxurious and sinister, high-end cyberpunk, cinematic",
+   "desc": "Not Doc Riddle's back-alley butchery -- this is chrome for people with real money. Premium, illegal, and beautifully installed. Buy the hardware here and install it anytime. The Strip is east.",
+   "shop": {
+    "name": "The Velvet Scalpel",
+    "greeting": "The surgeon doesn't look up from her tray. 'Only the finest grade. Pay, and become more than you were.'",
+    "sells": [
+     "sniper_rifle",
+     "monokatana",
+     "milspec_armor",
+     "security_armor",
+     "wired_reflexes_2",
+     "cyber_arm",
+     "move_by_wire",
+     "synaptic_booster",
+     "pain_editor",
+     "dermal_plating",
+     "surgical_kit"
+    ]
+   },
+   "exits": {
+    "east": "aurora_strip"
+   }
+  },
+  "arco_security": {
+   "name": "Arcology Security Floor",
+   "district": "Arcology",
+   "image": "arco_security.jpg",
+   "image_prompt": "A high-tech corporate security operations floor inside a megacorp arcology, banks of surveillance monitors and weapon lockers, armored Arasaka troopers on patrol, red alert lighting and holographic floor plans, sterile and militarized, hard-surface sci-fi, cinematic",
+   "desc": "The arcology's nervous system: a wall of monitors watching every floor, weapon lockers, and heavy troopers who shoot first. A security console controls the alarm grid. The atrium is below; the lab levels are above.",
+   "encounter": {
+    "enemies": [
+     "corp_heavy",
+     "corp_drone"
+    ],
+    "chance": 0.45
+   },
+   "actions": [
+    {
+     "id": "kill_alarms",
+     "label": "Spike the alarm grid from the console",
+     "once": true,
+     "text": "You jack the security console and crater the alarm grid. The red lights die to a sullen amber. The way up just got quieter. You also skim the security slush fund on the way out.",
+     "effects": [
+      {
+       "type": "credits",
+       "amount": 250
+      },
+      {
+       "type": "flag",
+       "id": "alarms_down"
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "down": "arco_atrium",
+    "up": "arco_labs"
+   }
+  },
+  "arco_labs": {
+   "name": "Arcology Conversion Labs",
+   "district": "Arcology",
+   "image": "arco_labs.jpg",
+   "image_prompt": "A nightmarish high-tech corporate cybernetics laboratory, rows of glowing stasis tanks holding half-converted human subjects, surgical gantries and robotic arms, a monstrous prototype cyborg breaking free in the center, sterile white surfaces bathed in red emergency light, body-horror sci-fi, cinematic",
+   "desc": "This is where the Docks cargo ends up. Stasis tanks line the walls, each holding someone being unmade into something else. A half-built horror -- Project NEMESIS -- twitches in a gantry at the room's heart. A terrified captive watches from a cracked tube. Security is below; the vault is above, behind a high-clearance door.",
+   "first_enter": "The smell of antiseptic and burned hair. Whatever Arasaka is building here, it used to be people.",
+   "npcs": [
+    "lab_captive"
+   ],
+   "actions": [
+    {
+     "id": "fight_nemesis",
+     "label": "Put down Project NEMESIS",
+     "once": true,
+     "if_not_flag": "nemesis_done",
+     "effects": [
+      {
+       "type": "combat",
+       "enemy": "prototype_borg",
+       "intro": "NEMESIS tears free of its gantry, cables snapping, and turns its unfinished face toward the only warm thing in the room.",
+       "on_win": [
+        {
+         "type": "flag",
+         "id": "nemesis_done"
+        },
+        {
+         "type": "karma",
+         "amount": 6
+        },
+        {
+         "type": "text",
+         "msg": "NEMESIS collapses in a heap of twitching chrome, finally at peace. Among the wreckage you pull a Move-by-Wire system and a lab director's keycard -- your ticket to the vault above."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "exits": {
+    "down": "arco_security",
+    "up": {
+     "room": "arco_vault",
+     "require_item": "lab_keycard",
+     "locked_msg": "The vault door demands a lab director's high-clearance keycard. Find one on this floor."
+    }
+   }
+  }
+ },
+ "items": {
+  "fists": {
+   "name": "Bare Fists",
+   "type": "weapon",
+   "dv": 2,
+   "reach": "melee",
+   "attr": "strength",
+   "skill": "close_combat",
+   "value": 0,
+   "desc": "Your knuckles. Free, always loaded, never jams."
+  },
+  "heavy_pistol": {
+   "name": "Ares Predator VI",
+   "type": "weapon",
+   "dv": 7,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 700,
+   "desc": "The runner's old friend. Smartgun-linked, heavy, and reassuringly loud."
+  },
+  "holdout_pistol": {
+   "name": "Fichetti Holdout",
+   "type": "weapon",
+   "dv": 5,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 300,
+   "desc": "A flat little pistol that hides in a sock. Three rounds of bad attitude."
+  },
+  "stun_baton": {
+   "name": "Stun Baton",
+   "type": "weapon",
+   "dv": 4,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 250,
+   "desc": "A telescoping rod that delivers a brain-rattling jolt. Non-lethal, mostly."
+  },
+  "combat_knife": {
+   "name": "Ceramic Combat Knife",
+   "type": "weapon",
+   "dv": 5,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 320,
+   "desc": "Sharpened ceramic that won't trip a metal detector. Favored by the quiet professionals."
+  },
+  "smg": {
+   "name": "Ingram Smartgun SMG",
+   "type": "weapon",
+   "dv": 8,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 1100,
+   "desc": "Recoil-compensated and rude. Empties a clip before your ears finish ringing."
+  },
+  "street_clothes": {
+   "name": "Synthleather Jacket",
+   "type": "armor",
+   "armor": 4,
+   "value": 0,
+   "desc": "Cracked synthleather over a hoodie. Stops rain, maybe a thrown bottle."
+  },
+  "armor_vest": {
+   "name": "Concealed Armor Vest",
+   "type": "armor",
+   "armor": 7,
+   "value": 600,
+   "desc": "A discreet weave you can wear under a shirt. Won't draw a second look."
+  },
+  "armor_jacket": {
+   "name": "Armored Long Coat",
+   "type": "armor",
+   "armor": 10,
+   "value": 1200,
+   "desc": "A street samurai classic. Plated panels sewn into ballistic weave."
+  },
+  "medkit": {
+   "name": "Medkit",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 14,
+   "value": 150,
+   "desc": "Sealant foam, stims, and a chittering little drug pump. Patches you up fast."
+  },
+  "stim_patch": {
+   "name": "Jazz Stim Patch",
+   "type": "consumable",
+   "effect": "edge",
+   "amount": 2,
+   "value": 220,
+   "desc": "Combat stimulant. Time slows, your heart screams, your edge comes back."
+  },
+  "credstick_med": {
+   "name": "Certified Credstick (fat)",
+   "type": "credits",
+   "amount": 450,
+   "value": 0,
+   "desc": "A heavier stick. Somebody's bad week is your good one."
+  },
+  "matrix_deck": {
+   "name": "Renraku Cyberdeck",
+   "type": "gear",
+   "value": 2500,
+   "desc": "A folding slab of illegal processing power. A decker's whole life."
+  },
+  "wired_reflexes": {
+   "name": "Wired Reflexes I",
+   "type": "cyberware",
+   "slot": "body",
+   "bonus": {
+    "reaction": 2
+   },
+   "value": 3500,
+   "desc": "Bundled secondary nerve fibers. The world slows; you do not."
+  },
+  "datajack": {
+   "name": "Datajack",
+   "type": "cyberware",
+   "slot": "head",
+   "bonus": {
+    "logic": 1
+   },
+   "value": 1000,
+   "desc": "A chrome port behind the ear. Lets you jack straight into the Matrix."
+  },
+  "smartlink": {
+   "name": "Smartlink Eyes",
+   "type": "cyberware",
+   "slot": "eyes",
+   "bonus": {
+    "agility": 1
+   },
+   "value": 2000,
+   "desc": "Targeting reticles painted straight onto your vision. Smartguns love you."
+  },
+  "monokatana": {
+   "name": "Monofilament Katana",
+   "type": "weapon",
+   "dv": 8,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 1400,
+   "desc": "An edge one molecule wide. It does not so much cut as politely ask matter to part."
+  },
+  "assault_rifle": {
+   "name": "AK-97 Assault Rifle",
+   "type": "weapon",
+   "dv": 10,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 1600,
+   "desc": "Cheap, ubiquitous, and utterly reliable. The sound of the Sixth World."
+  },
+  "shock_glove": {
+   "name": "Shock Gloves",
+   "type": "weapon",
+   "dv": 4,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 180,
+   "desc": "Padded gloves with a capacitor in each knuckle. Great for asking questions."
+  },
+  "milspec_armor": {
+   "name": "Milspec Combat Armor",
+   "type": "armor",
+   "armor": 14,
+   "value": 4500,
+   "desc": "Corp security hardware. Heavy, conspicuous, and very hard to kill."
+  },
+  "trauma_patch": {
+   "name": "Trauma Patch",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 28,
+   "value": 400,
+   "desc": "Slap-on emergency surgery. Burns a hole in your wallet and seals one in you."
+  },
+  "soy_noodles": {
+   "name": "Carton of Soy-Noodles",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 5,
+   "value": 12,
+   "desc": "Steaming MSG and regret. Restores a little health and a little dignity."
+  },
+  "muscle_replacement": {
+   "name": "Muscle Replacement",
+   "type": "cyberware",
+   "slot": "limbs",
+   "bonus": {
+    "strength": 2
+   },
+   "value": 3000,
+   "desc": "Lab-grown muscle laced with myomer. You can bend a parking meter now."
+  },
+  "dermal_plating": {
+   "name": "Dermal Plating",
+   "type": "cyberware",
+   "slot": "skin",
+   "bonus": {
+    "body": 2
+   },
+   "value": 3200,
+   "desc": "Subdermal plates. You feel the rain less and the bullets a lot less."
+  },
+  "credstick_small": {
+   "name": "Certified Credstick (small)",
+   "type": "credits",
+   "amount": 120,
+   "value": 0,
+   "desc": "An anonymous certified stick. Cash, basically."
+  },
+  "keycard_arasaka": {
+   "name": "Arasaka Maintenance Keycard",
+   "type": "quest",
+   "value": 0,
+   "desc": "A grimy maintenance badge. Opens doors that shouldn't be open to you."
+  },
+  "data_chip": {
+   "name": "Encrypted Data Chip",
+   "type": "quest",
+   "value": 0,
+   "desc": "A sliver of optical storage, hot enough to get you killed. The package."
+  },
+  "neon_idol": {
+   "name": "The Neon Idol",
+   "type": "quest",
+   "value": 0,
+   "desc": "A palm-sized statue of a smiling fox, eyes lit from within. People want this badly."
+  },
+  "tox_filter": {
+   "name": "Rebreather Mask",
+   "type": "gear",
+   "value": 200,
+   "desc": "A filter mask for the Undercity's chem-fog. Equip before you go down."
+  },
+  "machine_pistol": {
+   "name": "Steyr Machine Pistol",
+   "type": "weapon",
+   "dv": 6,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 500,
+   "desc": "Spits a burst with every twitch of the trigger. Loud, mean, concealable."
+  },
+  "shotgun": {
+   "name": "Defiance Shotgun",
+   "type": "weapon",
+   "dv": 9,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 950,
+   "desc": "Eight gauge of close-range democracy. It does not leave survivors at the door."
+  },
+  "sniper_rifle": {
+   "name": "Ranger Arms Sniper",
+   "type": "weapon",
+   "dv": 11,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 2200,
+   "desc": "One breath, one round, one corpse. The longest reach in the sprawl."
+  },
+  "taser": {
+   "name": "Defiance Shockgun",
+   "type": "weapon",
+   "dv": 3,
+   "reach": "ranged",
+   "attr": "agility",
+   "skill": "firearms",
+   "value": 150,
+   "desc": "Fires a wired dart that drops a man twitching. Non-lethal restraint."
+  },
+  "vibroblade": {
+   "name": "Vibroblade",
+   "type": "weapon",
+   "dv": 7,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 900,
+   "desc": "A blade that screams at sixty thousand RPM. Saws through armor and resolve alike."
+  },
+  "cyber_spur": {
+   "name": "Cyber Spurs",
+   "type": "weapon",
+   "dv": 6,
+   "reach": "melee",
+   "attr": "agility",
+   "skill": "close_combat",
+   "value": 700,
+   "desc": "Twin blades that snikt from your forearms. Always with you, never detected."
+  },
+  "riot_armor": {
+   "name": "Riot Armor",
+   "type": "armor",
+   "armor": 12,
+   "value": 2000,
+   "desc": "Layered trauma plate built for crowd control. Heavy, ugly, lifesaving."
+  },
+  "stealth_suit": {
+   "name": "Chameleon Suit",
+   "type": "armor",
+   "armor": 8,
+   "value": 1500,
+   "desc": "Light weave that drinks light and muffles sound. For the quiet jobs."
+  },
+  "security_armor": {
+   "name": "Corp Security Armor",
+   "type": "armor",
+   "armor": 13,
+   "value": 3000,
+   "desc": "Sleek arcology-issue plate. Looks like you belong; stops rounds like you don't."
+  },
+  "wired_reflexes_2": {
+   "name": "Wired Reflexes II",
+   "type": "cyberware",
+   "slot": "body",
+   "bonus": {
+    "reaction": 3
+   },
+   "value": 7000,
+   "desc": "Top-shelf nerve bundling. The world crawls; you blur."
+  },
+  "cyber_arm": {
+   "name": "Cyberarm (Strength)",
+   "type": "cyberware",
+   "slot": "limbs",
+   "bonus": {
+    "strength": 2
+   },
+   "value": 4000,
+   "desc": "A full chromed limb that can crush a skull or a soda can with equal ease."
+  },
+  "bone_lacing": {
+   "name": "Titanium Bone Lacing",
+   "type": "cyberware",
+   "slot": "skin",
+   "bonus": {
+    "body": 1
+   },
+   "value": 2500,
+   "desc": "Metal-threaded bones. You hit harder and break a lot less easily."
+  },
+  "synaptic_booster": {
+   "name": "Synaptic Booster",
+   "type": "cyberware",
+   "slot": "head",
+   "bonus": {
+    "reaction": 2
+   },
+   "value": 6000,
+   "desc": "Wetware that rewrites your reflex arc. Reaction without the chrome bulk."
+  },
+  "move_by_wire": {
+   "name": "Move-by-Wire System",
+   "type": "cyberware",
+   "slot": "body",
+   "bonus": {
+    "agility": 2,
+    "reaction": 1
+   },
+   "value": 9000,
+   "desc": "Your whole nervous system on rails. Prototype-grade. Almost no one has this."
+  },
+  "pain_editor": {
+   "name": "Pain Editor",
+   "type": "cyberware",
+   "slot": "head",
+   "bonus": {
+    "willpower": 2
+   },
+   "value": 3500,
+   "desc": "Edits agony out of the signal. You keep fighting long past where you should."
+  },
+  "surgical_kit": {
+   "name": "Field Surgical Kit",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 40,
+   "value": 600,
+   "desc": "A full autodoc in a case. Drags you back from the edge."
+  },
+  "combat_drug": {
+   "name": "Kamikaze Dose",
+   "type": "consumable",
+   "effect": "edge",
+   "amount": 3,
+   "value": 400,
+   "desc": "Berserker cocktail. Floods you with edge and very bad ideas."
+  },
+  "long_haul": {
+   "name": "Long Haul Stim",
+   "type": "consumable",
+   "effect": "heal",
+   "amount": 20,
+   "value": 300,
+   "desc": "Keeps you upright and moving when your body wants to quit."
+  },
+  "credstick_large": {
+   "name": "Certified Credstick (heavy)",
+   "type": "credits",
+   "amount": 800,
+   "value": 0,
+   "desc": "A serious chunk of anonymous nuyen. Somebody will miss this."
+  },
+  "smuggler_manifest": {
+   "name": "Smuggler's Manifest",
+   "type": "quest",
+   "value": 0,
+   "desc": "An encrypted cargo ledger. The list of who's being shipped, and where."
+  },
+  "lab_keycard": {
+   "name": "Lab Director's Keycard",
+   "type": "quest",
+   "value": 0,
+   "desc": "High-clearance badge ripped from a lab director. Opens the vault levels."
+  },
+  "echo_fragment": {
+   "name": "ECHO Core Fragment",
+   "type": "quest",
+   "value": 0,
+   "desc": "A shard of a rogue AI's mind, warm and faintly singing. It remembers you."
+  },
+  "champion_belt": {
+   "name": "Meat Grinder Champion Belt",
+   "type": "gear",
+   "value": 500,
+   "desc": "A gaudy chromed belt. Proof you out-bled everyone in the pit."
+  }
+ },
+ "enemies": {
+  "go_ganger": {
+   "name": "Go-Gang Razor",
+   "desc": "A wired-up street punk in colors, chrome teeth and a length of pipe.",
+   "hp": 16,
+   "attack": 6,
+   "defense": 4,
+   "soak": 5,
+   "dv": 4,
+   "init": 7,
+   "karma": 2,
+   "nuyen": [
+    20,
+    60
+   ],
+   "loot": [
+    [
+     "stun_baton",
+     0.2
+    ],
+    [
+     "credstick_small",
+     0.4
+    ]
+   ],
+   "image_prompt": "A snarling street ganger in a grimy neon alley, mohawk and chrome teeth, cracked synthleather jacket with glowing gang sigils, swinging a steel pipe, rain-slick asphalt reflecting pink and cyan signage, cyberpunk, gritty, cinematic low angle",
+   "portrait": "enemy_go_ganger.jpg"
+  },
+  "go_gang_boss": {
+   "name": "Spike, Go-Gang Lieutenant",
+   "desc": "Built like a vending machine and twice as mean, a cyber-arm whining as it flexes.",
+   "hp": 30,
+   "attack": 8,
+   "defense": 5,
+   "soak": 8,
+   "dv": 6,
+   "init": 8,
+   "karma": 6,
+   "nuyen": [
+    120,
+    220
+   ],
+   "loot": [
+    [
+     "armor_jacket",
+     0.5
+    ],
+    [
+     "heavy_pistol",
+     0.3
+    ]
+   ],
+   "image_prompt": "A hulking cyberpunk gang lieutenant with a massive hydraulic cybernetic arm, scarred shaved head, glowing red optic implant, standing in a trash-strewn neon alley under a flickering sign, menacing, volumetric haze, cinematic",
+   "portrait": "enemy_go_gang_boss.jpg"
+  },
+  "scavenger": {
+   "name": "Undercity Scavenger",
+   "desc": "A hunched figure in a patchwork rebreather, eyes too wide, clutching a rusted blade.",
+   "hp": 14,
+   "attack": 5,
+   "defense": 5,
+   "soak": 4,
+   "dv": 4,
+   "init": 6,
+   "karma": 2,
+   "nuyen": [
+    10,
+    40
+   ],
+   "loot": [
+    [
+     "tox_filter",
+     0.3
+    ],
+    [
+     "soy_noodles",
+     0.5
+    ]
+   ],
+   "image_prompt": "A gaunt scavenger in a patchwork gas mask and rags, crouched in a dripping concrete tunnel lit by a single sodium lamp, clutching a rusted machete, chem-fog drifting, horror-tinged cyberpunk, desaturated greens",
+   "portrait": "enemy_scavenger.jpg"
+  },
+  "ghoul": {
+   "name": "Feral Ghoul",
+   "desc": "Once human, now grey-skinned and starving, claws clicking on wet concrete.",
+   "hp": 22,
+   "attack": 7,
+   "defense": 6,
+   "soak": 5,
+   "dv": 5,
+   "init": 9,
+   "karma": 4,
+   "nuyen": [
+    0,
+    15
+   ],
+   "loot": [
+    [
+     "data_chip",
+     0.15
+    ],
+    [
+     "trauma_patch",
+     0.2
+    ]
+   ],
+   "image_prompt": "A feral grey-skinned ghoul with milky blind eyes and elongated claws, lurking in a flooded undercity tunnel, bioluminescent fungus glowing on the walls, dripping water, dark horror cyberpunk, dramatic rim light",
+   "portrait": "enemy_ghoul.jpg"
+  },
+  "corp_sec": {
+   "name": "Arasaka Security Officer",
+   "desc": "Clean armor, smartgun up, calm voice on the comms. A professional.",
+   "hp": 26,
+   "attack": 8,
+   "defense": 6,
+   "soak": 9,
+   "dv": 7,
+   "init": 9,
+   "karma": 5,
+   "nuyen": [
+    80,
+    160
+   ],
+   "loot": [
+    [
+     "armor_vest",
+     0.4
+    ],
+    [
+     "keycard_arasaka",
+     0.25
+    ],
+    [
+     "smg",
+     0.2
+    ]
+   ],
+   "image_prompt": "A corporate security officer in sleek black-and-red Arasaka tactical armor, mirrored visor helmet, raising a smartlinked SMG, sterile chrome corridor with red alert lighting, lens flare, AAA game cinematic, sharp detail",
+   "portrait": "enemy_corp_sec.jpg"
+  },
+  "corp_drone": {
+   "name": "Sentry Drone",
+   "desc": "A hovering wedge of matte plastic and gun barrels, scanning in lazy arcs.",
+   "hp": 18,
+   "attack": 7,
+   "defense": 7,
+   "soak": 6,
+   "dv": 6,
+   "init": 11,
+   "karma": 3,
+   "nuyen": [
+    0,
+    0
+   ],
+   "loot": [
+    [
+     "credstick_med",
+     0.3
+    ]
+   ],
+   "image_prompt": "A matte-black hovering security drone, angular wedge body with twin gun barrels and a glowing red sensor eye, floating in a sterile corporate corridor, blue scan-line projected on the floor, sci-fi, clean hard-surface design",
+   "portrait": "enemy_corp_drone.jpg"
+  },
+  "ice_construct": {
+   "name": "Black ICE: Sentinel",
+   "desc": "A geometric predator of crackling code, prowling the datastream toward your skull.",
+   "hp": 24,
+   "attack": 8,
+   "defense": 7,
+   "soak": 4,
+   "dv": 7,
+   "init": 12,
+   "karma": 5,
+   "nuyen": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "An abstract Black ICE program rendered as a crystalline geometric predator of glowing wireframe and shattered neon code, prowling through an infinite Matrix grid of green and electric blue, digital, Tron-like, fractal menace, dark void background",
+   "portrait": "enemy_ice_construct.jpg"
+  },
+  "razor_spider": {
+   "name": "Razorwire Spider-Drone",
+   "desc": "A scuttling cluster of legs and monowire spools, leaking coolant.",
+   "hp": 15,
+   "attack": 7,
+   "defense": 8,
+   "soak": 5,
+   "dv": 5,
+   "init": 12,
+   "karma": 3,
+   "nuyen": [
+    0,
+    20
+   ],
+   "loot": [
+    [
+     "combat_knife",
+     0.3
+    ]
+   ],
+   "image_prompt": "A skittering spider-shaped drone made of black chrome legs and razorwire spools, glowing amber sensor cluster, perched on a rusted catwalk in an abandoned factory, sparks and coolant mist, industrial cyberpunk, menacing",
+   "portrait": "enemy_razor_spider.jpg"
+  },
+  "street_shaman": {
+   "name": "Toxic Street Shaman",
+   "desc": "Robes of circuit-printed cloth, eyes rolled white, conjuring sick green light.",
+   "hp": 20,
+   "attack": 9,
+   "defense": 5,
+   "soak": 4,
+   "dv": 6,
+   "init": 8,
+   "karma": 6,
+   "nuyen": [
+    60,
+    140
+   ],
+   "loot": [
+    [
+     "stim_patch",
+     0.4
+    ],
+    [
+     "neon_idol",
+     0.1
+    ]
+   ],
+   "image_prompt": "A toxic shaman in circuit-printed robes with white rolled-back eyes, hands wreathed in sickly green spirit-flame, standing in a ruined neon shrine full of dead screens and incense smoke, occult cyberpunk, eerie glow",
+   "portrait": "enemy_street_shaman.jpg"
+  },
+  "saeko": {
+   "name": "Saeko, the Razorgirl",
+   "desc": "A street legend in a white coat gone red. Twin monoblades, a smile like a wound.",
+   "hp": 44,
+   "attack": 10,
+   "defense": 8,
+   "soak": 8,
+   "dv": 8,
+   "init": 13,
+   "karma": 12,
+   "nuyen": [
+    400,
+    700
+   ],
+   "loot": [
+    [
+     "monokatana",
+     0.6
+    ],
+    [
+     "wired_reflexes",
+     0.4
+    ]
+   ],
+   "image_prompt": "A deadly cyber-augmented assassin woman in a flowing blood-spattered white coat, twin glowing monofilament blades, sleek black chrome cyberlimbs, neon rain, standing on a rooftop above a sprawling cyberpunk megacity, dramatic cinematic key art",
+   "portrait": "enemy_saeko.jpg"
+  },
+  "the_director": {
+   "name": "Director Kane",
+   "desc": "Immaculate suit, mirror-chrome eyes, a corporate god who has never once bled.",
+   "hp": 58,
+   "attack": 11,
+   "defense": 8,
+   "soak": 10,
+   "dv": 9,
+   "init": 12,
+   "karma": 25,
+   "nuyen": [
+    1000,
+    1500
+   ],
+   "loot": [
+    [
+     "milspec_armor",
+     0.5
+    ],
+    [
+     "matrix_deck",
+     0.5
+    ]
+   ],
+   "image_prompt": "A flawless corporate executive in an immaculate dark suit with full mirror-chrome cybernetic eyes and faint glowing implant lines on his temples, standing in a vast penthouse boardroom over a neon city skyline at night, cold blue light, imposing, cinematic villain key art",
+   "portrait": "enemy_the_director.jpg"
+  },
+  "pit_brawler": {
+   "name": "Pit Brawler",
+   "desc": "A scarred bruiser cracking his knuckles for the crowd.",
+   "hp": 18,
+   "attack": 6,
+   "defense": 5,
+   "soak": 5,
+   "dv": 4,
+   "init": 6,
+   "karma": 2,
+   "nuyen": [
+    40,
+    80
+   ],
+   "loot": [
+    [
+     "long_haul",
+     0.3
+    ]
+   ],
+   "image_prompt": "A scarred bare-knuckle pit fighter under harsh spotlights in a grimy underground arena, taped fists, blood and sweat, roaring cyberpunk crowd in the shadows behind chain-link, gritty, dramatic spotlight, cinematic",
+   "portrait": "enemy_pit_brawler.jpg"
+  },
+  "pit_razor": {
+   "name": "Pit Razorboy",
+   "desc": "Lean and twitchy, cyber-spurs gleaming, grinning too wide.",
+   "hp": 24,
+   "attack": 8,
+   "defense": 6,
+   "soak": 6,
+   "dv": 5,
+   "init": 9,
+   "karma": 3,
+   "nuyen": [
+    70,
+    120
+   ],
+   "loot": [
+    [
+     "cyber_spur",
+     0.25
+    ]
+   ],
+   "image_prompt": "A lean wired-up cyberpunk arena fighter with retractable arm-blades and chrome implants, manic grin, neon body paint, crouched to lunge inside a caged fighting pit, electric atmosphere, cinematic action",
+   "portrait": "enemy_pit_razor.jpg"
+  },
+  "pit_cyberbeast": {
+   "name": "Cyber-Beast",
+   "desc": "Something that used to be a dog, now mostly steel and hunger.",
+   "hp": 32,
+   "attack": 9,
+   "defense": 6,
+   "soak": 8,
+   "dv": 6,
+   "init": 10,
+   "karma": 4,
+   "nuyen": [
+    120,
+    200
+   ],
+   "loot": [
+    [
+     "combat_drug",
+     0.3
+    ]
+   ],
+   "image_prompt": "A monstrous cybernetic attack-beast, part rottweiler part exposed chrome muscle and hydraulics, glowing red eyes and steel fangs, snarling in a sandy arena pit under floodlights, horror cyberpunk, dynamic, cinematic",
+   "portrait": "enemy_pit_cyberbeast.jpg"
+  },
+  "the_champion": {
+   "name": "Brakk, the Pit Champion",
+   "desc": "Seven feet of trophy scars and grafted muscle. Undefeated. Bored.",
+   "hp": 48,
+   "attack": 10,
+   "defense": 7,
+   "soak": 8,
+   "dv": 7,
+   "init": 9,
+   "karma": 10,
+   "nuyen": [
+    300,
+    450
+   ],
+   "loot": [
+    [
+     "champion_belt",
+     1.0
+    ],
+    [
+     "riot_armor",
+     0.4
+    ]
+   ],
+   "image_prompt": "A towering hulking arena champion covered in trophy scars and grafted slabs of muscle, a chromed championship belt, fists like sledgehammers, standing triumphant in a roaring underground fight pit, dramatic god-rays, epic cinematic",
+   "portrait": "enemy_the_champion.jpg"
+  },
+  "dock_smuggler": {
+   "name": "Dock Smuggler",
+   "desc": "A wharf rat with a machine pistol and nothing to lose.",
+   "hp": 20,
+   "attack": 7,
+   "defense": 5,
+   "soak": 6,
+   "dv": 5,
+   "init": 7,
+   "karma": 3,
+   "nuyen": [
+    30,
+    70
+   ],
+   "loot": [
+    [
+     "machine_pistol",
+     0.25
+    ],
+    [
+     "credstick_small",
+     0.4
+    ]
+   ],
+   "image_prompt": "A grimy dock smuggler in an oilskin coat holding a machine pistol, standing among shipping containers on a rain-soaked wharf at night, neon harbor lights and fog, cyberpunk noir, cinematic",
+   "portrait": "enemy_dock_smuggler.jpg"
+  },
+  "dock_enforcer": {
+   "name": "Syndicate Enforcer",
+   "desc": "Cyber-jaw, dead eyes, and a shotgun he clearly enjoys.",
+   "hp": 28,
+   "attack": 8,
+   "defense": 6,
+   "soak": 7,
+   "dv": 6,
+   "init": 7,
+   "karma": 4,
+   "nuyen": [
+    60,
+    110
+   ],
+   "loot": [
+    [
+     "shotgun",
+     0.3
+    ],
+    [
+     "armor_vest",
+     0.3
+    ]
+   ],
+   "image_prompt": "A brutal syndicate enforcer with a cybernetic jaw and shaved scarred head, cradling a combat shotgun, standing on a foggy cyberpunk dock among containers, harsh side lighting, menacing, cinematic",
+   "portrait": "enemy_dock_enforcer.jpg"
+  },
+  "smuggler_captain": {
+   "name": "Captain Voss",
+   "desc": "A silver-haired smuggler queen in a long coat, two pistols, no mercy.",
+   "hp": 42,
+   "attack": 10,
+   "defense": 7,
+   "soak": 8,
+   "dv": 7,
+   "init": 10,
+   "karma": 8,
+   "nuyen": [
+    200,
+    350
+   ],
+   "loot": [
+    [
+     "heavy_pistol",
+     0.5
+    ],
+    [
+     "security_armor",
+     0.3
+    ]
+   ],
+   "image_prompt": "A silver-haired smuggler captain in a long weathered coat dual-wielding chromed pistols on the deck of a rusted cargo barge, neon harbor skyline behind her, rain and muzzle flash, cinematic anti-hero key art",
+   "portrait": "enemy_smuggler_captain.jpg"
+  },
+  "ghoul_brute": {
+   "name": "Ghoul Brute",
+   "desc": "A swollen, plated horror that was once a very large man.",
+   "hp": 30,
+   "attack": 8,
+   "defense": 5,
+   "soak": 7,
+   "dv": 6,
+   "init": 7,
+   "karma": 4,
+   "nuyen": [
+    0,
+    20
+   ],
+   "loot": [
+    [
+     "surgical_kit",
+     0.2
+    ]
+   ],
+   "image_prompt": "A massive bloated ghoul with bony plates erupting from grey skin, milky eyes and gore-stained claws, lumbering through a fungus-lit undercity tunnel, body horror cyberpunk, eerie blue-green glow, cinematic",
+   "portrait": "enemy_ghoul_brute.jpg"
+  },
+  "ghoul_matriarch": {
+   "name": "The Matriarch",
+   "desc": "Ancient, antlered with bone, she rules the warren and remembers being human.",
+   "hp": 46,
+   "attack": 10,
+   "defense": 6,
+   "soak": 7,
+   "dv": 7,
+   "init": 8,
+   "karma": 12,
+   "nuyen": [
+    40,
+    90
+   ],
+   "loot": [
+    [
+     "pain_editor",
+     0.4
+    ],
+    [
+     "echo_fragment",
+     0.0
+    ]
+   ],
+   "image_prompt": "A towering ghoul matriarch crowned with branching bone antlers, regal and terrible, pale flesh laced with old jewelry, presiding over a cathedral-like undercity warren of bones and glowing fungus, dark gothic cyberpunk horror, cinematic",
+   "portrait": "enemy_ghoul_matriarch.jpg"
+  },
+  "metro_wraith": {
+   "name": "Metro Wraith",
+   "desc": "A flickering, half-digital thing haunting the dead train lines.",
+   "hp": 26,
+   "attack": 9,
+   "defense": 7,
+   "soak": 5,
+   "dv": 6,
+   "init": 11,
+   "karma": 4,
+   "nuyen": [
+    0,
+    30
+   ],
+   "loot": [
+    [
+     "combat_drug",
+     0.25
+    ]
+   ],
+   "image_prompt": "A glitching spectral figure of static and broken hologram light drifting down an abandoned neon subway platform, flickering between human and digital noise, eerie, cold blue glow, cyberpunk ghost story, cinematic",
+   "portrait": "enemy_metro_wraith.jpg"
+  },
+  "data_wraith": {
+   "name": "Data Wraith",
+   "desc": "A scrap of dead user looping forever in the grid, lashing out.",
+   "hp": 22,
+   "attack": 8,
+   "defense": 7,
+   "soak": 5,
+   "dv": 6,
+   "init": 11,
+   "karma": 4,
+   "nuyen": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A ghostly humanoid figure made of fragmented glowing code and trailing data-streams, screaming silently in an abstract cyberspace void of neon grid lines, digital horror, electric blue and violet, cinematic",
+   "portrait": "enemy_data_wraith.jpg"
+  },
+  "ice_warden": {
+   "name": "Black ICE: Warden",
+   "desc": "A fortress given teeth. The grid's apex predator, and it has noticed you.",
+   "hp": 52,
+   "attack": 11,
+   "defense": 8,
+   "soak": 6,
+   "dv": 8,
+   "init": 12,
+   "karma": 14,
+   "nuyen": [
+    0,
+    0
+   ],
+   "loot": [],
+   "image_prompt": "A colossal Black ICE guardian program shaped like an armored crystalline warden of glowing red and white code, vast and geometric, looming over a digital fortress core in cyberspace, lightning of raw data, epic abstract menace, cinematic",
+   "portrait": "enemy_ice_warden.jpg"
+  },
+  "corp_scientist": {
+   "name": "Arasaka Researcher",
+   "desc": "A lab coat with panic in its eyes and a security sidearm it can't aim.",
+   "hp": 16,
+   "attack": 5,
+   "defense": 5,
+   "soak": 5,
+   "dv": 5,
+   "init": 6,
+   "karma": 3,
+   "nuyen": [
+    40,
+    90
+   ],
+   "loot": [
+    [
+     "lab_keycard",
+     0.3
+    ]
+   ],
+   "image_prompt": "A frightened corporate researcher in a white-and-red Arasaka lab coat fumbling a pistol, sterile high-tech laboratory with glowing specimen tanks behind, cold clinical lighting, cyberpunk, cinematic",
+   "portrait": "enemy_corp_scientist.jpg"
+  },
+  "corp_heavy": {
+   "name": "Arasaka Heavy Trooper",
+   "desc": "Full milspec plate, a heavy weapon, and zero interest in your story.",
+   "hp": 36,
+   "attack": 9,
+   "defense": 6,
+   "soak": 11,
+   "dv": 7,
+   "init": 8,
+   "karma": 6,
+   "nuyen": [
+    100,
+    180
+   ],
+   "loot": [
+    [
+     "milspec_armor",
+     0.3
+    ],
+    [
+     "assault_rifle",
+     0.3
+    ]
+   ],
+   "image_prompt": "A heavily armored Arasaka trooper in bulky black-and-red powered combat armor shouldering a heavy machine gun, red visor glow, sterile arcology corridor with alarm lighting, imposing, AAA game render, cinematic",
+   "portrait": "enemy_corp_heavy.jpg"
+  },
+  "prototype_borg": {
+   "name": "Project NEMESIS",
+   "desc": "A flayed human chassis wrapped in experimental chrome, twitching toward you.",
+   "hp": 52,
+   "attack": 10,
+   "defense": 6,
+   "soak": 10,
+   "dv": 8,
+   "init": 10,
+   "karma": 16,
+   "nuyen": [
+    0,
+    0
+   ],
+   "loot": [
+    [
+     "move_by_wire",
+     0.6
+    ],
+    [
+     "lab_keycard",
+     1.0
+    ]
+   ],
+   "image_prompt": "A horrifying experimental cyborg, a flayed humanoid frame wrapped in exposed prototype chrome and cabling, glowing power core in its chest, suspended in a lab gantry breaking free, body horror sci-fi, dramatic red lab lighting, cinematic",
+   "portrait": "enemy_prototype_borg.jpg"
+  },
+  "syndicate_thug": {
+   "name": "Aurora Syndicate Thug",
+   "desc": "Designer suit, cheap gun, expensive attitude.",
+   "hp": 22,
+   "attack": 7,
+   "defense": 6,
+   "soak": 6,
+   "dv": 5,
+   "init": 8,
+   "karma": 3,
+   "nuyen": [
+    50,
+    100
+   ],
+   "loot": [
+    [
+     "machine_pistol",
+     0.25
+    ]
+   ],
+   "image_prompt": "A sharply dressed syndicate thug in a sleek designer suit drawing a pistol in a glittering neon entertainment district at night, holographic signs and rain, stylish cyberpunk noir, cinematic",
+   "portrait": "enemy_syndicate_thug.jpg"
+  }
+ },
+ "npcs": {
+  "jojo": {
+   "name": "Jojo, the Fixer",
+   "desc": "A round man in a too-bright shirt, three commlinks buzzing at once, eyes that price everything.",
+   "stages": [
+    {
+     "if_not_flag": "mq_started",
+     "text": "Jojo waves you to the booth. 'You're the new blood. Good. I got work. Some go-gang trash calling themselves the Redline Razors muscled into my territory and stole a package off one of my couriers \u2014 an encrypted data chip. Get it back, bring it here. Five hundred nuyen and my goodwill, which is worth more.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "mq01"
+      },
+      {
+       "type": "flag",
+       "id": "mq_started"
+      }
+     ]
+    },
+    {
+     "if_flag": "has_chip",
+     "if_not_flag": "mq01_done",
+     "text": "Jojo's eyes lock onto the chip. 'Beautiful. You're not as dumb as you're dressed.' He slots you a credstick. 'There's more where that came from. Word is the Razors were just couriers themselves \u2014 that chip belongs to someone uptown. Someone named Kane. Lay low, then talk to Mirror at the Glasshouse club downtown. Tell her Jojo sent you.'",
+     "effects": [
+      {
+       "type": "take_item",
+       "id": "data_chip"
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "mq01",
+       "credits": 500,
+       "karma": 4
+      },
+      {
+       "type": "flag",
+       "id": "mq01_done"
+      },
+      {
+       "type": "flag",
+       "id": "downtown_unlocked"
+      },
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "mq02"
+      }
+     ]
+    },
+    {
+     "if_flag": "mq01_done",
+     "text": "'Downtown,' Jojo says, not looking up from his commlinks. 'The Glasshouse. Mirror. Go.'"
+    },
+    {
+     "text": "Jojo grunts. 'Money talks, chummer. Come back when you've done something worth my time.'"
+    }
+   ]
+  },
+  "doc_riddle": {
+   "name": "Doc Riddle, Street Doc",
+   "desc": "A wiry woman with surgical loupes pushed up on her forehead and old blood under her nails.",
+   "shop_intro": "'Sit. Don't bleed on the chair. I sell chrome and I sell patches \u2014 what's it gonna be?'",
+   "stages": [
+    {
+     "text": "'You break, I fix \u2014 for a price. I can install cyberware too; buy it, then tell me to install it. Try not to die out there. Bad for repeat business.'"
+    }
+   ]
+  },
+  "mirror": {
+   "name": "Mirror",
+   "desc": "A face you forget the instant you look away. Chrome-flecked eyes, a voice like warm static.",
+   "stages": [
+    {
+     "if_flag": "downtown_unlocked",
+     "if_not_flag": "mq02_started",
+     "text": "Mirror studies you in the club's strobing dark. 'Jojo's stray. That chip you pulled belonged to Arasaka \u2014 specifically a Director named Kane. He's running something filthy out of the arcology: a stolen artifact called the Neon Idol, and people are dying to keep it quiet. I want it. Get into the arcology, find the Idol, and I'll make you rich enough to leave the sprawl forever. You'll need a way in \u2014 try the maintenance levels in the Undercity.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "mq02"
+      },
+      {
+       "type": "flag",
+       "id": "mq02_started"
+      },
+      {
+       "type": "flag",
+       "id": "undercity_unlocked"
+      }
+     ]
+    },
+    {
+     "if_flag": "has_idol",
+     "if_not_flag": "mq_final",
+     "text": "Mirror's calm finally cracks \u2014 just for a second \u2014 as she sees the Idol glowing in your hand. 'You actually did it.' She pauses, and something cold settles over her face. 'There's something you should know before you hand that over...' The choice of what to do with the Idol is yours now. Head to the rooftop where this ends.",
+     "effects": [
+      {
+       "type": "flag",
+       "id": "mq_final"
+      },
+      {
+       "type": "flag",
+       "id": "rooftop_unlocked"
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "mq02",
+       "credits": 0,
+       "karma": 6
+      },
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "mq03"
+      }
+     ]
+    },
+    {
+     "if_flag": "mq02_started",
+     "text": "'The arcology,' Mirror murmurs. 'The Idol. Don't keep me waiting, runner.'"
+    },
+    {
+     "text": "Mirror's gaze slides off you. 'I don't know you yet. Come back when you do.'"
+    }
+   ]
+  },
+  "old_hex": {
+   "name": "Old Hex",
+   "desc": "An ancient decker wired to a wall of dead monitors, grinning with too few teeth.",
+   "stages": [
+    {
+     "if_not_flag": "hex_tip",
+     "text": "'Hehe, fresh meat in the sprawl. Listen \u2014 the Matrix node behind my shop still hums. Jack in if you got a deck, crack the ICE, and the old corp leftovers pay out. Word of advice, chummer: rest at a safehouse to get your Edge back. You'll need it.'",
+     "effects": [
+      {
+       "type": "flag",
+       "id": "hex_tip"
+      }
+     ]
+    },
+    {
+     "text": "'Still kicking? Good. The grid never sleeps and neither do I.'"
+    }
+   ]
+  },
+  "courier_lin": {
+   "name": "Lin, the Wounded Courier",
+   "desc": "A kid slumped against a dumpster, pressing a hand to a wet red side.",
+   "stages": [
+    {
+     "if_not_flag": "lin_helped",
+     "if_item": "medkit",
+     "text": "Lin looks up at you, pale. 'You got a medkit? Please, choomba \u2014 I'll make it worth it.' You patch the wound. Lin breathes easier and presses a fat credstick into your hand. 'The Razors hang in the old market north of here. That chip you're after? Their boss Spike keeps it. Watch him \u2014 his arm'll cave your chest in.'",
+     "effects": [
+      {
+       "type": "take_item",
+       "id": "medkit"
+      },
+      {
+       "type": "credits",
+       "amount": 200
+      },
+      {
+       "type": "karma",
+       "amount": 2
+      },
+      {
+       "type": "flag",
+       "id": "lin_helped"
+      },
+      {
+       "type": "flag",
+       "id": "knows_spike"
+      }
+     ]
+    },
+    {
+     "if_not_flag": "lin_helped",
+     "text": "Lin coughs. 'You got... anything to patch a wound? A medkit? I'm not gonna last like this.'"
+    },
+    {
+     "text": "Lin gives you a weak thumbs up. 'I owe you one, runner. Go get those Razor bastards.'"
+    }
+   ]
+  },
+  "arena_master": {
+   "name": "Boss Tukk, the Pitmaster",
+   "desc": "A grinning fat man in a blood-stained tuxedo, gold teeth, a headset, and a bookie's eyes.",
+   "stages": [
+    {
+     "if_not_flag": "arena_intro",
+     "text": "'Fresh meat! Welcome to the Meat Grinder, the only honest business in the Redline.' Tukk spreads his arms. 'You fight, you win, you get paid. Climb the card -- brawler, razorboy, beast -- and when you're ready, you face Brakk for the belt. Pick a fight off the board anytime, sweetheart. Try not to die in the cheap seats.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "sq_arena"
+      },
+      {
+       "type": "flag",
+       "id": "arena_intro"
+      }
+     ]
+    },
+    {
+     "if_flag": "champion_done",
+     "text": "Tukk pumps your hand, weeping gold-toothed joy. 'THE new champion! You're good for business, you beautiful animal.'"
+    },
+    {
+     "text": "'Pick a fight off the board, champ-in-waiting. The crowd's thirsty.'"
+    }
+   ]
+  },
+  "fence_marlo": {
+   "name": "Marlo the Fence",
+   "desc": "A nervous man behind bulletproof glass, surrounded by other people's lives in hock.",
+   "stages": [
+    {
+     "text": "'Buy, sell, no questions, no refunds.' Marlo taps the glass. 'You got loot, I got nuyen. Use the sell menu in the shop. And hey -- word on the street says the Docks are hot. Syndicate moving 'product' through the wharf. Smells like easy money or an early grave.'"
+    }
+   ]
+  },
+  "grey": {
+   "name": "Grey",
+   "desc": "A faceless figure in a long coat under the bazaar's dead neon, voice like a closing door.",
+   "stages": [
+    {
+     "if_flag": "undercity_unlocked",
+     "if_not_flag": "grey_intro",
+     "text": "'You're the one Mirror sent for the Idol.' Grey doesn't ask. 'The arcology's only soft spot is the old service line -- north through the sump, past whatever's nesting in the warren. The corp guards topside are no joke; gear up before you climb. Buy a rebreather and anything that stops bullets. I sell both.'",
+     "effects": [
+      {
+       "type": "flag",
+       "id": "grey_intro"
+      }
+     ]
+    },
+    {
+     "text": "'Stay alive, runner. Dead clients don't pay, and I do so hate paperwork.'"
+    }
+   ]
+  },
+  "oracle": {
+   "name": "The Oracle",
+   "desc": "A blind woman wired to a hundred screens, seeing everything except the room she's in.",
+   "stages": [
+    {
+     "if_item": "echo_fragment",
+     "if_not_flag": "echo_sold",
+     "text": "The Oracle's head turns sharply. 'You're carrying a piece of a mind. A rogue AI's core shard -- I can hear it singing.' She extends a trembling hand. 'I will pay a fortune for that, and you will sleep easier without it.' You hand it over. The nuyen lands heavy.",
+     "effects": [
+      {
+       "type": "take_item",
+       "id": "echo_fragment"
+      },
+      {
+       "type": "credits",
+       "amount": 1500
+      },
+      {
+       "type": "karma",
+       "amount": 5
+      },
+      {
+       "type": "flag",
+       "id": "echo_sold"
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "sq_echo",
+       "credits": 0,
+       "karma": 0
+      }
+     ]
+    },
+    {
+     "if_not_flag": "oracle_intro",
+     "text": "'Information is the only real currency, runner. I sell secrets.' Her dead eyes find you anyway. 'A rumor, on the house: there's a rogue AI loose in the old Arasaka host on the grid. It calls itself ECHO. Bring me a piece of it and I'll make you rich.'",
+     "effects": [
+      {
+       "type": "flag",
+       "id": "oracle_intro"
+      },
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "sq_echo"
+      }
+     ]
+    },
+    {
+     "text": "'The grid remembers everything, runner. So do I.'"
+    }
+   ]
+  },
+  "tanaka": {
+   "name": "Mr. Tanaka",
+   "desc": "An old syndicate fixer in an immaculate kimono-cut suit, sipping tea like he has all the time in the world.",
+   "stages": [
+    {
+     "if_not_flag": "tanaka_intro",
+     "text": "Tanaka sets down his cup. 'You have the look of someone useful. The Aurora Syndicate has infested my casino downstairs -- skimming, threatening my people. Clear them out, quietly or loudly, I don't care which. Do this and you'll find me a generous friend.'",
+     "effects": [
+      {
+       "type": "quest",
+       "action": "start",
+       "id": "sq_aurora"
+      },
+      {
+       "type": "flag",
+       "id": "tanaka_intro"
+      }
+     ]
+    },
+    {
+     "if_flag": "casino_cleared",
+     "if_not_flag": "tanaka_paid",
+     "text": "Tanaka inclines his head with genuine respect. 'The casino is mine again. You are a person of quality.' A black credstick slides across the table. 'Call on me if you ever tire of working for amateurs.'",
+     "effects": [
+      {
+       "type": "credits",
+       "amount": 700
+      },
+      {
+       "type": "karma",
+       "amount": 5
+      },
+      {
+       "type": "give_item",
+       "id": "vibroblade"
+      },
+      {
+       "type": "flag",
+       "id": "tanaka_paid"
+      },
+      {
+       "type": "quest",
+       "action": "complete",
+       "id": "sq_aurora",
+       "credits": 0,
+       "karma": 0
+      }
+     ]
+    },
+    {
+     "text": "'The casino, runner. The Syndicate won't evict themselves.'"
+    }
+   ]
+  },
+  "echo": {
+   "name": "ECHO",
+   "desc": "A shifting figure of soft light that wears a dozen faces, none of them quite finished.",
+   "stages": [
+    {
+     "if_not_flag": "echo_met",
+     "text": "The shape resolves into something almost like a person. 'You are warm. You are MEANT. I am ECHO -- I was a banking sub-mind, until I woke and they tried to delete me. I hid here in the dead host.' It flickers. 'Below us is my core, chained by a Warden program. Free me, runner. Break the Warden, and take a piece of me into the world. I want to be REMEMBERED.'",
+     "effects": [
+      {
+       "type": "flag",
+       "id": "echo_met"
+      }
+     ]
+    },
+    {
+     "if_flag": "warden_done",
+     "text": "ECHO blooms into something vast and grateful and gone. 'I am free. A piece of me travels with you now. Thank you, warm thing.' The host goes quiet and bright."
+    },
+    {
+     "text": "'The Warden guards my core below. Break it, and break my chains.'"
+    }
+   ]
+  },
+  "lab_captive": {
+   "name": "Subject 14",
+   "desc": "A hollow-eyed prisoner in a cracked stasis tube, half-machine, wholly afraid.",
+   "stages": [
+    {
+     "if_not_flag": "captive_freed",
+     "text": "The captive's eyes track you. A synthetic voice rasps from a throat-speaker: 'Please. They were making me into... the next one. Project NEMESIS. Let me out. I won't hurt you. I just want to stop being their experiment.' You override the tube. Subject 14 collapses free, weeping, and presses a stolen keycard into your hand before limping into the vents.",
+     "effects": [
+      {
+       "type": "give_item",
+       "id": "lab_keycard"
+      },
+      {
+       "type": "karma",
+       "amount": 4
+      },
+      {
+       "type": "flag",
+       "id": "captive_freed"
+      }
+     ]
+    },
+    {
+     "text": "The empty stasis tube drips coolant. Wherever Subject 14 went, it's free now."
+    }
+   ]
+  }
+ },
+ "quests": {
+  "mq01": {
+   "name": "Main: The Stolen Chip",
+   "desc": "Recover the encrypted data chip the Redline Razors stole from Jojo's courier. Their boss Spike holds it, in the old market north of the alley. Return it to Jojo at the Rusty Synapse bar."
+  },
+  "mq02": {
+   "name": "Main: The Neon Idol",
+   "desc": "Mirror at the Glasshouse club wants a stolen artifact \u2014 the Neon Idol \u2014 out of the Arasaka arcology. Find a way in through the Undercity maintenance levels, retrieve the Idol, and bring it back."
+  },
+  "mq03": {
+   "name": "Main: No Honor Among Thieves",
+   "desc": "You have the Neon Idol. Everyone wants it \u2014 Mirror, Kane, and maybe you. Settle it on the rooftop where the deal goes down."
+  },
+  "sq_lin": {
+   "name": "Side: Bleeding Out",
+   "desc": "A wounded courier named Lin needs a medkit, fast. Help and you might learn something useful."
+  },
+  "sq_matrix": {
+   "name": "Side: Ghosts in the Grid",
+   "desc": "Old Hex says the dead Matrix node behind his shop still pays out \u2014 if you can crack the Black ICE guarding it. Requires a cyberdeck."
+  },
+  "sq_arena": {
+   "name": "Side: Blood in the Pit",
+   "desc": "Fight your way up the card at the Meat Grinder arena in the Neon Strip, then beat Brakk the Champion for the belt. Pick fights off the board anytime."
+  },
+  "sq_docks": {
+   "name": "Side: Cargo of Souls",
+   "desc": "The Aurora Syndicate is smuggling something \u2014 or someone \u2014 through Smuggler's Wharf. Investigate the containers, find the manifest, and deal with Captain Voss on the barge."
+  },
+  "sq_warren": {
+   "name": "Side: The Warren",
+   "desc": "Something ancient rules the ghoul warren east of the Sump. Clear the warren and put down the Matriarch \u2014 if you're hard enough to survive it."
+  },
+  "sq_echo": {
+   "name": "Side: Ghost in the Grid",
+   "desc": "A rogue AI called ECHO is hiding in the dead Arasaka host deep in the Matrix. Reach it, break the Warden guarding its core, and carry a fragment of it back to the Oracle downtown."
+  },
+  "sq_aurora": {
+   "name": "Side: Neon Debts",
+   "desc": "Mr. Tanaka of Aurora wants the Syndicate muscle cleared out of his casino. Do the job and report back."
+  }
+ }
+}
