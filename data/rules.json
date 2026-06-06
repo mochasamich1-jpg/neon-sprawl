@@ -68,7 +68,7 @@
   },
   "mage": {
    "key": "mage",
-   "blurb": "Bends mana to will. Hurls manabolts, heals wounds, stuns minds. Fragile but devastating.",
+   "blurb": "Bends mana to will. Hurls raw mana, mends wounds, stuns minds. Fragile but devastating.",
    "attrs": {
     "body": 3,
     "agility": 3,
@@ -92,9 +92,9 @@
    "cyberware": [],
    "edge": 3,
    "abilities": [
-    "manabolt",
+    "mana_lance",
     "heal_spell",
-    "stunbolt"
+    "stun_pulse"
    ]
   },
   "rigger": {
@@ -194,7 +194,7 @@
    "value": 3,
    "desc": "Cripple the target's defenses (-3 defense dice)."
   },
-  "manabolt": {
+  "mana_lance": {
    "name": "Mana Lance",
    "cost": 1,
    "kind": "attack",
@@ -211,7 +211,7 @@
    "magic_mult": 3,
    "desc": "Mend wounds (Magic x3 HP)."
   },
-  "stunbolt": {
+  "stun_pulse": {
    "name": "Stun Pulse",
    "cost": 2,
    "kind": "attack",
